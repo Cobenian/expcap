@@ -7,7 +7,7 @@ defmodule ExPcap.PacketHeader do
 
   @bytes_in_header 16
 
-  def read_header_forward(data) do
+  def read_forward(data) do
     <<
       ts_sec    :: unsigned-integer-size(32),
       ts_usec   :: unsigned-integer-size(32),
@@ -22,7 +22,7 @@ defmodule ExPcap.PacketHeader do
     }
   end
 
-  def read_header_reversed(data) do
+  def read_reversed(data) do
 
     import ExPcap.Binaries, only: [reverse_binary: 1, to_uint32: 1 ]
 
@@ -43,9 +43,9 @@ defmodule ExPcap.PacketHeader do
   def from_file(f, magic_number) do
     data = IO.binread(f, @bytes_in_header)
     if magic_number.reverse_bytes do
-      data |> read_header_reversed
+      data |> read_reversed
     else
-      data |> read_header_forward
+      data |> read_forward
     end
   end
 
