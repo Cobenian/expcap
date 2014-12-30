@@ -22,13 +22,28 @@ defmodule GlobalHeader do
     [reverse_bytes: true, nanos: true, magic: 0xa1b2c3d4]
   end
 
-  def read_magic(f) do
+  def read_magic_big(data) do
+    <<magic :: bytes-big-size(4)>> = data
+    "0x" <> Base.encode16(magic, case: :lower)
+  end
+
+  def read_magic_little(data) do
+    <<magic :: bytes-little-size(4)>> = data
+    "0x" <> Base.encode16(magic, case: :lower)
+  end
+
+  def read_magic_native(data) do
+    <<magic :: bytes-native-size(4)>> = data
+    "0x" <> Base.encode16(magic, case: :lower)
+  end
+
+  def read_magic(data) do
     <<
       magic1 :: unsigned-integer-size(8),
       magic2 :: unsigned-integer-size(8),
       magic3 :: unsigned-integer-size(8),
       magic4 :: unsigned-integer-size(8)
-    >> = IO.binread(f, @bytes_in_magic)
+    >> = data
     magic_number(magic1, magic2, magic3, magic4)
   end
 
@@ -51,7 +66,7 @@ defmodule GlobalHeader do
   end
 
   def reverse_binary(<<h :: bytes-size(1), t :: binary>>, acc) do
-    reverse_binary(t, acc <> h)
+    reverse_binary(t, h <> acc)
   end
 
   def reverse_binary(b) do
@@ -95,7 +110,13 @@ defmodule GlobalHeader do
   end
 
   def from_file(f) do
-    [reverse_bytes: reverse_bytes, nanos: _nanos, magic: magic_number] = read_magic(f)
+    data = IO.binread(f, @bytes_in_magic)
+    IO.inspect read_magic_big(data)
+    IO.inspect read_magic_little(data)
+    IO.inspect read_magic_native(data)
+    magic = data |> read_magic
+    IO.inspect magic
+    [reverse_bytes: reverse_bytes, nanos: _nanos, magic: magic_number] = magic
     data = IO.binread(f, @bytes_in_header - @bytes_in_magic)
     if reverse_bytes do
       data |> read_reversed(magic_number)
