@@ -10,6 +10,10 @@ defmodule ExPcap.GlobalHeader do
 
   @bytes_in_header 24 - ExPcap.MagicNumber.bytes_in_magic
 
+  def reverse_bytes?(global_header) do
+    global_header.magic_number.reverse_bytes
+  end
+
   def read_forward(data, magic_number) do
     <<
       version_major :: unsigned-integer-size(16),

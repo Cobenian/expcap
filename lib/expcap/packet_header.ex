@@ -40,9 +40,9 @@ defmodule ExPcap.PacketHeader do
     }
   end
 
-  def from_file(f, magic_number) do
+  def from_file(f, global_header) do
     data = IO.binread(f, @bytes_in_header)
-    if magic_number.reverse_bytes do
+    if ExPcap.GlobalHeader.reverse_bytes?(global_header) do
       data |> read_reversed
     else
       data |> read_forward
