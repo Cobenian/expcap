@@ -3,9 +3,7 @@ defmodule ExPcap do
   defstruct global_header: %ExPcap.GlobalHeader{},
             packets: [] # %ExPcap.Packet{}
 
-  def from_file(filename) do
-    f = File.open!(filename)
-
+  def read_pcap(f) do
     magic_number = ExPcap.MagicNumber.from_file(f)
     global_header = ExPcap.GlobalHeader.from_file(f, magic_number)
 
@@ -15,14 +13,16 @@ defmodule ExPcap do
 
     packets = [%ExPcap.Packet{packet_header: packet_header, packet_data: packet_data}]
 
-    pcap = %ExPcap{
+    %ExPcap{
       global_header: global_header,
       packets: packets
     }
+  end
 
-    File.close(f)
-
-    pcap
+  def from_file(filename) do
+    File.open!(filename, fn(file) ->
+        read_pcap(file)
+    end)
   end
 
 end
