@@ -8,7 +8,7 @@ defmodule ExPcap.GlobalHeader do
             snaplen:        0,
             network:        0
 
-  @bytes_in_header 24
+  @bytes_in_header 24 - ExPcap.MagicNumber.bytes_in_magic
 
   def read_forward(data, magic_number) do
     <<
@@ -48,9 +48,8 @@ defmodule ExPcap.GlobalHeader do
     }
   end
 
-  def from_file(f) do
-    magic_number = IO.binread(f, ExPcap.MagicNumber.bytes_in_magic) |> ExPcap.MagicNumber.read_magic
-    data = IO.binread(f, @bytes_in_header - ExPcap.MagicNumber.bytes_in_magic)
+  def from_file(f, magic_number) do
+    data = IO.binread(f, @bytes_in_header)
     if magic_number.reverse_bytes do
       data |> read_reversed(magic_number)
     else

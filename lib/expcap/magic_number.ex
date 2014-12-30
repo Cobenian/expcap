@@ -52,4 +52,8 @@ defmodule ExPcap.MagicNumber do
     magic_number(magic1, magic2, magic3, magic4)
   end
 
+  def from_file(f) do
+    IO.binread(f, @bytes_in_magic) |> read_magic
+  end
+
 end
