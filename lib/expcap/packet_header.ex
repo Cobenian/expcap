@@ -42,10 +42,15 @@ defmodule ExPcap.PacketHeader do
 
   def from_file(f, global_header) do
     data = IO.binread(f, @bytes_in_header)
-    if ExPcap.GlobalHeader.reverse_bytes?(global_header) do
-      data |> read_reversed
-    else
-      data |> read_forward
+    case data do
+      :eof -> data
+      # {:error, reason} -> data
+      _ ->
+        if ExPcap.GlobalHeader.reverse_bytes?(global_header) do
+          data |> read_reversed
+        else
+          data |> read_forward
+        end
     end
   end
 
