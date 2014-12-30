@@ -7,6 +7,6 @@ global_header = ExPcap.GlobalHeader.from_file(f, magic_number)
 global_header |> IO.inspect
 packet_header = ExPcap.PacketHeader.from_file(f, magic_number)
 packet_header |> IO.inspect
-packet_data = ExPcap.PacketData.from_file(f, packet_header)
+packet_data = ExPcap.PacketData.from_file(f, magic_number, packet_header)
 packet_data |> IO.inspect
 File.close(f)
