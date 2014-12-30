@@ -49,8 +49,8 @@ defmodule ExPcap.GlobalHeader do
   end
 
   def from_file(f) do
-    magic_number = IO.binread(f, ExPcap.MagicNumber.bytes_in_magic()) |> ExPcap.MagicNumber.read_magic
-    data = IO.binread(f, @bytes_in_header - ExPcap.MagicNumber.bytes_in_magic())
+    magic_number = IO.binread(f, ExPcap.MagicNumber.bytes_in_magic) |> ExPcap.MagicNumber.read_magic
+    data = IO.binread(f, @bytes_in_header - ExPcap.MagicNumber.bytes_in_magic)
     if magic_number.reverse_bytes do
       data |> read_reversed(magic_number)
     else
