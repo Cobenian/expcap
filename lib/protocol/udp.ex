@@ -18,7 +18,7 @@ defmodule Protocol.Udp do
       destport      :: unsigned-integer-size(16),
       length        :: bytes-size(2),
       checksum      :: bytes-size(2),
-      payload       :: binary
+      _payload       :: binary
     >> = data
     %Protocol.Udp.Header{
       srcport: srcport,
@@ -29,7 +29,7 @@ defmodule Protocol.Udp do
   end
 
   def from_data(data) do
-    << header :: bytes-size(@bytes_in_header), payload :: binary >> = data
+    << _header :: bytes-size(@bytes_in_header), payload :: binary >> = data
     %Protocol.Udp{
       header: header(data),
       data: payload
