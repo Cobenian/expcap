@@ -6,7 +6,7 @@ defmodule ExPcap.PacketData do
   def read_reversed(data, packet_header) do
     %ExPcap.PacketData{
       data_len: packet_header.incl_len,
-      data:     data |> ExPcap.Binaries.reverse_binary |> String.codepoints 
+      data:     data # |> ExPcap.Binaries.reverse_binary 
     }
   end
 

@@ -10,6 +10,23 @@ defmodule ExPcap do
         acc
       _ ->
         packet_data = ExPcap.PacketData.from_file(f, global_header, packet_header)
+        # packet_data.data |> IO.inspect
+        # global_header |> IO.inspect
+        # packet_header |> IO.inspect
+        # IO.puts "length is #{byte_size(packet_data.data)}"
+        # packet_data.data |> IO.inspect
+        # ethernet = packet_data.data |> Protocol.Ethernet.header
+        ethernet = packet_data.data |> Protocol.Ethernet.from_data
+        # ethernet |> IO.inspect
+        ipv4 = ethernet.data |> Protocol.Ipv4.from_data
+        # ipv4 |> IO.inspect
+        udp = ipv4.data |> Protocol.Udp.from_data
+        # udp |> IO.inspect
+        dns = udp.data |> Protocol.Dns.from_data
+        dns |> IO.inspect
+        # packet_data.data |> Protocol.Ipv4.header |> IO.inspect
+        # packet_data.data |> Protocol.Dns.header |> IO.inspect
+        # packet_data.data |> Protocol.Udp.header |> IO.inspect
         new_pcap = %ExPcap.Packet{packet_header: packet_header, packet_data: packet_data}
         read_packets(f, global_header, [new_pcap | acc])
     end
