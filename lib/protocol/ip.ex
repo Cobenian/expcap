@@ -1,3 +1,18 @@
+defimpl PayloadType, for: Protocol.Ipv4 do
+  def payload_parser(data) do
+    case data.header.protocol do
+      # 06 -> Protocol.Tcp
+      <<17>> -> Protocol.Udp
+    end
+  end
+end
+
+defimpl PayloadParser, for: Protocol.Ipv4 do
+  def from_data(data) do
+    Protocol.Ipv4.from_data data
+  end
+end
+
 defmodule Protocol.Ipv4.Header do
   defstruct version:      <<>>,
             ihl:          <<>>,
@@ -38,7 +53,7 @@ defmodule Protocol.Ipv4 do
       destaddr    :: bytes-size(4),
       options     :: bytes-size(3),
       padding     :: bytes-size(1),
-      payload     :: binary
+      _payload    :: binary
     >> = data
     %Protocol.Ipv4.Header{
       version: version,
@@ -63,7 +78,7 @@ defmodule Protocol.Ipv4 do
     ipv4_header = header(data)
     # header size can be between 20 and 60 (see ihl value in the header...)
     header_size = ExPcap.Binaries.to_uint4(ipv4_header.ihl) * 4
-    << header :: bytes-size(header_size), payload :: binary >> = data
+    << _header :: bytes-size(header_size), payload :: binary >> = data
     %Protocol.Ipv4{
       header: ipv4_header,
       data: payload

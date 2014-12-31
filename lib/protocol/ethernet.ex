@@ -1,3 +1,18 @@
+defimpl PayloadType, for: Protocol.Ethernet do
+  def payload_parser(data) do
+    case data.header.ethertype do
+      <<08, 00>> -> Protocol.Ipv4
+      # <<134, 221>> -> Protocol.Ipv6
+    end
+  end
+end
+
+defimpl PayloadParser, for: Protocol.Ethernet do
+  def from_data(data) do
+    Protocol.Ethernet.from_data data
+  end
+end
+
 defmodule Protocol.Ethernet.Header do
   defstruct destmacaddr: <<>>,
             srcmacaddr: <<>>,

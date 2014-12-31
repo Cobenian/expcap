@@ -1,3 +1,15 @@
+defimpl PayloadType, for: Protocol.Dns do
+  def payload_parser(_data) do
+    nil
+  end
+end
+
+defimpl PayloadParser, for: Protocol.Dns do
+  def from_data(data) do
+    Protocol.Dns.from_data data
+  end
+end
+
 defmodule Protocol.Dns.Header do
   defstruct id:      <<>>,
             qr:      <<>>,
@@ -16,25 +28,27 @@ end
 
 defmodule Protocol.Dns do
 
+  @bytes_in_header 12
+
   defstruct header: %Protocol.Dns.Header{},
             data: <<>>
 
   def header(data) do
     <<
-      id      :: bytes-size(2),
-      qr      :: bits-size(1),
-      opcode  :: bits-size(4),
-      aa      :: bits-size(1),
-      tc      :: bits-size(1),
-      rd      :: bits-size(1),
-      ra      :: bits-size(1),
-      z       :: bits-size(3),
-      rcode   :: bits-size(4),
-      qdcnt   :: bytes-size(2),
-      ancnt   :: bytes-size(2),
-      nscnt   :: bytes-size(2),
-      arcnt   :: bytes-size(2),
-      payload :: binary
+      id        :: bytes-size(2),
+      qr        :: bits-size(1),
+      opcode    :: bits-size(4),
+      aa        :: bits-size(1),
+      tc        :: bits-size(1),
+      rd        :: bits-size(1),
+      ra        :: bits-size(1),
+      z         :: bits-size(3),
+      rcode     :: bits-size(4),
+      qdcnt     :: bytes-size(2),
+      ancnt     :: bytes-size(2),
+      nscnt     :: bytes-size(2),
+      arcnt     :: bytes-size(2),
+      _payload  :: binary
     >> = data
     %Protocol.Dns.Header{
       id:     id,
@@ -54,7 +68,7 @@ defmodule Protocol.Dns do
   end
 
   def from_data(data) do
-    << header :: bytes-size(12), payload :: binary >> = data
+    << _header :: bytes-size(@bytes_in_header), payload :: binary >> = data
     %Protocol.Dns{
       header: header(data),
       data: payload |> String.codepoints

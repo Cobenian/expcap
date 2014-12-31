@@ -1,3 +1,15 @@
+defimpl PayloadType, for: Protocol.Udp do
+  def payload_parser(_data) do
+    Protocol.Dns
+  end
+end
+
+defimpl PayloadParser, for: Protocol.Udp do
+  def from_data(data) do
+    Protocol.Udp.from_data data
+  end
+end
+
 defmodule Protocol.Udp.Header do
   defstruct srcport:     <<>>,
             destport:    <<>>,

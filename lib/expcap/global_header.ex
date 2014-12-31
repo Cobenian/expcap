@@ -1,3 +1,10 @@
+defimpl PayloadType, for: ExPcap.GlobalHeader do
+  def payload_parser(_data) do
+    # todo check 'network' value
+    Protocol.Ethernet
+  end
+end
+
 defmodule ExPcap.GlobalHeader do
 
   defstruct magic_number:   0,

@@ -1,8 +1,3 @@
-defprotocol Packet do
-  def get_header(this)
-  def get_payload(this)
-end
-
 defprotocol PayloadType do
   def payload_parser(this_type)
 end
@@ -11,97 +6,32 @@ defprotocol PayloadParser do
   def from_data(data)
 end
 
-defimpl PayloadType, for: ExPcap.GlobalHeader do
-  def payload_parser(data) do
-    Protocol.Ethernet
-  end
-end
-
-defimpl PayloadType, for: Protocol.Ethernet do
-  def payload_parser(data) do
-    case data.header.ethertype do
-      <<08, 00>> -> Protocol.Ipv4
-      # <<134, 221>> -> Protocol.Ipv6
-    end
-  end
-end
-
-defimpl PayloadType, for: Protocol.Ipv4 do
-  def payload_parser(data) do
-    case data.header.protocol do
-      # 06 -> Protocol.Tcp
-      <<17>> -> Protocol.Udp
-    end
-  end
-end
-
-defimpl PayloadType, for: Protocol.Udp do
-  def payload_parser(data) do
-    Protocol.Dns
-  end
-end
-
-defimpl PayloadParser, for: Protocol.Ethernet do
-  def from_data(data) do
-    Protocol.Ethernet.from_data data
-  end
-end
-
-defimpl PayloadParser, for: Protocol.Ipv4 do
-  def from_data(data) do
-    Protocol.Ipv4.from_data data
-  end
-end
-
-defimpl PayloadParser, for: Protocol.Udp do
-  def from_data(data) do
-    Protocol.Udp.from_data data
-  end
-end
-
-defimpl PayloadParser, for: Protocol.Dns do
-  def from_data(data) do
-    Protocol.Dns.from_data data
-  end
-end
-
 defmodule ExPcap do
 
   defstruct global_header: %ExPcap.GlobalHeader{},
             packets: [] # %ExPcap.Packet{}
 
+  def parse_packet(packet_data, global_header) do
+    parser = PayloadType.payload_parser(global_header)
+    parse_packet(parser, packet_data, [])
+  end
+
+  def parse_packet(nil, payload, acc) do
+    [payload | acc]
+  end
+
+  def parse_packet(parser, payload, acc) do
+    next_payload = payload.data |> parser.from_data
+    parser = PayloadType.payload_parser(next_payload)
+    parse_packet(parser, next_payload, [payload | acc])
+  end
+
   def read_packet(f, global_header, packet_header) do
     packet_data = ExPcap.PacketData.from_file(f, global_header, packet_header)
     # packet_data.data |> IO.inspect
 
-    # todo nest these payloads....
-
-    # ethernet
-    parser = PayloadType.payload_parser(global_header)
-    payload = packet_data.data |> parser.from_data
-
-    # ip
-    parser = PayloadType.payload_parser(payload)
-    payload = payload.data |> parser.from_data
-
-    # udp
-    parser = PayloadType.payload_parser(payload)
-    payload = payload.data |> parser.from_data
-
-    # dns
-    parser = PayloadType.payload_parser(payload)
-    payload = payload.data |> parser.from_data
-
-    payload |> IO.inspect
-
-    # ethernet = packet_data.data |> Protocol.Ethernet.from_data
-    # ethernet |> IO.inspect
-    # ipv4 = ethernet.data |> Protocol.Ipv4.from_data
-    # ipv4 |> IO.inspect
-    # udp = ipv4.data |> Protocol.Udp.from_data
-    # udp |> IO.inspect
-    # dns = udp.data |> Protocol.Dns.from_data
-    # dns |> IO.inspect
+    payload = parse_packet(packet_data, global_header)
+    # payload |> IO.inspect
 
     %ExPcap.Packet{
       packet_header: packet_header,
@@ -146,5 +76,32 @@ defmodule ExPcap do
         read_pcap(file)
     end)
   end
+
+  # # ethernet
+  # parser = PayloadType.payload_parser(global_header)
+  # payload = packet_data.data |> parser.from_data
+  #
+  # # ip
+  # parser = PayloadType.payload_parser(payload)
+  # payload = payload.data |> parser.from_data
+  #
+  # # udp
+  # parser = PayloadType.payload_parser(payload)
+  # payload = payload.data |> parser.from_data
+  #
+  # # dns
+  # parser = PayloadType.payload_parser(payload)
+  # payload = payload.data |> parser.from_data
+
+  # payload |> IO.inspect
+
+  # ethernet = packet_data.data |> Protocol.Ethernet.from_data
+  # ethernet |> IO.inspect
+  # ipv4 = ethernet.data |> Protocol.Ipv4.from_data
+  # ipv4 |> IO.inspect
+  # udp = ipv4.data |> Protocol.Udp.from_data
+  # udp |> IO.inspect
+  # dns = udp.data |> Protocol.Dns.from_data
+  # dns |> IO.inspect
 
 end
