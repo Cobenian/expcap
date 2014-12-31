@@ -7,6 +7,8 @@ end
 
 defmodule Protocol.Udp do
 
+  @bytes_in_header 8
+
   defstruct header: %Protocol.Udp.Header{},
             data: <<>>
 
@@ -27,7 +29,7 @@ defmodule Protocol.Udp do
   end
 
   def from_data(data) do
-    << header :: bytes-size(8), payload :: binary >> = data
+    << header :: bytes-size(@bytes_in_header), payload :: binary >> = data
     %Protocol.Udp{
       header: header(data),
       data: payload

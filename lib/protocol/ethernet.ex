@@ -6,6 +6,8 @@ end
 
 defmodule Protocol.Ethernet do
 
+  @bytes_in_header 14
+
   defstruct header: %Protocol.Ethernet.Header{},
             data: <<>>
 
@@ -14,7 +16,7 @@ defmodule Protocol.Ethernet do
       destmacaddr :: bytes-size(6),
       srcmacaddr  :: bytes-size(6),
       ethertype   :: bytes-size(2), # determines the payload type (http://en.wikipedia.org/wiki/EtherType)
-      payload     :: binary
+      _payload    :: binary
     >> = data
     %Protocol.Ethernet.Header{
       destmacaddr:  destmacaddr,
@@ -24,7 +26,7 @@ defmodule Protocol.Ethernet do
   end
 
   def from_data(data) do
-    <<header :: bytes-size(14), rest :: binary>> = data
+    <<_header :: bytes-size(@bytes_in_header), rest :: binary>> = data
     %Protocol.Ethernet{
       header: header(data),
       data: rest

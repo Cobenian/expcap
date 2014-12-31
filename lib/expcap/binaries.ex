@@ -12,6 +12,11 @@ defmodule ExPcap.Binaries do
     reverse_binary(b, <<>>)
   end
 
+  def to_uint4(b) do
+    <<n :: unsigned-integer-size(4)>> = b
+    n
+  end
+
   def to_uint16(b) do
     <<n :: unsigned-integer-size(16)>> = b
     n
@@ -25,6 +30,6 @@ defmodule ExPcap.Binaries do
   def to_int32(b) do
     <<n :: signed-integer-size(32)>> = b
     n
-  end  
+  end
 
 end

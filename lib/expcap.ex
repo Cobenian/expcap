@@ -11,11 +11,6 @@ defmodule ExPcap do
       _ ->
         packet_data = ExPcap.PacketData.from_file(f, global_header, packet_header)
         # packet_data.data |> IO.inspect
-        # global_header |> IO.inspect
-        # packet_header |> IO.inspect
-        # IO.puts "length is #{byte_size(packet_data.data)}"
-        # packet_data.data |> IO.inspect
-        # ethernet = packet_data.data |> Protocol.Ethernet.header
         ethernet = packet_data.data |> Protocol.Ethernet.from_data
         # ethernet |> IO.inspect
         ipv4 = ethernet.data |> Protocol.Ipv4.from_data
@@ -23,10 +18,9 @@ defmodule ExPcap do
         udp = ipv4.data |> Protocol.Udp.from_data
         # udp |> IO.inspect
         dns = udp.data |> Protocol.Dns.from_data
-        # dns |> IO.inspect
-        # packet_data.data |> Protocol.Ipv4.header |> IO.inspect
-        # packet_data.data |> Protocol.Dns.header |> IO.inspect
-        # packet_data.data |> Protocol.Udp.header |> IO.inspect
+        dns |> IO.inspect
+
+        # todo nested protocols (ethernet,ip,udp,dns) inside packet_data
         new_pcap = %ExPcap.Packet{packet_header: packet_header, packet_data: packet_data}
         read_packets(f, global_header, [new_pcap | acc])
     end
@@ -36,7 +30,6 @@ defmodule ExPcap do
   def read_pcap(f) do
     magic_number = ExPcap.MagicNumber.from_file(f)
     global_header = ExPcap.GlobalHeader.from_file(f, magic_number)
-    global_header |> IO.inspect
 
     # # todo stream of packets instead of eager fetching
     %ExPcap{

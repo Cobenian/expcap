@@ -60,10 +60,12 @@ defmodule Protocol.Ipv4 do
   end
 
   def from_data(data) do
-    # todo header size can be between 20 and 60 (see ihl value in the header...)
-    << header :: bytes-size(20), payload :: binary >> = data
+    ipv4_header = header(data)
+    # header size can be between 20 and 60 (see ihl value in the header...)
+    header_size = ExPcap.Binaries.to_uint4(ipv4_header.ihl) * 4
+    << header :: bytes-size(header_size), payload :: binary >> = data
     %Protocol.Ipv4{
-      header: header(data),
+      header: ipv4_header,
       data: payload
     }
   end
