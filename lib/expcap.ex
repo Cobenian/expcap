@@ -18,7 +18,7 @@ defmodule ExPcap do
         udp = ipv4.data |> Protocol.Udp.from_data
         # udp |> IO.inspect
         dns = udp.data |> Protocol.Dns.from_data
-        dns |> IO.inspect
+        # dns |> IO.inspect
 
         # todo nested protocols (ethernet,ip,udp,dns) inside packet_data
         new_pcap = %ExPcap.Packet{packet_header: packet_header, packet_data: packet_data}
