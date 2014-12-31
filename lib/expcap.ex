@@ -19,14 +19,23 @@ defmodule ExPcap do
     %ExPcap.Packet{packet_header: packet_header, packet_data: packet_data}
   end
 
-  def read_packets(f, global_header, acc \\ []) do
+  def read_packet(f, global_header) do
     packet_header = ExPcap.PacketHeader.from_file(f, global_header)
     case packet_header do
       :eof ->
+        :eof
+      _ ->
+        read_packet(f, global_header, packet_header)
+    end
+  end
+
+  def read_packets(f, global_header, acc \\ []) do
+    next_packet = read_packet(f, global_header)
+    case next_packet do
+      :eof ->
         acc
       _ ->
-        new_packet = read_packet(f, global_header, packet_header)
-        read_packets(f, global_header, [new_packet | acc])
+        read_packets(f, global_header, [next_packet | acc])
     end
 
   end
