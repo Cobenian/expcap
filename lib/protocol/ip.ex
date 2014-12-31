@@ -50,7 +50,7 @@ defmodule Protocol.Ipv4 do
       flags: flags,
       fragoffset: fragoffset,
       ttl: ttl,
-      protocol: protocol,
+      protocol: protocol, # determines the payload content type (http://en.wikipedia.org/wiki/List_of_IP_protocol_numbers)
       checksum: checksum,
       srcaddr: srcaddr,
       destaddr: destaddr,
@@ -60,6 +60,7 @@ defmodule Protocol.Ipv4 do
   end
 
   def from_data(data) do
+    # todo header size can be between 20 and 60 (see ihl value in the header...)
     << header :: bytes-size(20), payload :: binary >> = data
     %Protocol.Ipv4{
       header: header(data),

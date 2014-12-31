@@ -6,7 +6,7 @@ defmodule ExPcap.GlobalHeader do
             thiszone:       0,
             sigfigs:        0,
             snaplen:        0,
-            network:        0
+            network:        0   # determines the payload type (http://www.tcpdump.org/linktypes.html)
 
   @bytes_in_header 24 - ExPcap.MagicNumber.bytes_in_magic
 

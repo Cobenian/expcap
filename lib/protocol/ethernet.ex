@@ -13,7 +13,7 @@ defmodule Protocol.Ethernet do
     <<
       destmacaddr :: bytes-size(6),
       srcmacaddr  :: bytes-size(6),
-      ethertype   :: bytes-size(2),
+      ethertype   :: bytes-size(2), # determines the payload type (http://en.wikipedia.org/wiki/EtherType)
       payload     :: binary
     >> = data
     %Protocol.Ethernet.Header{

@@ -23,7 +23,7 @@ defmodule ExPcap do
         udp = ipv4.data |> Protocol.Udp.from_data
         # udp |> IO.inspect
         dns = udp.data |> Protocol.Dns.from_data
-        dns |> IO.inspect
+        # dns |> IO.inspect
         # packet_data.data |> Protocol.Ipv4.header |> IO.inspect
         # packet_data.data |> Protocol.Dns.header |> IO.inspect
         # packet_data.data |> Protocol.Udp.header |> IO.inspect
@@ -36,6 +36,7 @@ defmodule ExPcap do
   def read_pcap(f) do
     magic_number = ExPcap.MagicNumber.from_file(f)
     global_header = ExPcap.GlobalHeader.from_file(f, magic_number)
+    global_header |> IO.inspect
 
     # # todo stream of packets instead of eager fetching
     %ExPcap{
