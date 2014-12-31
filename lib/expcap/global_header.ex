@@ -1,3 +1,25 @@
+defimpl String.Chars, for: ExPcap.GlobalHeader do
+  def to_string(item) do
+    """
+    #{item.magic_number}
+    version:            #{item.version_major}.#{item.version_minor}
+    this zone:          #{item.thiszone}
+    sigfigs:            #{item.sigfigs}
+    snaplen:            #{item.snaplen}
+    network:            #{NetworkTypes.network_name(item.network)}
+    """
+  end
+end
+
+defmodule NetworkTypes do
+  def network_name(network) do
+    case network do
+      1 -> "1 (Ethernet)"
+      _ -> "#{network}"
+    end
+  end
+end
+
 defimpl PayloadType, for: ExPcap.GlobalHeader do
   def payload_parser(_data) do
     # todo check 'network' value

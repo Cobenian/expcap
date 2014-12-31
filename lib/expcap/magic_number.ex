@@ -1,3 +1,13 @@
+defimpl String.Chars, for: ExPcap.MagicNumber do
+  def to_string(magic_number) do
+    String.strip("""
+    magic number:       0x#{String.downcase(Integer.to_string(magic_number.magic, 16))}
+      nanoseconds?      #{magic_number.nanos}
+      reverse bytes?    #{magic_number.reverse_bytes}
+    """)
+  end
+end
+
 defmodule ExPcap.MagicNumber do
 
   defstruct reverse_bytes:  false,

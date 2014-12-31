@@ -1,3 +1,9 @@
+defimpl String.Chars, for: Protocol.Dns do
+  def to_string(dns) do
+    "some dns!"
+  end
+end
+
 defimpl PayloadType, for: Protocol.Dns do
   def payload_parser(_data) do
     nil

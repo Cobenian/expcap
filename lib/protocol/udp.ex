@@ -1,3 +1,9 @@
+defimpl String.Chars, for: Protocol.Udp do
+  def to_string(udp) do
+    "some udp!"
+  end
+end
+
 defimpl PayloadType, for: Protocol.Udp do
   def payload_parser(_data) do
     Protocol.Dns

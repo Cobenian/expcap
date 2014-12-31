@@ -1,3 +1,9 @@
+defimpl String.Chars, for: Protocol.Ethernet do
+  def to_string(eth) do
+    "some ethernet!"
+  end
+end
+
 defimpl PayloadType, for: Protocol.Ethernet do
   def payload_parser(data) do
     case data.header.ethertype do

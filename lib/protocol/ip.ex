@@ -1,3 +1,9 @@
+defimpl String.Chars, for: Protocol.Ipv4 do
+  def to_string(ipv4) do
+    "some ipv4!"
+  end
+end
+
 defimpl PayloadType, for: Protocol.Ipv4 do
   def payload_parser(data) do
     case data.header.protocol do

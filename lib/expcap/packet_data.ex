@@ -1,3 +1,12 @@
+defimpl String.Chars, for: ExPcap.PacketData do
+  def to_string(data) do
+    String.strip("""
+      length:           #{data.data_len}
+      raw data:         ...redacted for now...
+    """)
+  end
+end
+
 defmodule ExPcap.PacketData do
 
   defstruct data_len:   0,
@@ -6,7 +15,7 @@ defmodule ExPcap.PacketData do
   def read_reversed(data, packet_header) do
     %ExPcap.PacketData{
       data_len: packet_header.incl_len,
-      data:     data # |> ExPcap.Binaries.reverse_binary 
+      data:     data # |> ExPcap.Binaries.reverse_binary
     }
   end
 

@@ -6,6 +6,32 @@ defprotocol PayloadParser do
   def from_data(data)
 end
 
+defimpl String.Chars, for: ExPcap do
+  def to_string(item) do
+    """
+    PCAP
+    ====
+
+    Global Header
+    --------------
+    #{item.global_header}
+
+    Packets
+    -------
+    #{List.first(item.packets)}
+    # {Enum.map(String.Chars.to_string/1, item.packets)}
+
+    """
+  end
+end
+
+defimpl String.Chars, for: Protocol.Dns do
+  def to_string(item) do
+    IO.puts "DNS!!!!!"
+    IO.inspect item
+  end
+end
+
 defmodule ExPcap do
 
   defstruct global_header: %ExPcap.GlobalHeader{},
