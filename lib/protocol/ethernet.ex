@@ -1,6 +1,10 @@
 defimpl String.Chars, for: Protocol.Ethernet do
   def to_string(eth) do
-    "some ethernet!"
+    """
+    Ethernet:
+    header:               #{eth.header}
+    data:                 ...redacted...
+    """
   end
 end
 
@@ -9,7 +13,7 @@ defimpl String.Chars, for: Protocol.Ethernet.Header do
     """
     dest mac addr:        #{eth.destmacaddr}
     src mac addr:         #{eth.srcmacaddr}
-    ether type:           #{eth.ethertype} (#{Ethernet.Types.eth_type_name(eth.ethertype)})
+    ether type:           #{eth.ethertype} (#{Ethernet.Types.ethernet_type_name(eth.ethertype)})
     """
   end
 end
