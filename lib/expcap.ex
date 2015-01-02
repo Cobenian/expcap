@@ -18,17 +18,9 @@ defimpl String.Chars, for: ExPcap do
 
     Packets
     -------
-    #{List.first(item.packets)}
-    # {Enum.map(String.Chars.to_string/1, item.packets)}
+    #{Enum.join(Enum.map(item.packets, &String.Chars.to_string/1), "\n\n")}
 
     """
-  end
-end
-
-defimpl String.Chars, for: Protocol.Dns do
-  def to_string(item) do
-    IO.puts "DNS!!!!!"
-    IO.inspect item
   end
 end
 
