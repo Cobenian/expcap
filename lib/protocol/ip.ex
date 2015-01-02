@@ -1,6 +1,19 @@
 defimpl String.Chars, for: Protocol.Ipv4 do
   def to_string(ipv4) do
-    "some ipv4!"
+    String.strip("""
+    IPv4:
+        #{ipv4.header}
+        Length:           #{byte_size(ipv4.data)}
+    """)
+  end
+end
+
+defimpl String.Chars, for: Protocol.Ipv4.Header do
+  def to_string(ipv4) do
+    String.strip("""
+        version:          #{ExPcap.Binaries.to_uint4(ipv4.version)}
+        ihl:              #{ExPcap.Binaries.to_string(ipv4.ihl)}
+    """)
   end
 end
 

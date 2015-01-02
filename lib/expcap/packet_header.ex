@@ -1,10 +1,10 @@
 defimpl String.Chars, for: ExPcap.PacketHeader do
   def to_string(header) do
     String.strip("""
-      ts sec:           #{header.ts_sec}
-      ts usec:          #{header.ts_usec}
-      incl len:         #{header.incl_len}
-      orig len:         #{header.orig_len}
+      ts sec:             #{header.ts_sec}
+      ts usec:            #{header.ts_usec}
+      incl len:           #{header.incl_len}
+      orig len:           #{header.orig_len}
     """)
   end
 end

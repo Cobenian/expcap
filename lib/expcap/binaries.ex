@@ -32,4 +32,12 @@ defmodule ExPcap.Binaries do
     n
   end
 
+  def to_string(b) do
+    Inspect.Algebra.to_doc(b, %Inspect.Opts{width: 80})
+  end
+
+  def to_hex(b) do
+    "0x" <> Base.encode16(b)
+  end
+
 end

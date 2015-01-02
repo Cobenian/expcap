@@ -2,11 +2,11 @@ defimpl String.Chars, for: ExPcap.GlobalHeader do
   def to_string(item) do
     """
     #{item.magic_number}
-    version:            #{item.version_major}.#{item.version_minor}
-    this zone:          #{item.thiszone}
-    sigfigs:            #{item.sigfigs}
-    snaplen:            #{item.snaplen}
-    network:            #{NetworkTypes.network_name(item.network)}
+    version:              #{item.version_major}.#{item.version_minor}
+    this zone:            #{item.thiszone}
+    sigfigs:              #{item.sigfigs}
+    snaplen:              #{item.snaplen}
+    network:              #{NetworkTypes.network_name(item.network)}
     """
   end
 end

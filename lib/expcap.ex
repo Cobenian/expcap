@@ -18,6 +18,7 @@ defimpl String.Chars, for: ExPcap do
 
     Packets
     -------
+    
     #{Enum.join(Enum.map(item.packets, &String.Chars.to_string/1), "\n\n")}
 
     """
@@ -35,13 +36,13 @@ defmodule ExPcap do
   end
 
   def parse_packet(nil, payload, acc) do
-    [payload | acc]
+    acc
   end
 
   def parse_packet(parser, payload, acc) do
     next_payload = payload.data |> parser.from_data
-    parser = PayloadType.payload_parser(next_payload)
-    parse_packet(parser, next_payload, [payload | acc])
+    next_parser = PayloadType.payload_parser(next_payload)
+    parse_packet(next_parser, next_payload, [next_payload | acc])
   end
 
   def read_packet(f, global_header, packet_header) do

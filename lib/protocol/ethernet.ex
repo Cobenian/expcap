@@ -1,20 +1,20 @@
 defimpl String.Chars, for: Protocol.Ethernet do
   def to_string(eth) do
-    """
+    String.strip("""
     Ethernet:
-    header:               #{eth.header}
-    data:                 ...redacted...
-    """
+        #{eth.header}
+        Length:           #{byte_size(eth.data)}
+    """)
   end
 end
 
 defimpl String.Chars, for: Protocol.Ethernet.Header do
   def to_string(eth) do
-    """
-    dest mac addr:        #{eth.destmacaddr}
-    src mac addr:         #{eth.srcmacaddr}
-    ether type:           #{eth.ethertype} (#{Ethernet.Types.ethernet_type_name(eth.ethertype)})
-    """
+    String.strip("""
+        dest mac addr:    #{ExPcap.Binaries.to_string(eth.destmacaddr)}
+        src mac addr:     #{ExPcap.Binaries.to_string(eth.srcmacaddr)}
+        ether type:       #{ExPcap.Binaries.to_hex(eth.ethertype)} (#{Ethernet.Types.ethernet_type_name(eth.ethertype)})
+    """)
   end
 end
 

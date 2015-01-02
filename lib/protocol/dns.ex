@@ -1,6 +1,19 @@
 defimpl String.Chars, for: Protocol.Dns do
   def to_string(dns) do
-    "some dns!"
+    String.strip("""
+    DNS:
+        #{dns.header}
+        Length:           #{Enum.count(dns.data)}
+    """)
+  end
+end
+
+defimpl String.Chars, for: Protocol.Dns.Header do
+  def to_string(dns) do
+    String.strip("""
+        id:               #{ExPcap.Binaries.to_string(dns.id)}
+        qr:               #{ExPcap.Binaries.to_string(dns.qr)}
+    """)
   end
 end
 

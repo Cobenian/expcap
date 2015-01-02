@@ -1,6 +1,21 @@
 defimpl String.Chars, for: Protocol.Udp do
   def to_string(udp) do
-    "some udp!"
+    String.strip("""
+    Udp:
+        #{udp.header}
+        Length:           #{byte_size(udp.data)}
+    """)
+  end
+end
+
+defimpl String.Chars, for: Protocol.Udp.Header do
+  def to_string(udp) do
+    String.strip("""
+        srcport:          #{udp.srcport}
+        srcport:          #{udp.destport}
+        length:           #{ExPcap.Binaries.to_uint16(udp.length)}
+        checksum:         #{ExPcap.Binaries.to_string(udp.checksum)}
+    """)
   end
 end
 

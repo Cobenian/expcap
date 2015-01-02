@@ -1,8 +1,8 @@
 defimpl String.Chars, for: ExPcap.PacketData do
   def to_string(data) do
     String.strip("""
-      length:           #{data.data_len}
-      raw data:         ...redacted for now...
+      length:             #{data.data_len}
+      raw data:           #{ExPcap.Binaries.to_string(data.data)}
     """)
   end
 end
