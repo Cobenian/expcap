@@ -4,6 +4,7 @@ defimpl String.Chars, for: Protocol.Ethernet do
     Ethernet:
         #{eth.header}
         Length:           #{byte_size(eth.data)}
+        Raw:              #{ExPcap.Binaries.to_string(eth.data)}
     """)
   end
 end

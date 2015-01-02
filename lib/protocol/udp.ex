@@ -4,6 +4,7 @@ defimpl String.Chars, for: Protocol.Udp do
     Udp:
         #{udp.header}
         Length:           #{byte_size(udp.data)}
+        Raw:              #{ExPcap.Binaries.to_string(udp.data)}
     """)
   end
 end

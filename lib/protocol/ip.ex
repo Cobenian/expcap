@@ -4,6 +4,7 @@ defimpl String.Chars, for: Protocol.Ipv4 do
     IPv4:
         #{ipv4.header}
         Length:           #{byte_size(ipv4.data)}
+        Raw:              #{ExPcap.Binaries.to_string(ipv4.data)}
     """)
   end
 end

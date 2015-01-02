@@ -3,7 +3,8 @@ defimpl String.Chars, for: Protocol.Dns do
     String.strip("""
     DNS:
         #{dns.header}
-        Length:           #{Enum.count(dns.data)}
+        Length:           #{byte_size(dns.data)}
+        Raw:              #{ExPcap.Binaries.to_string(dns.data)}
     """)
   end
 end
@@ -90,7 +91,7 @@ defmodule Protocol.Dns do
     << _header :: bytes-size(@bytes_in_header), payload :: binary >> = data
     %Protocol.Dns{
       header: header(data),
-      data: payload |> String.codepoints
+      data: payload
     }
   end
 

@@ -22,7 +22,7 @@ defmodule ExPcap.PacketData do
   def read_forward(data, packet_header) do
     %ExPcap.PacketData{
       data_len: packet_header.incl_len,
-      data:     data |> String.codepoints
+      data:     data 
     }
   end
 
