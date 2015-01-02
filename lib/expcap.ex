@@ -18,7 +18,7 @@ defimpl String.Chars, for: ExPcap do
 
     Packets
     -------
-    
+
     #{Enum.join(Enum.map(item.packets, &String.Chars.to_string/1), "\n\n")}
 
     """
@@ -36,7 +36,7 @@ defmodule ExPcap do
   end
 
   def parse_packet(nil, payload, acc) do
-    acc
+    Enum.reverse acc
   end
 
   def parse_packet(parser, payload, acc) do
