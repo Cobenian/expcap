@@ -14,6 +14,20 @@ defimpl String.Chars, for: Protocol.Ipv4.Header do
     String.strip("""
         version:          #{ExPcap.Binaries.to_uint4(ipv4.version)}
         ihl:              #{ExPcap.Binaries.to_string(ipv4.ihl)}
+
+        dscp:             #{ExPcap.Binaries.to_string(ipv4.dscp)}
+        ecn:              #{ExPcap.Binaries.to_string(ipv4.ecn)}
+        totallen:         #{ExPcap.Binaries.to_string(ipv4.totallen)}
+        id:               #{ExPcap.Binaries.to_string(ipv4.id)}
+        flags:            #{ExPcap.Binaries.to_string(ipv4.flags)}
+        fragoffset:       #{ExPcap.Binaries.to_string(ipv4.fragoffset)}
+        ttl:              #{ExPcap.Binaries.to_string(ipv4.ttl)}
+        protocol:         #{ExPcap.Binaries.to_string(ipv4.protocol)}
+        checksum:         #{ExPcap.Binaries.to_string(ipv4.checksum)}
+        srcaddr:          #{ExPcap.Binaries.to_string(ipv4.srcaddr)}
+        destaddr:         #{ExPcap.Binaries.to_string(ipv4.destaddr)}
+        options:          #{ExPcap.Binaries.to_string(ipv4.options)}
+        padding:          #{ExPcap.Binaries.to_string(ipv4.padding)}
     """)
   end
 end

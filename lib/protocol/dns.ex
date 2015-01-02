@@ -13,7 +13,18 @@ defimpl String.Chars, for: Protocol.Dns.Header do
   def to_string(dns) do
     String.strip("""
         id:               #{ExPcap.Binaries.to_string(dns.id)}
-        qr:               #{ExPcap.Binaries.to_string(dns.qr)}
+        qr:               #{ExPcap.Binaries.to_string(dns.qr)}        
+        opcode:           #{ExPcap.Binaries.to_string(dns.opcode)}
+        aa:               #{ExPcap.Binaries.to_string(dns.aa)}
+        tc:               #{ExPcap.Binaries.to_string(dns.tc)}
+        rd:               #{ExPcap.Binaries.to_string(dns.rd)}
+        ra:               #{ExPcap.Binaries.to_string(dns.ra)}
+        z:                #{ExPcap.Binaries.to_string(dns.z)}
+        rcode:            #{ExPcap.Binaries.to_string(dns.rcode)}
+        qdcnt:            #{ExPcap.Binaries.to_string(dns.qdcnt)}
+        ancnt:            #{ExPcap.Binaries.to_string(dns.ancnt)}
+        nscnt:            #{ExPcap.Binaries.to_string(dns.nscnt)}
+        arcnt:            #{ExPcap.Binaries.to_string(dns.arcnt)}
     """)
   end
 end
