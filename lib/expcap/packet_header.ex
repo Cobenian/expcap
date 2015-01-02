@@ -1,7 +1,7 @@
 defimpl String.Chars, for: ExPcap.PacketHeader do
   def to_string(header) do
     String.strip("""
-      ts sec:             #{header.ts_sec}
+      ts sec:             #{header.ts_sec} (#{Timex.DateFormat.format!(Timex.Date.from(header.ts_sec, :secs), "{ISO}")})
       ts usec:            #{header.ts_usec}
       incl len:           #{header.incl_len}
       orig len:           #{header.orig_len}

@@ -4,7 +4,7 @@ defimpl String.Chars, for: Protocol.Dns do
     DNS:
         #{dns.header}
         Length:           #{byte_size(dns.data)}
-        Raw:              #{ExPcap.Binaries.to_string(dns.data)}
+        Raw:              #{ExPcap.Binaries.to_raw(dns.data)}
     """)
   end
 end
@@ -13,7 +13,7 @@ defimpl String.Chars, for: Protocol.Dns.Header do
   def to_string(dns) do
     String.strip("""
         id:               #{ExPcap.Binaries.to_string(dns.id)}
-        qr:               #{ExPcap.Binaries.to_string(dns.qr)}        
+        qr:               #{ExPcap.Binaries.to_string(dns.qr)}
         opcode:           #{ExPcap.Binaries.to_string(dns.opcode)}
         aa:               #{ExPcap.Binaries.to_string(dns.aa)}
         tc:               #{ExPcap.Binaries.to_string(dns.tc)}
