@@ -15,7 +15,7 @@ defimpl String.Chars, for: Protocol.Udp.Header do
         srcport:          #{udp.srcport}
         srcport:          #{udp.destport}
         length:           #{ExPcap.Binaries.to_uint16(udp.length)}
-        checksum:         #{ExPcap.Binaries.to_string(udp.checksum)}
+        checksum:         #{ExPcap.Binaries.to_hex(udp.checksum)}
     """)
   end
 end
