@@ -4,6 +4,16 @@ defimpl String.Chars, for: Protocol.Ethernet do
   end
 end
 
+defimpl String.Chars, for: Protocol.Ethernet.Header do
+  def to_string(eth) do
+    """
+    dest mac addr:        #{eth.destmacaddr}
+    src mac addr:         #{eth.srcmacaddr}
+    ether type:           #{eth.ethertype} (#{Ethernet.Types.eth_type_name(eth.ethertype)})
+    """
+  end
+end
+
 defimpl PayloadType, for: Protocol.Ethernet do
   def payload_parser(data) do
     case data.header.ethertype do
@@ -17,6 +27,16 @@ defimpl PayloadParser, for: Protocol.Ethernet do
   def from_data(data) do
     Protocol.Ethernet.from_data data
   end
+end
+
+defmodule Ethernet.Types do
+    def ethernet_type_name(eth_type) do
+      case eth_type do
+        <<08, 00>> -> "IPv4"
+        <<134, 221>> -> "IPv6"
+        _ -> "unknown"
+      end
+    end
 end
 
 defmodule Protocol.Ethernet.Header do
