@@ -50,23 +50,30 @@ defmodule Protocol.Dns.Question do
             qtype:    0,
             qclass:   0
 
+  def read_question(name, data) do
+    <<
+      qtype     :: unsigned-integer-size(16),
+      qclass    :: unsigned-integer-size(16),
+      rest      :: binary
+    >> = data
+    {
+      %Protocol.Dns.Question{
+        name: name,
+        qtype: qtype,
+        qclass: qclass
+      },
+      rest
+    }
+  end
+
   def from_data(data) do
     IO.puts "reading dns question"
     {name, data_after_name} = Protocol.Dns.ResourceRecord.read_name(data)
     IO.puts name
-    <<
-    qtype     :: unsigned-integer-size(16),
-    qclass    :: unsigned-integer-size(16),
-    rest     :: binary
-    >> = data_after_name
-    a = %Protocol.Dns.Question{
-      name: name,
-      qtype: qtype,
-      qclass: qclass
-    }
-    IO.puts "question is #{a}"
+    {q, rest} = read_question(name, data_after_name)
+    IO.puts "question is #{q}"
     IO.puts "ignoring #{byte_size(rest)} bytes: #{ExPcap.Binaries.to_string(rest)}"
-    a
+    q
   end
 end
 
@@ -103,20 +110,54 @@ defmodule Protocol.Dns.ResourceRecord do
     end
   end
 
-  def read_offset(_data) do
-    {nil, nil} # todo implement me
+  def read_offset(data) do
+    <<
+      pointer :: unsigned-integer-size(16),
+      rest :: binary
+    >> = data
+    {pointer, rest}
   end
 
   def read_name(data) do
-    <<
-      top_bits        :: bits-size(2),
-      _size_bits      :: bits-size(6),
-      _rest           :: binary
-    >> = data
-    case top_bits do
-      <<0 :: size(1), 0 :: size(1)>> -> read_label(data, [])
-      <<1 :: size(1), 1 :: size(1)>> -> read_offset(data)
+    IO.puts "read name from #{ExPcap.Binaries.to_string(data)}"
+    if byte_size(data) == 0 do
+      {"", <<>>}
+    else
+      <<
+        top_bits        :: bits-size(2),
+        _size_bits      :: bits-size(6),
+        _rest           :: binary
+      >> = data
+      case top_bits do
+        <<0 :: size(1), 0 :: size(1)>> -> read_label(data, [])
+        <<1 :: size(1), 1 :: size(1)>> -> read_offset(data)
+      end
     end
+  end
+
+  def read_response(name, data) do
+    <<
+      type      :: unsigned-integer-size(16),
+      class     :: unsigned-integer-size(16),
+      ttl       :: unsigned-integer-size(32),
+      rdlen     :: unsigned-integer-size(16),
+      rest      :: binary
+    >> = data
+    <<
+      rdata     :: bytes-size(rdlen),
+      remaining :: binary
+    >> = rest
+    {
+      %Protocol.Dns.ResourceRecord{
+        name: name,
+        type: type,
+        class: class,
+        ttl: ttl,
+        rdlen: rdlen,
+        rdata: rdata
+      },
+      remaining
+    }
   end
 
   def from_data(data) do
@@ -125,26 +166,15 @@ defmodule Protocol.Dns.ResourceRecord do
     IO.inspect name
     IO.inspect "bryan"
     IO.inspect data_after_name
-    <<
-      checksum  :: bytes-size(6),
-      type      :: unsigned-integer-size(16),
-      class     :: unsigned-integer-size(16),
-      ttl       :: unsigned-integer-size(32),
-      rdlen     :: unsigned-integer-size(16),
-      rest      :: binary
-    >> = data_after_name
-    <<
-      rdata     :: bytes-size(rdlen),
-      ignore    :: binary
-    >> = rest
-    r = %Protocol.Dns.ResourceRecord{
-      name: name,
-      type: type,
-      class: class,
-      ttl: ttl,
-      rdlen: rdlen,
-      rdata: rdata
-    }
+
+    {q, data_after_question} = Protocol.Dns.Question.read_question(name, data_after_name)
+    IO.puts "question:"
+    IO.inspect q
+    {name, data_after_qname} = read_name(data_after_question)
+    IO.puts "response:"
+
+    {r, ignore} = read_response(name, data_after_qname)
+
     IO.puts r
     IO.puts "ignoring #{byte_size(ignore)} bytes: #{ExPcap.Binaries.to_string(ignore)}"
     r
