@@ -30,8 +30,11 @@ defimpl String.Chars, for: Protocol.Dns.Header do
 end
 
 defimpl PayloadType, for: Protocol.Dns do
-  def payload_parser(_data) do
-    nil
+  def payload_parser(dns) do
+    case dns.header.qr do
+      <<0 :: size(1)>> -> Protocol.Dns.Question
+      <<1 :: size(1)>> -> Protocol.Dns.ResourceRecord
+    end
   end
 end
 

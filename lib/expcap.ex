@@ -35,7 +35,7 @@ defmodule ExPcap do
     parse_packet(parser, packet_data, [])
   end
 
-  def parse_packet(nil, payload, acc) do
+  def parse_packet(nil, _payload, acc) do
     Enum.reverse acc
   end
 
