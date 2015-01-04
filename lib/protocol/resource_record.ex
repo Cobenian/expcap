@@ -111,11 +111,13 @@ defmodule Protocol.Dns.ResourceRecord do
   end
 
   def read_offset(data) do
+    require Bitwise
     <<
       pointer :: unsigned-integer-size(16),
       rest :: binary
     >> = data
-    {pointer, rest}
+    offset = Bitwise.band(0b0011111111111111, pointer)
+    {offset, rest}
   end
 
   def read_name(data) do
