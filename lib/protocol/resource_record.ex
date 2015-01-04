@@ -16,7 +16,7 @@ defimpl String.Chars, for: Protocol.Dns.ResourceRecord do
       class:              #{dns.class}
       ttl:                #{dns.ttl}
       rdlen:              #{dns.rdlen}
-      rdata:              #{ExPcap.Binaries.to_string(dns.rdata)}
+      rdata:              #{ExPcap.Binaries.to_string(dns.rdata)} 
     """)
   end
 end

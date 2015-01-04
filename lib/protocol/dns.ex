@@ -5,10 +5,14 @@ defimpl String.Chars, for: Protocol.Dns do
         #{dns.header}
         Length:           #{byte_size(dns.data)}
         Parsed:
-          Questions:      #{Enum.map(elem(dns.parsed, 0), &String.Chars.to_string/1)}
-          Answers:        #{Enum.map(elem(dns.parsed, 1), &String.Chars.to_string/1)}
-          Authorities:    #{Enum.map(elem(dns.parsed, 2), &String.Chars.to_string/1)}
-          Additionals:    #{Enum.map(elem(dns.parsed, 3), &String.Chars.to_string/1)}
+          Questions:
+      #{Enum.join(Enum.map(elem(dns.parsed, 0), &String.Chars.to_string/1), "\n  ")}
+          Answers:
+      #{Enum.join(Enum.map(elem(dns.parsed, 1), &String.Chars.to_string/1), "\n  ")}
+          Authorities:
+      #{Enum.join(Enum.map(elem(dns.parsed, 2), &String.Chars.to_string/1), "\n  ")}
+          Additionals:
+      #{Enum.join(Enum.map(elem(dns.parsed, 3), &String.Chars.to_string/1), "\n  ")}
         Raw:              #{ExPcap.Binaries.to_raw(dns.data)}
     """)
   end
