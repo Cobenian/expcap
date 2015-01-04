@@ -56,8 +56,8 @@ defmodule Protocol.Dns.ResourceRecord do
     else
       # IO.puts "time to read #{len} bytes"
       {bytes, rest} = read_bytes(rest, len)
-      IO.puts "read label segment:"
-      IO.inspect bytes
+      # IO.puts "read label segment:"
+      # IO.inspect bytes
       read_name(message, rest, [bytes | acc], at_end)
     end
   end
@@ -68,10 +68,10 @@ defmodule Protocol.Dns.ResourceRecord do
       pointer :: unsigned-integer-size(16),
       rest :: binary
     >> = data
-    IO.puts "pointer:"
-    IO.inspect pointer
+    # IO.puts "pointer:"
+    # IO.inspect pointer
     offset = Bitwise.band(0b0011111111111111, pointer)
-    IO.puts "offset is #{offset}"
+    # IO.puts "offset is #{offset}"
     {_ignore, bytes_to_use} = read_bytes(message, offset)
 
     {name, _remaining} = read_name(message, bytes_to_use, acc, true)
@@ -106,8 +106,8 @@ defmodule Protocol.Dns.ResourceRecord do
       qtype: qtype,
       qclass: qclass
     }
-    IO.puts "read question:"
-    IO.inspect question
+    # IO.puts "read question:"
+    # IO.inspect question
     {question, rest}
   end
 
@@ -147,8 +147,8 @@ defmodule Protocol.Dns.ResourceRecord do
       rdlen: rdlen,
       rdata: rdata
     }
-    IO.puts "read answer:"
-    IO.inspect answer
+    # IO.puts "read answer:"
+    # IO.inspect answer
     {answer, remaining}
   end
 
