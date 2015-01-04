@@ -21,60 +21,10 @@ defimpl String.Chars, for: Protocol.Dns.ResourceRecord do
   end
 end
 
-# defimpl PayloadType, for: Protocol.Dns.Question do
-#   def payload_parser(_data) do
-#     nil
-#   end
-# end
-#
-# defimpl PayloadType, for: Protocol.Dns.ResourceRecord do
-#   def payload_parser(_data) do
-#     nil
-#   end
-# end
-#
-# defimpl PayloadParser, for: Protocol.Dns.ResourceRecord do
-#   def from_data(data) do
-#     Protocol.Dns.ResourceRecord.from_data data
-#   end
-# end
-#
-# defimpl PayloadParser, for: Protocol.Dns.Question do
-#   def from_data(data) do
-#     Protocol.Dns.Question.from_data data
-#   end
-# end
-
 defmodule Protocol.Dns.Question do
   defstruct name:     "",
             qtype:    0,
             qclass:   0
-
-  # def read_question(name, data) do
-  #   <<
-  #     qtype     :: unsigned-integer-size(16),
-  #     qclass    :: unsigned-integer-size(16),
-  #     rest      :: binary
-  #   >> = data
-  #   {
-  #     %Protocol.Dns.Question{
-  #       name: name,
-  #       qtype: qtype,
-  #       qclass: qclass
-  #     },
-  #     rest
-  #   }
-  # end
-  #
-  # def from_data(data) do
-  #   IO.puts "reading dns question"
-  #   {name, data_after_name} = Protocol.Dns.ResourceRecord.read_name(data)
-  #   IO.puts name
-  #   {q, rest} = read_question(name, data_after_name)
-  #   IO.puts "question is #{q}"
-  #   IO.puts "ignoring #{byte_size(rest)} bytes: #{ExPcap.Binaries.to_string(rest)}"
-  #   q
-  # end
 end
 
 defmodule Protocol.Dns.ResourceRecord do
@@ -106,7 +56,7 @@ defmodule Protocol.Dns.ResourceRecord do
     else
       # IO.puts "time to read #{len} bytes"
       {bytes, rest} = read_bytes(rest, len)
-      read_label(rest, [bytes | acc])
+      read_label(rest, [bytes | acc]) # this needs to call into a read_name because an offset can come at the end!
     end
   end
 
@@ -117,6 +67,7 @@ defmodule Protocol.Dns.ResourceRecord do
       rest :: binary
     >> = data
     offset = Bitwise.band(0b0011111111111111, pointer)
+    # todo read offset from whole message to get actual label value
     {offset, rest}
   end
 
@@ -136,51 +87,6 @@ defmodule Protocol.Dns.ResourceRecord do
       end
     end
   end
-
-  # def read_response(name, data) do
-  #   <<
-  #     type      :: unsigned-integer-size(16),
-  #     class     :: unsigned-integer-size(16),
-  #     ttl       :: unsigned-integer-size(32),
-  #     rdlen     :: unsigned-integer-size(16),
-  #     rest      :: binary
-  #   >> = data
-  #   <<
-  #     rdata     :: bytes-size(rdlen),
-  #     remaining :: binary
-  #   >> = rest
-  #   {
-  #     %Protocol.Dns.ResourceRecord{
-  #       name: name,
-  #       type: type,
-  #       class: class,
-  #       ttl: ttl,
-  #       rdlen: rdlen,
-  #       rdata: rdata
-  #     },
-  #     remaining
-  #   }
-  # end
-
-  # def from_data(data) do
-  #   IO.puts "reading dns response"
-  #   {name, data_after_name} = read_name(data)
-  #   IO.inspect name
-  #   IO.inspect "bryan"
-  #   IO.inspect data_after_name
-  #
-  #   {q, data_after_question} = Protocol.Dns.Question.read_question(name, data_after_name)
-  #   IO.puts "question:"
-  #   IO.inspect q
-  #   {name, data_after_qname} = read_name(data_after_question)
-  #   IO.puts "response:"
-  #
-  #   {r, ignore} = read_response(name, data_after_qname)
-  #
-  #   IO.puts r
-  #   IO.puts "ignoring #{byte_size(ignore)} bytes: #{ExPcap.Binaries.to_string(ignore)}"
-  #   r
-  # end
 
   def read_question(data) do
     {name, data_after_name} = read_name(data)
@@ -207,6 +113,10 @@ defmodule Protocol.Dns.ResourceRecord do
     {question, rest} = read_question(data)
 
     read_questions(question_count - 1, rest, [question | acc])
+  end
+
+  def read_questions(question_count, data) do
+    read_questions(question_count, data, [])
   end
 
   def read_answer(data) do
@@ -246,16 +156,15 @@ defmodule Protocol.Dns.ResourceRecord do
     read_answers(answer_count - 1, rest, [answer | acc])
   end
 
-  def read_dns(header, data) do
-    question_count    = header.qdcnt
-    answer_count      = header.ancnt
-    authority_count   = header.nscnt
-    additional_count  = header.arcnt
+  def read_answers(answer_count, data) do
+    read_answers(answer_count, data, [])
+  end
 
-    {questions, data}     = read_questions(question_count, data, [])
-    {answers, data}       = read_answers(answer_count, data, [])
-    {authorities, data}   = read_answers(authority_count, data, [])
-    {additionals, data}   = read_answers(additional_count, data, [])
+  def read_dns(header, data) do
+    {questions, data}     = read_questions(header.qdcnt, data)
+    {answers, data}       = read_answers(header.ancnt, data)
+    {authorities, data}   = read_answers(header.nscnt, data)
+    {additionals, data}   = read_answers(header.arcnt, data)
 
     {questions, answers, authorities, additionals, data}
   end
