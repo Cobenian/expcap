@@ -46,7 +46,7 @@ defmodule Protocol.Dns.ResourceRecord do
     {bytes, rest}
   end
 
-  def read_label(data, acc) do
+  def read_label(message, data, acc, at_end) do
     <<
       len           :: unsigned-integer-size(8),
       rest          :: binary
@@ -56,40 +56,46 @@ defmodule Protocol.Dns.ResourceRecord do
     else
       # IO.puts "time to read #{len} bytes"
       {bytes, rest} = read_bytes(rest, len)
-      read_label(rest, [bytes | acc]) # this needs to call into a read_name because an offset can come at the end!
+      IO.puts "read label segment:"
+      IO.inspect bytes
+      read_name(message, rest, [bytes | acc], at_end)
     end
   end
 
-  def read_offset(data) do
+  def read_offset(message, data, acc) do
     require Bitwise
     <<
       pointer :: unsigned-integer-size(16),
       rest :: binary
     >> = data
+    IO.puts "pointer:"
+    IO.inspect pointer
     offset = Bitwise.band(0b0011111111111111, pointer)
-    # todo read offset from whole message to get actual label value
-    {offset, rest}
+    IO.puts "offset is #{offset}"
+    {_ignore, bytes_to_use} = read_bytes(message, offset)
+
+    {name, _remaining} = read_name(message, bytes_to_use, acc, true)
+    {name, rest}
   end
 
-  def read_name(data) do
-    IO.puts "read name from #{ExPcap.Binaries.to_string(data)}"
-    if byte_size(data) == 0 do
-      {"", <<>>}
-    else
-      <<
-        top_bits        :: bits-size(2),
-        _size_bits      :: bits-size(6),
-        _rest           :: binary
-      >> = data
-      case top_bits do
-        <<0 :: size(1), 0 :: size(1)>> -> read_label(data, [])
-        <<1 :: size(1), 1 :: size(1)>> -> read_offset(data)
-      end
+  def read_name(message, data, acc, at_end) do
+    <<
+      top_bits        :: bits-size(2),
+      _size_bits      :: bits-size(6),
+      _rest           :: binary
+    >> = data
+    case top_bits do
+      <<0 :: size(1), 0 :: size(1)>> -> read_label(message, data, acc, false)
+      <<1 :: size(1), 1 :: size(1)>> -> read_offset(message, data, acc)
     end
   end
 
-  def read_question(data) do
-    {name, data_after_name} = read_name(data)
+  def read_name(message, data) do
+      read_name(message, data, [], false)
+  end
+
+  def read_question(message, data) do
+    {name, data_after_name} = read_name(message, data)
     <<
       qtype     :: unsigned-integer-size(16),
       qclass    :: unsigned-integer-size(16),
@@ -105,22 +111,22 @@ defmodule Protocol.Dns.ResourceRecord do
     {question, rest}
   end
 
-  def read_questions(0, data, acc) do
+  def read_questions(0, _message, data, acc) do
     {Enum.reverse(acc), data}
   end
 
-  def read_questions(question_count, data, acc) do
-    {question, rest} = read_question(data)
+  def read_questions(question_count, message, data, acc) do
+    {question, rest} = read_question(message, data)
 
-    read_questions(question_count - 1, rest, [question | acc])
+    read_questions(question_count - 1, message, rest, [question | acc])
   end
 
-  def read_questions(question_count, data) do
-    read_questions(question_count, data, [])
+  def read_questions(question_count, message, data) do
+    read_questions(question_count, message, data, [])
   end
 
-  def read_answer(data) do
-    {name, data_after_name} = read_name(data)
+  def read_answer(message, data) do
+    {name, data_after_name} = read_name(message, data)
 
     <<
       type      :: unsigned-integer-size(16),
@@ -146,25 +152,25 @@ defmodule Protocol.Dns.ResourceRecord do
     {answer, remaining}
   end
 
-  def read_answers(0, data, acc) do
+  def read_answers(0, _message, data, acc) do
     {Enum.reverse(acc), data}
   end
 
-  def read_answers(answer_count, data, acc) do
-    {answer, rest} = read_answer(data)
+  def read_answers(answer_count, message, data, acc) do
+    {answer, rest} = read_answer(message, data)
 
-    read_answers(answer_count - 1, rest, [answer | acc])
+    read_answers(answer_count - 1, message, rest, [answer | acc])
   end
 
-  def read_answers(answer_count, data) do
-    read_answers(answer_count, data, [])
+  def read_answers(answer_count, message, data) do
+    read_answers(answer_count, message, data, [])
   end
 
-  def read_dns(header, data) do
-    {questions, data}     = read_questions(header.qdcnt, data)
-    {answers, data}       = read_answers(header.ancnt, data)
-    {authorities, data}   = read_answers(header.nscnt, data)
-    {additionals, data}   = read_answers(header.arcnt, data)
+  def read_dns(header, message, data) do
+    {questions, data}     = read_questions(header.qdcnt, message, data)
+    {answers, data}       = read_answers(header.ancnt, message, data)
+    {authorities, data}   = read_answers(header.nscnt, message, data)
+    {additionals, data}   = read_answers(header.arcnt, message, data)
 
     {questions, answers, authorities, additionals, data}
   end

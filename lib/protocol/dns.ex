@@ -39,7 +39,7 @@ defimpl String.Chars, for: Protocol.Dns.Header do
 end
 
 defimpl PayloadType, for: Protocol.Dns do
-  def payload_parser(dns) do
+  def payload_parser(_dns) do
     nil
     # case dns.header.qr do
     #   <<0 :: size(1)>> -> Protocol.Dns.Question
@@ -124,7 +124,7 @@ defmodule Protocol.Dns do
   def from_data(data) do
     << _header :: bytes-size(@bytes_in_header), payload :: binary >> = data
     header = header(data)
-    dns = Protocol.Dns.ResourceRecord.read_dns(header, payload)
+    dns = Protocol.Dns.ResourceRecord.read_dns(header, data, payload)
     IO.puts "dns dns dns:"
     IO.inspect dns
     %Protocol.Dns{
