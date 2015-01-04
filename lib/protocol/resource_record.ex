@@ -16,7 +16,7 @@ defimpl String.Chars, for: Protocol.Dns.ResourceRecord do
       class:              #{dns.class}
       ttl:                #{dns.ttl}
       rdlen:              #{dns.rdlen}
-      rdata:              #{ExPcap.Binaries.to_string(dns.rdata)} 
+      rdata:              #{ExPcap.Binaries.to_string(dns.rdata)}
     """)
   end
 end
@@ -102,7 +102,7 @@ defmodule Protocol.Dns.ResourceRecord do
       rest          :: binary
     >> = data
     if len == 0 do
-      {Enum.reverse(acc), rest}
+      {Enum.join(Enum.reverse(acc), "."), rest}
     else
       # IO.puts "time to read #{len} bytes"
       {bytes, rest} = read_bytes(rest, len)
