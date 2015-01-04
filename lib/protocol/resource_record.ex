@@ -180,4 +180,82 @@ defmodule Protocol.Dns.ResourceRecord do
     r
   end
 
+  def read_question(data) do
+    {name, data_after_name} = read_name(data)
+    <<
+      qtype     :: unsigned-integer-size(16),
+      qclass    :: unsigned-integer-size(16),
+      rest      :: binary
+    >> = data_after_name
+    question = %Protocol.Dns.Question{
+      name: name,
+      qtype: qtype,
+      qclass: qclass
+    }
+    IO.puts "read question:"
+    IO.inspect question
+    {question, rest}
+  end
+
+  def read_questions(0, data, acc) do
+    {Enum.reverse(acc), data}
+  end
+
+  def read_questions(question_count, data, acc) do
+    {question, rest} = read_question(data)
+
+    read_questions(question_count - 1, rest, [question | acc])
+  end
+
+  def read_answer(data) do
+    {name, data_after_name} = read_name(data)
+
+    <<
+      type      :: unsigned-integer-size(16),
+      class     :: unsigned-integer-size(16),
+      ttl       :: unsigned-integer-size(32),
+      rdlen     :: unsigned-integer-size(16),
+      rest      :: binary
+    >> = data_after_name
+    <<
+      rdata     :: bytes-size(rdlen),
+      remaining :: binary
+    >> = rest
+    answer = %Protocol.Dns.ResourceRecord{
+      name: name,
+      type: type,
+      class: class,
+      ttl: ttl,
+      rdlen: rdlen,
+      rdata: rdata
+    }
+    IO.puts "read answer:"
+    IO.inspect answer
+    {answer, remaining}
+  end
+
+  def read_answers(0, data, acc) do
+    {Enum.reverse(acc), data}
+  end
+
+  def read_answers(answer_count, data, acc) do
+    {answer, rest} = read_answer(data)
+
+    read_answers(answer_count - 1, rest, [answer | acc])
+  end
+
+  def read_dns(header, data) do
+    question_count    = header.qdcnt
+    answer_count      = header.ancnt
+    authority_count   = header.nscnt
+    additional_count  = header.arcnt
+
+    {questions, data}     = read_questions(question_count, data, [])
+    {answers, data}       = read_answers(answer_count, data, [])
+    {authorities, data}   = read_answers(authority_count, data, [])
+    {additionals, data}   = read_answers(additional_count, data, [])
+
+    {questions, answers, authorities, additionals, data}
+  end
+
 end
