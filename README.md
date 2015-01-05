@@ -8,16 +8,16 @@ rather it attempts to be an idiomatic Elixir library.
 
 You must have Elixir 1.0.0+ installed along with mix.
 
-  mix deps.get
-  mix deps.compile
-  mix compile
-  mix escript.build
+    mix deps.get
+    mix deps.compile
+    mix compile
+    mix escript.build
 
 ## To Run
 
 Once the project has been built, the following escript can be run:
 
-  ./expcap -f <path-file-pcap-file>
+    ./expcap -f <path-file-pcap-file>
 
 ## Limitations
 
