@@ -21,14 +21,14 @@ end
 defimpl String.Chars, for: Protocol.Dns.Header do
   def to_string(dns) do
     String.strip("""
-        id:               #{ExPcap.Binaries.to_string(dns.id)}
-        qr:               #{ExPcap.Binaries.to_string(dns.qr)}
+        id:               #{ExPcap.Binaries.to_string(dns.id)} #{ExPcap.Binaries.to_hex(dns.id)}
+        qr:               #{ExPcap.Binaries.to_string(dns.qr)} #{Protocol.Dns.Header.qr_name(dns.qr)}
         opcode:           #{ExPcap.Binaries.to_string(dns.opcode)} #{Protocol.Dns.Header.opcode_name(dns.opcode)}
-        aa:               #{ExPcap.Binaries.to_string(dns.aa)}
-        tc:               #{ExPcap.Binaries.to_string(dns.tc)}
-        rd:               #{ExPcap.Binaries.to_string(dns.rd)}
-        ra:               #{ExPcap.Binaries.to_string(dns.ra)}
-        z:                #{ExPcap.Binaries.to_string(dns.z)}
+        aa:               #{ExPcap.Binaries.to_string(dns.aa)} #{Protocol.Dns.Header.aa_name(dns.aa)}
+        tc:               #{ExPcap.Binaries.to_string(dns.tc)} #{Protocol.Dns.Header.tc_name(dns.tc)}
+        rd:               #{ExPcap.Binaries.to_string(dns.rd)} #{Protocol.Dns.Header.rd_name(dns.rd)}
+        ra:               #{ExPcap.Binaries.to_string(dns.ra)} #{Protocol.Dns.Header.ra_name(dns.ra)}
+        z:                #{ExPcap.Binaries.to_string(dns.z)}  #{Protocol.Dns.Header.z_name(dns.z)}
         rcode:            #{ExPcap.Binaries.to_string(dns.rcode)} #{Protocol.Dns.Header.rcode_name(dns.rcode)}
         qdcnt:            #{ExPcap.Binaries.to_string(dns.qdcnt)}
         ancnt:            #{ExPcap.Binaries.to_string(dns.ancnt)}
@@ -68,6 +68,58 @@ defmodule Protocol.Dns.Header do
             ancnt:   <<>>,
             nscnt:   <<>>,
             arcnt:   <<>>
+
+  def qr_name(qr) do
+    case qr do
+      <<0 :: size(1)>>    -> :QUERY
+      <<1 :: size(1)>>    -> :ANSWER
+    end
+  end
+
+  def aa_name(aa) do
+    case aa do
+      <<0 :: size(1)>>    -> :NOT_AUTHORITATIVE
+      <<1 :: size(1)>>    -> :AUTHORITATIVE
+      _                   -> :""
+    end
+  end
+
+  def tc_name(tc) do
+    case tc do
+      <<0 :: size(1)>>    -> :NOT_TRUNCATED
+      <<1 :: size(1)>>    -> :TRUNCATED
+      _                   -> :""
+    end
+  end
+
+  def rd_name(rd) do
+    case rd do
+      <<0 :: size(1)>>    -> :NO_RECURSION_DESIRED
+      <<1 :: size(1)>>    -> :RECURSION_DESIRED
+      _                   -> :""
+    end
+  end
+
+  def ra_name(ra) do
+    case ra do
+      <<0 :: size(1)>>    -> :NO_RECURSION_AVAILABLE
+      <<1 :: size(1)>>    -> :RECURSION_AVAILABLE
+      _                   -> :""
+    end
+  end
+
+  def z_name(z) do
+    case z do
+      <<0b000 :: size(3)>>    -> :"RESERVED - NOT AUTHENTICATED - NON AUTHENTICATED DATA"
+      <<0b001 :: size(3)>>    -> :"RESERVED - NOT AUTHENTICATED - AUTHENTICATED DATA"
+      <<0b010 :: size(3)>>    -> :"RESERVED - AUTHENTICATED - NON AUTHENTICATED DATA"
+      <<0b011 :: size(3)>>    -> :"RESERVED - AUTHENTICATED - AUTHENTICATED DATA"
+      <<0b100 :: size(3)>>    -> :"RESERVED - NOT AUTHENTICATED - NON AUTHENTICATED DATA"
+      <<0b101 :: size(3)>>    -> :"RESERVED - NOT AUTHENTICATED - AUTHENTICATED DATA"
+      <<0b110 :: size(3)>>    -> :"RESERVED - AUTHENTICATED - NON AUTHENTICATED DATA"
+      <<0b111 :: size(3)>>    -> :"RESERVED - AUTHENTICATED - AUTHENTICATED DATA"
+    end
+  end
 
   def opcode_name(opcode) do
     case opcode do
