@@ -16,7 +16,7 @@ defimpl String.Chars, for: Protocol.Dns.ResourceRecord do
       class:              #{dns.class} #{Protocol.Dns.ResourceRecord.class_name(dns.class)}
       ttl:                #{dns.ttl}
       rdlen:              #{dns.rdlen}
-      rdata:              #{ExPcap.Binaries.to_string(dns.rdata)}
+      rdata:              #{ExPcap.Binaries.to_string(dns.rdata)} #{Protocol.Dns.ResourceRecord.rdata_string(dns)}
     """)
   end
 end
@@ -35,6 +35,20 @@ defmodule Protocol.Dns.ResourceRecord do
             ttl:      0,
             rdlen:    0,
             rdata:    <<>>
+
+  def rdata_string(dns) do
+    case dns.type do
+      1   ->
+        <<a, b, c, d>> = dns.rdata
+        "#{a}.#{b}.#{c}.#{d}"
+      16  ->
+        <<len :: size(8), s :: binary>> = dns.rdata
+        {bytes, rest} = read_bytes(s, len)
+        ExPcap.Binaries.to_string(bytes)
+      _   ->
+        ""
+    end
+  end
 
   def class_name(class) do
     case class do

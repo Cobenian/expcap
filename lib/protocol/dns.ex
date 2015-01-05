@@ -28,7 +28,7 @@ defimpl String.Chars, for: Protocol.Dns.Header do
         tc:               #{ExPcap.Binaries.to_string(dns.tc)} #{Protocol.Dns.Header.tc_name(dns.tc)}
         rd:               #{ExPcap.Binaries.to_string(dns.rd)} #{Protocol.Dns.Header.rd_name(dns.rd)}
         ra:               #{ExPcap.Binaries.to_string(dns.ra)} #{Protocol.Dns.Header.ra_name(dns.ra)}
-        z:                #{ExPcap.Binaries.to_string(dns.z)}  #{Protocol.Dns.Header.z_name(dns.z)}
+        z:                #{ExPcap.Binaries.to_string(dns.z)} #{Protocol.Dns.Header.z_name(dns.z)}
         rcode:            #{ExPcap.Binaries.to_string(dns.rcode)} #{Protocol.Dns.Header.rcode_name(dns.rcode)}
         qdcnt:            #{ExPcap.Binaries.to_string(dns.qdcnt)}
         ancnt:            #{ExPcap.Binaries.to_string(dns.ancnt)}
