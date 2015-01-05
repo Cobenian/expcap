@@ -96,31 +96,4 @@ defmodule ExPcap do
     end)
   end
 
-  # # ethernet
-  # parser = PayloadType.payload_parser(global_header)
-  # payload = packet_data.data |> parser.from_data
-  #
-  # # ip
-  # parser = PayloadType.payload_parser(payload)
-  # payload = payload.data |> parser.from_data
-  #
-  # # udp
-  # parser = PayloadType.payload_parser(payload)
-  # payload = payload.data |> parser.from_data
-  #
-  # # dns
-  # parser = PayloadType.payload_parser(payload)
-  # payload = payload.data |> parser.from_data
-
-  # payload |> IO.inspect
-
-  # ethernet = packet_data.data |> Protocol.Ethernet.from_data
-  # ethernet |> IO.inspect
-  # ipv4 = ethernet.data |> Protocol.Ipv4.from_data
-  # ipv4 |> IO.inspect
-  # udp = ipv4.data |> Protocol.Udp.from_data
-  # udp |> IO.inspect
-  # dns = udp.data |> Protocol.Dns.from_data
-  # dns |> IO.inspect
-
 end
