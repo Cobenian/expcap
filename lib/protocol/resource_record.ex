@@ -38,13 +38,11 @@ defmodule Protocol.Dns.ResourceRecord do
 
   def rdata_string(dns) do
     case dns.type do
-      1   ->
+      1   -> # A
         <<a, b, c, d>> = dns.rdata
         "#{a}.#{b}.#{c}.#{d}"
-      16  ->
-        <<len :: size(8), s :: binary>> = dns.rdata
-        {bytes, rest} = read_bytes(s, len)
-        ExPcap.Binaries.to_string(bytes)
+      16  -> # TXT
+        Enum.filter( String.codepoints(dns.rdata), fn c -> String.printable?(c) end )
       _   ->
         ""
     end
