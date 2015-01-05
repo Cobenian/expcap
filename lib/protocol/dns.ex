@@ -188,7 +188,7 @@ defmodule Protocol.Dns do
       arcnt     :: unsigned-integer-size(16),
       _payload  :: binary
     >> = data
-    h = %Protocol.Dns.Header{
+    %Protocol.Dns.Header{
       id:     id,
       qr:     qr,
       opcode: ExPcap.Binaries.to_uint4(opcode),
@@ -203,17 +203,12 @@ defmodule Protocol.Dns do
       nscnt:  nscnt,
       arcnt:  arcnt
     }
-    IO.puts "dns header:"
-    IO.inspect h
-    h
   end
 
   def from_data(data) do
     << _header :: bytes-size(@bytes_in_header), payload :: binary >> = data
     header = header(data)
     dns = Protocol.Dns.ResourceRecord.read_dns(header, data, payload)
-    IO.puts "dns dns dns:"
-    IO.inspect dns
     %Protocol.Dns{
       header: header,
       parsed: dns,

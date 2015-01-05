@@ -43,6 +43,10 @@ defmodule Protocol.Dns.ResourceRecord do
         "#{a}.#{b}.#{c}.#{d}"
       16  -> # TXT
         Enum.filter( String.codepoints(dns.rdata), fn c -> String.printable?(c) end )
+      28  -> # AAAA
+        <<a :: binary-size(2), b :: binary-size(2), c :: binary-size(2), d :: binary-size(2),
+          e :: binary-size(2), f :: binary-size(2), g :: binary-size(2), h :: binary-size(2)>> = dns.rdata
+        Enum.join(Enum.map([a, b, c, d, e, f, g, h], &Base.encode16/1), ":")
       _   ->
         ""
     end
@@ -87,8 +91,6 @@ defmodule Protocol.Dns.ResourceRecord do
   end
 
   def read_bytes(data, len) do
-    # IO.puts "looking for #{len} bytes from #{byte_size(data)}"
-    # IO.inspect data
     <<
       bytes   :: bytes-size(len),
       rest    :: binary
@@ -104,10 +106,7 @@ defmodule Protocol.Dns.ResourceRecord do
     if len == 0 do
       {Enum.join(Enum.reverse(acc), "."), rest}
     else
-      # IO.puts "time to read #{len} bytes"
       {bytes, rest} = read_bytes(rest, len)
-      # IO.puts "read label segment:"
-      # IO.inspect bytes
       read_name(message, rest, [bytes | acc], at_end)
     end
   end
@@ -118,10 +117,7 @@ defmodule Protocol.Dns.ResourceRecord do
       pointer :: unsigned-integer-size(16),
       rest :: binary
     >> = data
-    # IO.puts "pointer:"
-    # IO.inspect pointer
     offset = Bitwise.band(0b0011111111111111, pointer)
-    # IO.puts "offset is #{offset}"
     {_ignore, bytes_to_use} = read_bytes(message, offset)
 
     {name, _remaining} = read_name(message, bytes_to_use, acc, true)
@@ -156,8 +152,6 @@ defmodule Protocol.Dns.ResourceRecord do
       qtype: qtype,
       qclass: qclass
     }
-    # IO.puts "read question:"
-    # IO.inspect question
     {question, rest}
   end
 
@@ -197,8 +191,6 @@ defmodule Protocol.Dns.ResourceRecord do
       rdlen: rdlen,
       rdata: rdata
     }
-    # IO.puts "read answer:"
-    # IO.inspect answer
     {answer, remaining}
   end
 
