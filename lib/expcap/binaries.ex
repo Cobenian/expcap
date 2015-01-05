@@ -1,5 +1,31 @@
 defmodule ExPcap.Binaries do
 
+  def to_binary(list) do
+    to_binary(list, <<>>)
+  end
+
+  def to_binary([], acc) do
+    acc
+  end
+
+  def to_binary(list, acc) do
+    [h | t] = list
+    to_binary(t, acc <> <<h>>)
+  end
+
+  def to_list(b) do
+    to_list(b, [])
+  end
+
+  def to_list(<<>>, acc) do
+    Enum.reverse acc
+  end
+
+  def to_list(b, acc) do
+    <<a :: size(8), rest :: binary>> = b
+    to_list(rest, [a | acc])
+  end
+
   def reverse_binary(<<>>, acc) do
     acc
   end
@@ -36,7 +62,7 @@ defmodule ExPcap.Binaries do
     Inspect.Algebra.to_doc(b, %Inspect.Opts{width: 80})
   end
 
-  def to_raw(b) do
+  def to_raw(_b) do
     # to_string(b)
     "... redacted ..."
   end
