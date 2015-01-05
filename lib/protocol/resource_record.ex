@@ -39,10 +39,13 @@ defmodule Protocol.Dns.ResourceRecord do
   def rdata_string(dns) do
     case dns.type do
       1   -> # A
-        <<a, b, c, d>> = dns.rdata
-        "#{a}.#{b}.#{c}.#{d}"
+        dns.rdata
+        |> ExPcap.Binaries.to_list
+        |> Enum.join "."
       16  -> # TXT
-        Enum.filter( String.codepoints(dns.rdata), fn c -> String.printable?(c) end )
+        dns.rdata
+        |> String.codepoints
+        |> Enum.filter(&String.printable?/1)
       28  -> # AAAA
         dns.rdata
         |> ExPcap.Binaries.to_list
@@ -50,9 +53,6 @@ defmodule Protocol.Dns.ResourceRecord do
         |> Enum.map(&ExPcap.Binaries.to_binary/1)
         |> Enum.map(&Base.encode16/1)
         |> Enum.join ":"
-        # a = Enum.chunk(ExPcap.Binaries.to_list(dns.rdata), 2)
-        # segments = Enum.map(a, &ExPcap.Binaries.to_binary/1)
-        # Enum.join(Enum.map(segments, &Base.encode16/1), ":")
       _   ->
         ""
     end
