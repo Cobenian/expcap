@@ -23,13 +23,13 @@ defimpl String.Chars, for: Protocol.Dns.Header do
     String.strip("""
         id:               #{ExPcap.Binaries.to_string(dns.id)}
         qr:               #{ExPcap.Binaries.to_string(dns.qr)}
-        opcode:           #{ExPcap.Binaries.to_string(dns.opcode)}
+        opcode:           #{ExPcap.Binaries.to_string(dns.opcode)} #{Protocol.Dns.Header.opcode_name(dns.opcode)}
         aa:               #{ExPcap.Binaries.to_string(dns.aa)}
         tc:               #{ExPcap.Binaries.to_string(dns.tc)}
         rd:               #{ExPcap.Binaries.to_string(dns.rd)}
         ra:               #{ExPcap.Binaries.to_string(dns.ra)}
         z:                #{ExPcap.Binaries.to_string(dns.z)}
-        rcode:            #{ExPcap.Binaries.to_string(dns.rcode)}
+        rcode:            #{ExPcap.Binaries.to_string(dns.rcode)} #{Protocol.Dns.Header.rcode_name(dns.rcode)}
         qdcnt:            #{ExPcap.Binaries.to_string(dns.qdcnt)}
         ancnt:            #{ExPcap.Binaries.to_string(dns.ancnt)}
         nscnt:            #{ExPcap.Binaries.to_string(dns.nscnt)}
@@ -68,6 +68,41 @@ defmodule Protocol.Dns.Header do
             ancnt:   <<>>,
             nscnt:   <<>>,
             arcnt:   <<>>
+
+  def opcode_name(opcode) do
+    case opcode do
+      0   -> :QUERY
+      2   -> :STATUS
+      4   -> :NOTIFY
+      5   -> :UPDATE
+      _   -> :""
+    end
+  end
+
+  def rcode_name(rcode) do
+    case rcode do
+      0   -> :NOERROR
+      1   -> :FORMERR
+      2   -> :SERVFAIL
+      3   -> :NXDOMAIN
+      4   -> :NOTIMPL
+      5   -> :REFUSED
+      6   -> :YXDOMAIN
+      7   -> :YXRRSET
+      8   -> :NXRRSET
+      9   -> :NOTAUTH
+      10  -> :NOTZONE
+      16  -> :BADVERS_OR_BADSIG
+      17  -> :BADKEY
+      18  -> :BADTIME
+      19  -> :BADMODE
+      20  -> :BADNAME
+      21  -> :BADALG
+      22  -> :BADTRUNC
+      _   -> :""
+    end
+  end
+
 end
 
 defmodule Protocol.Dns do
@@ -104,13 +139,13 @@ defmodule Protocol.Dns do
     h = %Protocol.Dns.Header{
       id:     id,
       qr:     qr,
-      opcode: opcode,
+      opcode: ExPcap.Binaries.to_uint4(opcode),
       aa:     aa,
       tc:     tc,
       rd:     rd,
       ra:     ra,
       z:      z,
-      rcode:  rcode,
+      rcode:  ExPcap.Binaries.to_uint4(rcode),
       qdcnt:  qdcnt,
       ancnt:  ancnt,
       nscnt:  nscnt,

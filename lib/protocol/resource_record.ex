@@ -2,8 +2,8 @@ defimpl String.Chars, for: Protocol.Dns.Question do
   def to_string(dns) do
     String.strip("""
       name:               #{dns.name}
-      qtype:              #{dns.qtype}
-      qclass:             #{dns.qclass}
+      qtype:              #{dns.qtype} #{Protocol.Dns.ResourceRecord.type_name(dns.qtype)}
+      qclass:             #{dns.qclass} #{Protocol.Dns.ResourceRecord.class_name(dns.qclass)}
     """)
   end
 end
@@ -12,8 +12,8 @@ defimpl String.Chars, for: Protocol.Dns.ResourceRecord do
   def to_string(dns) do
     String.strip("""
       name:               #{dns.name}
-      type:               #{dns.type}
-      class:              #{dns.class}
+      type:               #{dns.type} #{Protocol.Dns.ResourceRecord.type_name(dns.type)}
+      class:              #{dns.class} #{Protocol.Dns.ResourceRecord.class_name(dns.class)}
       ttl:                #{dns.ttl}
       rdlen:              #{dns.rdlen}
       rdata:              #{ExPcap.Binaries.to_string(dns.rdata)}
@@ -35,6 +35,44 @@ defmodule Protocol.Dns.ResourceRecord do
             ttl:      0,
             rdlen:    0,
             rdata:    <<>>
+
+  def class_name(class) do
+    case class do
+      1   -> :IN
+      3   -> :CH
+      _   -> :""
+    end
+  end
+
+  def type_name(type) do
+    case type do
+      1   -> :A
+      2   -> :NS
+      5   -> :CNAME
+      6   -> :SOA
+      12  -> :PTR
+      15  -> :MX
+      16  -> :TXT
+      24  -> :SIG
+      25  -> :KEY
+      28  -> :AAAA
+      29  -> :LOC
+      33  -> :SRV
+      37  -> :CERT
+      39  -> :DNAME
+      43  -> :DS
+      45  -> :IPSECKEY
+      46  -> :RRSIG
+      47  -> :NSEC
+      48  -> :DNSKEY
+      50  -> :NSEC3
+      51  -> :NSEC3PARAM
+      250 -> :TSIG
+      251 -> :IXFR
+      252 -> :AXFR
+      _   -> :""
+    end
+  end
 
   def read_bytes(data, len) do
     # IO.puts "looking for #{len} bytes from #{byte_size(data)}"
