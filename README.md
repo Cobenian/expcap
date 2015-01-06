@@ -13,6 +13,10 @@ moment are:
 * UDP
 * DNS
 
+## Documentation
+
+Documentation can be found at http://cobenian.github.io/expcap
+
 ## To Build Documentation
 
 You must have run mix deps.get and mix deps.compile first.
