@@ -43,9 +43,17 @@
       </ul>
 
       
+        <section id="moduledoc" class="docstring">
+          <p>This module represents a ‘magic number’ from a pcap header. The magic number
+not only contains a known value, but the value indicates the order in which
+bytes should be read AND whether or not datetimes use milliseconds or
+nanoseconds.</p>
+
+        </section>
+      
 
       
-        <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/magic_number.ex#L11" class="view_source">Source</a>
+        <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/magic_number.ex#L15" class="view_source">Source</a>
       
 
       
@@ -54,17 +62,31 @@
           <tr>
   <td class="summary_signature"><a href="#bytes_in_magic/0">bytes_in_magic()</a></td>
   
+    <td class="summary_synopsis"><p>Returns the number of bytes contained in the magic number</p>
+</td>
+  
 </tr>
 <tr>
   <td class="summary_signature"><a href="#from_file/1">from_file(f)</a></td>
+  
+    <td class="summary_synopsis"><p>Reads the magic number from the file passed in</p>
+</td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="#magic_number/4">magic_number(int1, int2, int3, int4)</a></td>
   
+    <td class="summary_synopsis"><p>Returns a magic number that indicates that the bytes need to be reversed when
+read and that datetimes are in nanoseconds</p>
+</td>
+  
 </tr>
 <tr>
   <td class="summary_signature"><a href="#read_magic/1">read_magic(data)</a></td>
+  
+    <td class="summary_synopsis"><p>This reads the bytes of the magic number and matches them with the appropriate
+interpretation of the magic number</p>
+</td>
   
 </tr>
 
@@ -97,11 +119,19 @@
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>bytes_in_magic :: non_neg_integer</li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>Returns the number of bytes contained in the magic number.</p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/magic_number.ex#L25" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/magic_number.ex#L40" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -114,11 +144,19 @@
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>from_file(<a href="http://elixir-lang.org/docs/stable/elixir/IO.html#t:device/0">IO.device</a>) :: <a href="ExPcap.MagicNumber.html#t:t/0">ExPcap.MagicNumber.t</a></li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>Reads the magic number from the file passed in.</p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/magic_number.ex#L71" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/magic_number.ex#L115" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -131,11 +169,26 @@
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>magic_number(77, 60, 178, 161) :: <a href="ExPcap.MagicNumber.html#t:t/0">ExPcap.MagicNumber.t</a></li>
+      
+        <li>magic_number(161, 178, 60, 77) :: <a href="ExPcap.MagicNumber.html#t:t/0">ExPcap.MagicNumber.t</a></li>
+      
+        <li>magic_number(161, 178, 195, 212) :: <a href="ExPcap.MagicNumber.html#t:t/0">ExPcap.MagicNumber.t</a></li>
+      
+        <li>magic_number(212, 195, 178, 161) :: <a href="ExPcap.MagicNumber.html#t:t/0">ExPcap.MagicNumber.t</a></li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>Returns a magic number that indicates that the bytes need to be reversed when
+read and that datetimes are in nanoseconds.</p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/magic_number.ex#L29" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/magic_number.ex#L49" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -148,11 +201,20 @@
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>read_magic(binary) :: <a href="ExPcap.MagicNumber.html#t:t/0">ExPcap.MagicNumber.t</a></li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>This reads the bytes of the magic number and matches them with the appropriate
+interpretation of the magic number.</p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/magic_number.ex#L61" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/magic_number.ex#L101" class="view_source">Source</a>
   
 </section>
 

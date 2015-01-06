@@ -43,9 +43,14 @@
       </ul>
 
       
+        <section id="moduledoc" class="docstring">
+          <p>This module represents the body of a packet.</p>
+
+        </section>
+      
 
       
-        <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/packet_data.ex#L10" class="view_source">Source</a>
+        <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/packet_data.ex#L14" class="view_source">Source</a>
       
 
       
@@ -54,13 +59,22 @@
           <tr>
   <td class="summary_signature"><a href="#from_file/3">from_file(f, global_header, packet_header)</a></td>
   
+    <td class="summary_synopsis"><p>Reads the packet body from the file</p>
+</td>
+  
 </tr>
 <tr>
   <td class="summary_signature"><a href="#read_forward/2">read_forward(data, packet_header)</a></td>
   
+    <td class="summary_synopsis"><p>This function reads the body of a packet</p>
+</td>
+  
 </tr>
 <tr>
   <td class="summary_signature"><a href="#read_reversed/2">read_reversed(data, packet_header)</a></td>
+  
+    <td class="summary_synopsis"><p>This function reads the body of a packet reversing the bytes along the way</p>
+</td>
   
 </tr>
 
@@ -93,11 +107,19 @@
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>from_file(<a href="http://elixir-lang.org/docs/stable/elixir/IO.html#t:device/0">IO.device</a>, <a href="ExPcap.GlobalHeader.html#t:t/0">ExPcap.GlobalHeader.t</a>, <a href="ExPcap.PacketHeader.html#t:t/0">ExPcap.PacketHeader.t</a>) :: <a href="ExPcap.PacketData.html#t:t/0">ExPcap.PacketData.t</a></li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>Reads the packet body from the file.</p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/packet_data.ex#L34" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/packet_data.ex#L54" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -110,11 +132,19 @@
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>read_forward(binary, <a href="ExPcap.PacketHeader.html#t:t/0">ExPcap.PacketHeader.t</a>) :: <a href="ExPcap.PacketData.html#t:t/0">ExPcap.PacketData.t</a></li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>This function reads the body of a packet.</p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/packet_data.ex#L27" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/packet_data.ex#L43" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -127,11 +157,19 @@
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>read_reversed(binary, <a href="ExPcap.PacketHeader.html#t:t/0">ExPcap.PacketHeader.t</a>) :: <a href="ExPcap.PacketData.html#t:t/0">ExPcap.PacketData.t</a></li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>This function reads the body of a packet reversing the bytes along the way.</p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/packet_data.ex#L20" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/packet_data.ex#L32" class="view_source">Source</a>
   
 </section>
 

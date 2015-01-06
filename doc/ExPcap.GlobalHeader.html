@@ -59,13 +59,27 @@
           <tr>
   <td class="summary_signature"><a href="#from_file/2">from_file(f, magic_number)</a></td>
   
+    <td class="summary_synopsis"><p>Reads the pcap global header (the bits after the magic number) and returns
+a struct containing the global header values. The code reads the bytes
+according to the order specified by the magic header</p>
+</td>
+  
 </tr>
 <tr>
   <td class="summary_signature"><a href="#read_forward/2">read_forward(data, magic_number)</a></td>
   
+    <td class="summary_synopsis"><p>Reads a global header from a binary containing a pcap header (after the magic
+number)</p>
+</td>
+  
 </tr>
 <tr>
   <td class="summary_signature"><a href="#read_reversed/2">read_reversed(data, magic_number)</a></td>
+  
+    <td class="summary_synopsis"><p>Reads a global header from a binary containing a pcap header (after the magic
+number) but it does so by reading the bytes in reverse order for each value.
+The magic number indicates the byte order for reading</p>
+</td>
   
 </tr>
 <tr>
@@ -106,11 +120,21 @@ reversed</p>
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>from_file(<a href="http://elixir-lang.org/docs/stable/elixir/IO.html#t:device/0">IO.device</a>, <a href="ExPcap.MagicNumber.html#t:t/0">ExPcap.MagicNumber.t</a>) :: <a href="ExPcap.GlobalHeader.html#t:t/0">ExPcap.GlobalHeader.t</a></li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>Reads the pcap global header (the bits after the magic number) and returns
+a struct containing the global header values. The code reads the bytes
+according to the order specified by the magic header.</p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/global_header.ex#L132" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/global_header.ex#L149" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -123,11 +147,20 @@ reversed</p>
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>read_forward(binary, <a href="ExPcap.MagicNumber.html#t:t/0">ExPcap.MagicNumber.t</a>) :: <a href="ExPcap.GlobalHeader.html#t:t/0">ExPcap.GlobalHeader.t</a></li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>Reads a global header from a binary containing a pcap header (after the magic
+number)</p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/global_header.ex#L94" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/global_header.ex#L99" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -140,11 +173,21 @@ reversed</p>
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>read_reversed(binary, <a href="ExPcap.MagicNumber.html#t:t/0">ExPcap.MagicNumber.t</a>) :: <a href="ExPcap.GlobalHeader.html#t:t/0">ExPcap.GlobalHeader.t</a></li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>Reads a global header from a binary containing a pcap header (after the magic
+number) but it does so by reading the bytes in reverse order for each value.
+The magic number indicates the byte order for reading.</p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/global_header.ex#L108" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/global_header.ex#L119" class="view_source">Source</a>
   
 </section>
 <section class="detail">

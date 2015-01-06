@@ -1,4 +1,8 @@
 defimpl String.Chars, for: ExPcap.Packet do
+  @doc """
+  Prints a pcap packet in a human friendly manner.
+  """
+  @spec to_string(ExPcap.Packet.t) :: String.t
   def to_string(packet) do
     String.strip("""
     Packet
@@ -14,6 +18,11 @@ defimpl String.Chars, for: ExPcap.Packet do
 end
 
 defmodule ExPcap.Packet do
+
+  @moduledoc """
+  This module represents a single pcap packet. It contains a header and both raw
+  and parsed versions of the body.
+  """
 
   defstruct packet_header:  %ExPcap.PacketHeader{},
             raw_packet_data:    %ExPcap.PacketData{},

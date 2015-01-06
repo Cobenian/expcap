@@ -91,6 +91,11 @@ defmodule ExPcap.GlobalHeader do
     global_header.magic_number.reverse_bytes
   end
 
+  @doc """
+  Reads a global header from a binary containing a pcap header (after the magic
+  number)
+  """
+  @spec read_forward(binary, ExPcap.MagicNumber.t) :: ExPcap.GlobalHeader.t
   def read_forward(data, magic_number) do
     <<
       version_major :: unsigned-integer-size(16),
@@ -105,6 +110,12 @@ defmodule ExPcap.GlobalHeader do
                   sigfigs: sigfigs, snaplen: snaplen, network: network}
   end
 
+  @doc """
+  Reads a global header from a binary containing a pcap header (after the magic
+  number) but it does so by reading the bytes in reverse order for each value.
+  The magic number indicates the byte order for reading.
+  """
+  @spec read_reversed(binary, ExPcap.MagicNumber.t) :: ExPcap.GlobalHeader.t
   def read_reversed(data, magic_number) do
 
     import ExPcap.Binaries, only: [reverse_binary: 1, to_uint16: 1, to_uint32: 1, to_int32: 1 ]
@@ -129,6 +140,12 @@ defmodule ExPcap.GlobalHeader do
     }
   end
 
+  @doc """
+  Reads the pcap global header (the bits after the magic number) and returns
+  a struct containing the global header values. The code reads the bytes
+  according to the order specified by the magic header.
+  """
+  @spec from_file(IO.device, ExPcap.MagicNumber.t) :: ExPcap.GlobalHeader.t
   def from_file(f, magic_number) do
     data = IO.binread(f, @bytes_in_header)
     if magic_number.reverse_bytes do
