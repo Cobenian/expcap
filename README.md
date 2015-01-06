@@ -1,7 +1,7 @@
 ExPcap
 ======
 
-[![hex.pm Custom](https://img.shields.io/badge/expcap-awesome-brightgreen.svg)](https://hex.pm/packages/expcap)
+[![hex.pm Custom](https://img.shields.io/badge/expcap-Elixir-brightgreen.svg)](https://hex.pm/packages/expcap)
 [![hex.pm Version](https://img.shields.io/hexpm/v/expcap.svg)](https://hex.pm/packages/expcap)
 [![hex.pm License](https://img.shields.io/hexpm/l/plug.svg)](https://hex.pm/packages/expcap)
 
