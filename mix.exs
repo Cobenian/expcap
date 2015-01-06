@@ -10,6 +10,7 @@ defmodule ExPcap.Mixfile do
      description: description,
      package: package,
      deps: deps,
+     docs: docs,
      escript: escript]
   end
 
@@ -39,6 +40,10 @@ defmodule ExPcap.Mixfile do
      {:ex_doc, "~> 0.6", only: :dev }]
   end
 
+  defp docs do
+    [{:main, "ExPcap"}]
+  end
+
   defp description do
     """
     A PCAP library written in Elixir. This does not wrap a C or Erlang PCAP library,
@@ -49,9 +54,13 @@ defmodule ExPcap.Mixfile do
     moment are:
 
     * Ethernet
+
     * IPv4
+
     * UDP
-    * DNS    
+
+    * DNS
+
     """
   end
 
