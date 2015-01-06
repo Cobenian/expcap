@@ -7,6 +7,7 @@ defmodule ExPcap.Mixfile do
      elixir: "~> 1.0",
      name: "expcap",
      source_url: "https://github.com/cobenian/expcap",
+     package: package,
      deps: deps,
      escript: escript]
   end
@@ -35,5 +36,14 @@ defmodule ExPcap.Mixfile do
     [{:timex, "~> 0.13.2"},
      {:earmark, "~> 0.1", only: :dev},
      {:ex_doc, "~> 0.6", only: :dev }]
+  end
+
+  defp package do
+    [# These are the default files included in the package
+    files: ["lib", "priv", "mix.exs", "README*", "readme*", "LICENSE*", "license*"],
+    contributors: ["Bryan Weber"],
+    licenses: ["Apache 2.0"],
+    links: %{"GitHub" => "https://github.com/cobenian/expcap",
+    "Docs" => "http://cobenian.github.io/expcap/"}]
   end
 end
