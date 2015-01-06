@@ -1,4 +1,8 @@
 defimpl String.Chars, for: Protocol.Dns do
+  @doc """
+  Prints a DNS packet to a human readable string
+  """
+  @spec to_string(Protocol.Dns.t) :: String.t
   def to_string(dns) do
     String.strip("""
     DNS:
@@ -19,6 +23,10 @@ defimpl String.Chars, for: Protocol.Dns do
 end
 
 defimpl String.Chars, for: Protocol.Dns.Header do
+  @doc """
+  Prints a DNS packet header to a human readable string
+  """
+  @spec to_string(Protocol.Dns.t) :: String.t
   def to_string(dns) do
     String.strip("""
         id:               #{ExPcap.Binaries.to_string(dns.id)} #{ExPcap.Binaries.to_hex(dns.id)}
@@ -39,6 +47,10 @@ defimpl String.Chars, for: Protocol.Dns.Header do
 end
 
 defimpl PayloadType, for: Protocol.Dns do
+  @doc """
+  Returns the parser that will parse the body of the DNS packet
+  """
+  @spec payload_parser(Protocol.Dns.t) :: PayloadType.t
   def payload_parser(_dns) do
     nil
     # case dns.header.qr do
@@ -49,12 +61,21 @@ defimpl PayloadType, for: Protocol.Dns do
 end
 
 defimpl PayloadParser, for: Protocol.Dns do
+  @doc """
+  Parses the body of the DNS packet
+  """
+  @spec from_data(binary) :: any
   def from_data(data) do
     Protocol.Dns.from_data data
   end
 end
 
 defmodule Protocol.Dns.Header do
+
+  @moduledoc """
+  A parsed DNS packet header
+  """
+
   defstruct id:      <<>>,
             qr:      <<>>,
             opcode:  <<>>,
@@ -69,6 +90,26 @@ defmodule Protocol.Dns.Header do
             nscnt:   <<>>,
             arcnt:   <<>>
 
+  @type t :: %Protocol.Dns.Header{
+    id:      binary,
+    qr:      bitstring,
+    opcode:  bitstring,
+    aa:      bitstring,
+    tc:      bitstring,
+    rd:      bitstring,
+    ra:      bitstring,
+    z:       bitstring,
+    rcode:   bitstring,
+    qdcnt:   non_neg_integer,
+    ancnt:   non_neg_integer,
+    nscnt:   non_neg_integer,
+    arcnt:   non_neg_integer
+  }
+
+  @doc """
+  Is this a query or a response?
+  """
+  @spec qr_name(binary) :: :QUERY | :ANSWER
   def qr_name(qr) do
     case qr do
       <<0 :: size(1)>>    -> :QUERY
@@ -76,6 +117,10 @@ defmodule Protocol.Dns.Header do
     end
   end
 
+  @doc """
+  Is this response authoritative?
+  """
+  @spec aa_name(binary) :: :NOT_AUTHORITATIVE | :AUTHORITATIVE | :""
   def aa_name(aa) do
     case aa do
       <<0 :: size(1)>>    -> :NOT_AUTHORITATIVE
@@ -84,6 +129,10 @@ defmodule Protocol.Dns.Header do
     end
   end
 
+  @doc """
+  Is this response truncated?
+  """
+  @spec tc_name(binary) :: :NOT_TRUNCATED | :TRUNCATED | :""
   def tc_name(tc) do
     case tc do
       <<0 :: size(1)>>    -> :NOT_TRUNCATED
@@ -92,6 +141,10 @@ defmodule Protocol.Dns.Header do
     end
   end
 
+  @doc """
+  Is recursion desired?
+  """
+  @spec rd_name(binary) :: :NO_RECURSION_DESIRED | :RECURSION_DESIRED | :""
   def rd_name(rd) do
     case rd do
       <<0 :: size(1)>>    -> :NO_RECURSION_DESIRED
@@ -100,6 +153,10 @@ defmodule Protocol.Dns.Header do
     end
   end
 
+  @doc """
+  Is recursion available?
+  """
+  @spec ra_name(binary) :: :NO_RECURSION_AVAILABLE | :RECURSION_AVAILABLE | :""
   def ra_name(ra) do
     case ra do
       <<0 :: size(1)>>    -> :NO_RECURSION_AVAILABLE
@@ -108,6 +165,12 @@ defmodule Protocol.Dns.Header do
     end
   end
 
+  @doc """
+  The first bit is reserved.
+  The second bit indciates if the response was authenticated or not.
+  The third bit indciates if the data was authenticated or not.
+  """
+  @spec z_name(binary) :: :atom
   def z_name(z) do
     case z do
       <<0b000 :: size(3)>>    -> :"RESERVED - NOT AUTHENTICATED - NON AUTHENTICATED DATA"
@@ -121,6 +184,10 @@ defmodule Protocol.Dns.Header do
     end
   end
 
+  @doc """
+  What is the op code of this DNS packet?
+  """
+  @spec opcode_name(non_neg_integer) :: :QUERY | :STATUS | :NOTIFY | :UPDATE | :""
   def opcode_name(opcode) do
     case opcode do
       0   -> :QUERY
@@ -131,6 +198,10 @@ defmodule Protocol.Dns.Header do
     end
   end
 
+  @doc """
+  What is the r code of this DNS packet?
+  """
+  @spec rcode_name(non_neg_integer) :: :atom
   def rcode_name(rcode) do
     case rcode do
       0   -> :NOERROR
@@ -159,6 +230,10 @@ end
 
 defmodule Protocol.Dns do
 
+  @moduledoc """
+  A parsed DNS packet
+  """
+
   @bytes_in_header 12
 
   defstruct header: %Protocol.Dns.Header{},
@@ -171,6 +246,22 @@ defmodule Protocol.Dns do
                     },
             data: <<>>
 
+  @type t :: %Protocol.Dns{
+    header: Protocol.Dns.Header.t,
+    parsed: {
+      [Protocol.Dns.Question.t],         # questions
+      [Protocol.Dns.ResourceRecord.t],   # answers
+      [Protocol.Dns.ResourceRecord.t],   # authorities
+      [Protocol.Dns.ResourceRecord.t],   # additionals
+      binary
+      },
+    data: binary
+  }
+
+  @doc """
+  Parses a DNS header
+  """
+  @spec header(binary) :: Protocol.Dns.Header.t
   def header(data) do
     <<
       id        :: bytes-size(2),
@@ -205,6 +296,10 @@ defmodule Protocol.Dns do
     }
   end
 
+  @doc """
+  Returns a parsed DNS packet
+  """
+  @spec from_data(binary) :: Protocol.Dns.t
   def from_data(data) do
     << _header :: bytes-size(@bytes_in_header), payload :: binary >> = data
     header = header(data)

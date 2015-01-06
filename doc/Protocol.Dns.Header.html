@@ -33,6 +33,8 @@
           <li><a href="#summary">Summary</a></li>
         
         
+          <li><a href="#types_details">Types</a></li>
+        
         
           <li><a href="#functions_details">Functions</a></li>
         
@@ -41,9 +43,14 @@
       </ul>
 
       
+        <section id="moduledoc" class="docstring">
+          <p>A parsed DNS packet header</p>
+
+        </section>
+      
 
       
-        <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/dns.ex#L57" class="view_source">Source</a>
+        <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/dns.ex#L73" class="view_source">Source</a>
       
 
       
@@ -52,39 +59,76 @@
           <tr>
   <td class="summary_signature"><a href="#aa_name/1">aa_name(aa)</a></td>
   
+    <td class="summary_synopsis"><p>Is this response authoritative?</p>
+</td>
+  
 </tr>
 <tr>
   <td class="summary_signature"><a href="#opcode_name/1">opcode_name(opcode)</a></td>
+  
+    <td class="summary_synopsis"><p>What is the op code of this DNS packet?</p>
+</td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="#qr_name/1">qr_name(qr)</a></td>
   
+    <td class="summary_synopsis"><p>Is this a query or a response?</p>
+</td>
+  
 </tr>
 <tr>
   <td class="summary_signature"><a href="#ra_name/1">ra_name(ra)</a></td>
+  
+    <td class="summary_synopsis"><p>Is recursion available?</p>
+</td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="#rcode_name/1">rcode_name(rcode)</a></td>
   
+    <td class="summary_synopsis"><p>What is the r code of this DNS packet?</p>
+</td>
+  
 </tr>
 <tr>
   <td class="summary_signature"><a href="#rd_name/1">rd_name(rd)</a></td>
+  
+    <td class="summary_synopsis"><p>Is recursion desired?</p>
+</td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="#tc_name/1">tc_name(tc)</a></td>
   
+    <td class="summary_synopsis"><p>Is this response truncated?</p>
+</td>
+  
 </tr>
 <tr>
   <td class="summary_signature"><a href="#z_name/1">z_name(z)</a></td>
+  
+    <td class="summary_synopsis"><p>The first bit is reserved.
+The second bit indciates if the response was authenticated or not.
+The third bit indciates if the data was authenticated or not</p>
+</td>
   
 </tr>
 
         </table>
       
 
+      
+        <section id="types_details" class="details_list">
+          <h2>Types <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a></h2>
+          <div class="type_detail">
+  <p class="typespec" id="t:t/0">
+    <a href="#t:t/0">t</a> :: %Protocol.Dns.Header{id: binary, qr: bitstring, opcode: bitstring, aa: bitstring, tc: bitstring, rd: bitstring, ra: bitstring, z: bitstring, rcode: bitstring, qdcnt: non_neg_integer, ancnt: non_neg_integer, nscnt: non_neg_integer, arcnt: non_neg_integer}
+  </p>
+  
+</div>
+
+        </section>
       
 
       
@@ -100,11 +144,19 @@
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>aa_name(binary) :: :NOT_AUTHORITATIVE | :AUTHORITATIVE | :""</li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>Is this response authoritative?</p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/dns.ex#L79" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/dns.ex#L124" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -117,11 +169,19 @@
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>opcode_name(non_neg_integer) :: :QUERY | :STATUS | :NOTIFY | :UPDATE | :""</li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>What is the op code of this DNS packet?</p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/dns.ex#L124" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/dns.ex#L191" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -134,11 +194,19 @@
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>qr_name(binary) :: :QUERY | :ANSWER</li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>Is this a query or a response?</p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/dns.ex#L72" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/dns.ex#L113" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -151,11 +219,19 @@
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>ra_name(binary) :: :NO_RECURSION_AVAILABLE | :RECURSION_AVAILABLE | :""</li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>Is recursion available?</p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/dns.ex#L103" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/dns.ex#L160" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -168,11 +244,19 @@
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>rcode_name(non_neg_integer) :: :atom</li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>What is the r code of this DNS packet?</p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/dns.ex#L134" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/dns.ex#L205" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -185,11 +269,19 @@
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>rd_name(binary) :: :NO_RECURSION_DESIRED | :RECURSION_DESIRED | :""</li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>Is recursion desired?</p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/dns.ex#L95" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/dns.ex#L148" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -202,11 +294,19 @@
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>tc_name(binary) :: :NOT_TRUNCATED | :TRUNCATED | :""</li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>Is this response truncated?</p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/dns.ex#L87" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/dns.ex#L136" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -219,11 +319,21 @@
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>z_name(binary) :: :atom</li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>The first bit is reserved.
+The second bit indciates if the response was authenticated or not.
+The third bit indciates if the data was authenticated or not.</p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/dns.ex#L111" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/dns.ex#L174" class="view_source">Source</a>
   
 </section>
 

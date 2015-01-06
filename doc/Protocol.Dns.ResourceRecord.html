@@ -33,6 +33,8 @@
           <li><a href="#summary">Summary</a></li>
         
         
+          <li><a href="#types_details">Types</a></li>
+        
         
           <li><a href="#functions_details">Functions</a></li>
         
@@ -41,9 +43,14 @@
       </ul>
 
       
+        <section id="moduledoc" class="docstring">
+          <p>A parsed DNS resource record</p>
+
+        </section>
+      
 
       
-        <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L30" class="view_source">Source</a>
+        <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L49" class="view_source">Source</a>
       
 
       
@@ -52,67 +59,139 @@
           <tr>
   <td class="summary_signature"><a href="#class_name/1">class_name(class)</a></td>
   
+    <td class="summary_synopsis"><p>The dclass name of this packet</p>
+</td>
+  
 </tr>
 <tr>
   <td class="summary_signature"><a href="#rdata_string/1">rdata_string(dns)</a></td>
+  
+    <td class="summary_synopsis"><p>Prints rdata to a human readable string. Very few rr types are supported</p>
+</td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="#read_answer/2">read_answer(message, data)</a></td>
   
+    <td class="summary_synopsis"><p>Reads an answer from the ‘data’ and returns a tuple of the resource record
+and remaining bytes</p>
+</td>
+  
 </tr>
 <tr>
   <td class="summary_signature"><a href="#read_answers/3">read_answers(answer_count, message, data)</a></td>
+  
+    <td class="summary_synopsis"><p>Returns a list of the answers (resource records) in this section of the DNS
+packet. The section may be the answer, authoritative or additional sections,
+this code is generic so it doesn’t care which section is being read</p>
+</td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="#read_answers/4">read_answers(answer_count, message, data, acc)</a></td>
   
+    <td class="summary_synopsis"><p>Returns a list of the answers (resource records) in this section of the DNS
+packet. The section may be the answer, authoritative or additional sections,
+this code is generic so it doesn’t care which section is being read</p>
+</td>
+  
 </tr>
 <tr>
   <td class="summary_signature"><a href="#read_bytes/2">read_bytes(data, len)</a></td>
+  
+    <td class="summary_synopsis"><p>Reads the ‘len’ number of bytes from the binary and returns a tuple of the
+bytes read the remaining bytes</p>
+</td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="#read_dns/3">read_dns(header, message, data)</a></td>
   
+    <td class="summary_synopsis"><p>Returns the list of questions in the DNS packet and answer,
+authoritative and additional sections.  Finally, the tuple returned contains
+the remaining bytes if there are any</p>
+</td>
+  
 </tr>
 <tr>
   <td class="summary_signature"><a href="#read_label/4">read_label(message, data, acc, at_end)</a></td>
+  
+    <td class="summary_synopsis"><p>Reads a label (such as ‘ns1.google.com’). It technically reads one label at a
+time and recurs until the end of the label is reached</p>
+</td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="#read_name/2">read_name(message, data)</a></td>
   
+    <td class="summary_synopsis"><p>Reads a name from the data and returns a tuple of the name read and the
+reamining bytes that have not been read yet</p>
+</td>
+  
 </tr>
 <tr>
   <td class="summary_signature"><a href="#read_name/4">read_name(message, data, acc, at_end)</a></td>
+  
+    <td class="summary_synopsis"><p>Reads a name (label or offset) from the data and returns a tuple with the name
+read and the remaining bytes not yet read</p>
+</td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="#read_offset/3">read_offset(message, data, acc)</a></td>
   
+    <td class="summary_synopsis"><p>Reads the offset position and then returns the label at the offset in the
+entire ‘message’. Returns a tuple of the label read and the remaining bytes
+not yet read</p>
+</td>
+  
 </tr>
 <tr>
   <td class="summary_signature"><a href="#read_question/2">read_question(message, data)</a></td>
+  
+    <td class="summary_synopsis"><p>Reads a DNS question from the ‘data’. Returns a tuple of the question and the
+remaining bytes</p>
+</td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="#read_questions/3">read_questions(question_count, message, data)</a></td>
   
+    <td class="summary_synopsis"><p>Returns a tuple with the list of the questions in this DNS packet and a binary
+of the remaining bytes that have not yet been read</p>
+</td>
+  
 </tr>
 <tr>
   <td class="summary_signature"><a href="#read_questions/4">read_questions(question_count, message, data, acc)</a></td>
   
+    <td class="summary_synopsis"><p>Returns a tuple with the list of the questions in this DNS packet and a binary
+of the remaining bytes that have not yet been read</p>
+</td>
+  
 </tr>
 <tr>
   <td class="summary_signature"><a href="#type_name/1">type_name(type)</a></td>
+  
+    <td class="summary_synopsis"><p>The rr type</p>
+</td>
   
 </tr>
 
         </table>
       
 
+      
+        <section id="types_details" class="details_list">
+          <h2>Types <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a></h2>
+          <div class="type_detail">
+  <p class="typespec" id="t:t/0">
+    <a href="#t:t/0">t</a> :: %Protocol.Dns.ResourceRecord{name: <a href="http://elixir-lang.org/docs/stable/elixir/String.html#t:t/0">String.t</a>, type: non_neg_integer, class: non_neg_integer, ttl: non_neg_integer, rdlen: non_neg_integer, rdata: binary}
+  </p>
+  
+</div>
+
+        </section>
       
 
       
@@ -128,11 +207,19 @@
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>class_name(non_neg_integer) :: :IN | :CH | :""</li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>The dclass name of this packet</p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L61" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L101" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -145,11 +232,19 @@
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>rdata_string(binary) :: <a href="http://elixir-lang.org/docs/stable/elixir/String.html#t:t/0">String.t</a></li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>Prints rdata to a human readable string. Very few rr types are supported.</p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L39" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L75" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -162,11 +257,20 @@
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>read_answer(binary, binary) :: {<a href="Protocol.Dns.ResourceRecord.html#t:t/0">Protocol.Dns.ResourceRecord.t</a>, binary}</li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>Reads an answer from the ‘data’ and returns a tuple of the resource record
+and remaining bytes.</p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L178" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L273" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -179,11 +283,21 @@
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>read_answers(non_neg_integer, binary, binary) :: {[<a href="Protocol.Dns.ResourceRecord.html#t:t/0">Protocol.Dns.ResourceRecord.t</a>], binary}</li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>Returns a list of the answers (resource records) in this section of the DNS
+packet. The section may be the answer, authoritative or additional sections,
+this code is generic so it doesn’t care which section is being read.</p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L213" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L326" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -196,11 +310,23 @@
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>read_answers(non_neg_integer, binary, binary, list) :: {[<a href="Protocol.Dns.ResourceRecord.html#t:t/0">Protocol.Dns.ResourceRecord.t</a>], binary}</li>
+      
+        <li>read_answers(0, binary, binary, list) :: {[<a href="Protocol.Dns.ResourceRecord.html#t:t/0">Protocol.Dns.ResourceRecord.t</a>], binary}</li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>Returns a list of the answers (resource records) in this section of the DNS
+packet. The section may be the answer, authoritative or additional sections,
+this code is generic so it doesn’t care which section is being read.</p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L203" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L304" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -213,11 +339,20 @@
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>read_bytes(binary, non_neg_integer) :: {binary, binary}</li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>Reads the ‘len’ number of bytes from the binary and returns a tuple of the
+bytes read the remaining bytes.</p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L99" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L148" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -230,11 +365,21 @@
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>read_dns(<a href="Protocol.Dns.Header.html#t:t/0">Protocol.Dns.Header.t</a>, binary, binary) :: {[<a href="Protocol.Dns.Question.html#t:t/0">Protocol.Dns.Question.t</a>], [<a href="Protocol.Dns.ResourceRecord.html#t:t/0">Protocol.Dns.ResourceRecord.t</a>], [<a href="Protocol.Dns.ResourceRecord.html#t:t/0">Protocol.Dns.ResourceRecord.t</a>], [<a href="Protocol.Dns.ResourceRecord.html#t:t/0">Protocol.Dns.ResourceRecord.t</a>], binary}</li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>Returns the list of questions in the DNS packet and answer,
+authoritative and additional sections.  Finally, the tuple returned contains
+the remaining bytes if there are any.</p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L217" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L342" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -247,11 +392,20 @@
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>read_label(binary, binary, list, boolean) :: {<a href="http://elixir-lang.org/docs/stable/elixir/String.html#t:t/0">String.t</a>, binary}</li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>Reads a label (such as ‘ns1.google.com’). It technically reads one label at a
+time and recurs until the end of the label is reached.</p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L107" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L161" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -264,11 +418,20 @@
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>read_name(binary, binary) :: {<a href="http://elixir-lang.org/docs/stable/elixir/String.html#t:t/0">String.t</a>, binary}</li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>Reads a name from the data and returns a tuple of the name read and the
+reamining bytes that have not been read yet.</p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L145" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L215" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -281,11 +444,20 @@
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>read_name(binary, binary, list, boolean) :: {<a href="http://elixir-lang.org/docs/stable/elixir/String.html#t:t/0">String.t</a>, binary}</li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>Reads a name (label or offset) from the data and returns a tuple with the name
+read and the remaining bytes not yet read.</p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L133" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L198" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -298,11 +470,21 @@
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>read_offset(binary, binary, list) :: {<a href="http://elixir-lang.org/docs/stable/elixir/String.html#t:t/0">String.t</a>, binary}</li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>Reads the offset position and then returns the label at the offset in the
+entire ‘message’. Returns a tuple of the label read and the remaining bytes
+not yet read.</p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L120" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L180" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -315,11 +497,20 @@
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>read_question(binary, binary) :: {<a href="Protocol.Dns.Question.html#t:t/0">Protocol.Dns.Question.t</a>, binary}</li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>Reads a DNS question from the ‘data’. Returns a tuple of the question and the
+remaining bytes.</p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L149" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L224" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -332,11 +523,20 @@
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>read_questions(non_neg_integer, binary, binary) :: {[<a href="Protocol.Dns.Question.html#t:t/0">Protocol.Dns.Question.t</a>], binary}</li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>Returns a tuple with the list of the questions in this DNS packet and a binary
+of the remaining bytes that have not yet been read.</p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L174" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L264" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -349,11 +549,22 @@
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>read_questions(non_neg_integer, binary, binary, list) :: {[<a href="Protocol.Dns.Question.html#t:t/0">Protocol.Dns.Question.t</a>], binary}</li>
+      
+        <li>read_questions(0, binary, binary, list) :: {[<a href="Protocol.Dns.Question.html#t:t/0">Protocol.Dns.Question.t</a>], binary}</li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>Returns a tuple with the list of the questions in this DNS packet and a binary
+of the remaining bytes that have not yet been read.</p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L164" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L244" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -366,11 +577,19 @@
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>type_name(non_neg_integer) :: :atom</li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>The rr type</p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L69" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L113" class="view_source">Source</a>
   
 </section>
 

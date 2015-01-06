@@ -67,7 +67,7 @@ end
 defmodule Protocol.Ipv4.Header do
 
   @moduledoc """
-  A parsed IPv4 header
+  A parsed IPv4 packet header
   """
 
   defstruct version:      <<>>,

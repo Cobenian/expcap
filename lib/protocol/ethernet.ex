@@ -73,7 +73,7 @@ end
 defmodule Protocol.Ethernet.Header do
 
   @moduledoc """
-  The header of an ethernet packet.
+  A parsed ethernet packet header
   """
 
   defstruct destmacaddr: <<>>,
