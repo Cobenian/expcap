@@ -46,27 +46,45 @@ defmodule ExPcap do
     packets: [ExPcap.Packet.t]
   }
 
+  @doc """
+  Parses the content of the packet according to the parser for this packet type.
+  Then it recurses until the packet has been parsed completely.
+  It may return something like an ethernet packet that contains an IPv4 packet
+  that contains a UDP packet that contains a DNS packet.
+  """
+  @spec parse_packet(ExPcap.PacketData.t, ExPcap.GlobalHeader.t) :: [ExPcap.Packet.t]
   def parse_packet(packet_data, global_header) do
     parser = PayloadType.payload_parser(global_header)
     parse_packet(parser, packet_data, [])
   end
 
+  @doc """
+  Parses the content of the packet according to the parser for this packet type.
+  Then it recurses until the packet has been parsed completely.
+  It may return something like an ethernet packet that contains an IPv4 packet
+  that contains a UDP packet that contains a DNS packet.
+  """
+  @spec parse_packet(nil, binary, [ExPcap.Packet.t]) :: [ExPcap.Packet.t]
   def parse_packet(nil, _payload, acc) do
     Enum.reverse acc
   end
 
+  @spec parse_packet(ExPcap.Parser.t, binary, [ExPcap.Packet.t]) :: [ExPcap.Packet.t]
   def parse_packet(parser, payload, acc) do
     next_payload = payload.data |> parser.from_data
     next_parser = PayloadType.payload_parser(next_payload)
     parse_packet(next_parser, next_payload, [next_payload | acc])
   end
 
+  @doc """
+  Reads a packet from a file. This packet is then parsed and the result is
+  returned.
+  """
+  @spec read_packet(String.t, ExPcap.GlobalHeader.t, ExPcap.PacketHeader.t) :: ExPcap.Packet.t
   def read_packet(f, global_header, packet_header) do
     packet_data = ExPcap.PacketData.from_file(f, global_header, packet_header)
-    # packet_data.data |> IO.inspect
 
     payload = parse_packet(packet_data, global_header)
-    # payload |> IO.inspect
 
     %ExPcap.Packet{
       packet_header: packet_header,
@@ -75,6 +93,11 @@ defmodule ExPcap do
     }
   end
 
+  @doc """
+  Reads a packet from the file and returns it or returns end of file if there
+  is no data left to be read.
+  """
+  @spec read_packet(String.t, ExPcap.GlobalHeader.t) :: :eof | ExPcap.Packet.t
   def read_packet(f, global_header) do
     packet_header = ExPcap.PacketHeader.from_file(f, global_header)
     case packet_header do
@@ -85,6 +108,11 @@ defmodule ExPcap do
     end
   end
 
+  @doc """
+  Reads all the packets from a file, parses them and returns a list of the
+  parsed packets.
+  """
+  @spec read_packets(String.t, ExPcap.GlobalHeader.t, list) :: [ExPcap.Packet.t]
   def read_packets(f, global_header, acc \\ []) do
     next_packet = read_packet(f, global_header)
     case next_packet do
@@ -96,6 +124,10 @@ defmodule ExPcap do
 
   end
 
+  @doc """
+  Reads a pcap file and returns the parsed results.
+  """
+  @spec read_pcap(String.t) :: ExPcap.t
   def read_pcap(f) do
     magic_number = ExPcap.MagicNumber.from_file(f)
     global_header = ExPcap.GlobalHeader.from_file(f, magic_number)
@@ -106,6 +138,11 @@ defmodule ExPcap do
     }
   end
 
+  @doc """
+  Reads a file, parses the pcap contents and returns a list of the parsed
+  packets.
+  """
+  @spec from_file(String.t) :: ExPcap.t
   def from_file(filename) do
     File.open!(filename, fn(file) ->
         read_pcap(file)

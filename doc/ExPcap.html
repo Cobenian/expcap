@@ -59,29 +59,60 @@
           <tr>
   <td class="summary_signature"><a href="#from_file/1">from_file(filename)</a></td>
   
+    <td class="summary_synopsis"><p>Reads a file, parses the pcap contents and returns a list of the parsed
+packets</p>
+</td>
+  
 </tr>
 <tr>
   <td class="summary_signature"><a href="#parse_packet/2">parse_packet(packet_data, global_header)</a></td>
+  
+    <td class="summary_synopsis"><p>Parses the content of the packet according to the parser for this packet type.
+Then it recurses until the packet has been parsed completely.
+It may return something like an ethernet packet that contains an IPv4 packet
+that contains a UDP packet that contains a DNS packet</p>
+</td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="#parse_packet/3">parse_packet(parser, payload, acc)</a></td>
   
+    <td class="summary_synopsis"><p>Parses the content of the packet according to the parser for this packet type.
+Then it recurses until the packet has been parsed completely.
+It may return something like an ethernet packet that contains an IPv4 packet
+that contains a UDP packet that contains a DNS packet</p>
+</td>
+  
 </tr>
 <tr>
   <td class="summary_signature"><a href="#read_packet/2">read_packet(f, global_header)</a></td>
+  
+    <td class="summary_synopsis"><p>Reads a packet from the file and returns it or returns end of file if there
+is no data left to be read</p>
+</td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="#read_packet/3">read_packet(f, global_header, packet_header)</a></td>
   
+    <td class="summary_synopsis"><p>Reads a packet from a file. This packet is then parsed and the result is
+returned</p>
+</td>
+  
 </tr>
 <tr>
   <td class="summary_signature"><a href="#read_packets/3">read_packets(f, global_header, acc \\ [])</a></td>
   
+    <td class="summary_synopsis"><p>Reads all the packets from a file, parses them and returns a list of the
+parsed packets</p>
+</td>
+  
 </tr>
 <tr>
   <td class="summary_signature"><a href="#read_pcap/1">read_pcap(f)</a></td>
+  
+    <td class="summary_synopsis"><p>Reads a pcap file and returns the parsed results</p>
+</td>
   
 </tr>
 
@@ -114,11 +145,20 @@
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>from_file(<a href="http://elixir-lang.org/docs/stable/elixir/String.html#t:t/0">String.t</a>) :: <a href="ExPcap.html#t:t/0">ExPcap.t</a></li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>Reads a file, parses the pcap contents and returns a list of the parsed
+packets.</p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap.ex#L109" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap.ex#L146" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -131,11 +171,22 @@
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>parse_packet(<a href="ExPcap.PacketData.html#t:t/0">ExPcap.PacketData.t</a>, <a href="ExPcap.GlobalHeader.html#t:t/0">ExPcap.GlobalHeader.t</a>) :: [<a href="ExPcap.Packet.html#t:t/0">ExPcap.Packet.t</a>]</li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>Parses the content of the packet according to the parser for this packet type.
+Then it recurses until the packet has been parsed completely.
+It may return something like an ethernet packet that contains an IPv4 packet
+that contains a UDP packet that contains a DNS packet.</p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap.ex#L49" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap.ex#L56" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -148,11 +199,24 @@
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>parse_packet(ExPcap.Parser.t, binary, [<a href="ExPcap.Packet.html#t:t/0">ExPcap.Packet.t</a>]) :: [<a href="ExPcap.Packet.html#t:t/0">ExPcap.Packet.t</a>]</li>
+      
+        <li>parse_packet(nil, binary, [<a href="ExPcap.Packet.html#t:t/0">ExPcap.Packet.t</a>]) :: [<a href="ExPcap.Packet.html#t:t/0">ExPcap.Packet.t</a>]</li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>Parses the content of the packet according to the parser for this packet type.
+Then it recurses until the packet has been parsed completely.
+It may return something like an ethernet packet that contains an IPv4 packet
+that contains a UDP packet that contains a DNS packet.</p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap.ex#L54" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap.ex#L68" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -165,11 +229,20 @@
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>read_packet(<a href="http://elixir-lang.org/docs/stable/elixir/String.html#t:t/0">String.t</a>, <a href="ExPcap.GlobalHeader.html#t:t/0">ExPcap.GlobalHeader.t</a>) :: :eof | <a href="ExPcap.Packet.html#t:t/0">ExPcap.Packet.t</a></li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>Reads a packet from the file and returns it or returns end of file if there
+is no data left to be read.</p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap.ex#L78" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap.ex#L101" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -182,11 +255,20 @@
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>read_packet(<a href="http://elixir-lang.org/docs/stable/elixir/String.html#t:t/0">String.t</a>, <a href="ExPcap.GlobalHeader.html#t:t/0">ExPcap.GlobalHeader.t</a>, <a href="ExPcap.PacketHeader.html#t:t/0">ExPcap.PacketHeader.t</a>) :: <a href="ExPcap.Packet.html#t:t/0">ExPcap.Packet.t</a></li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>Reads a packet from a file. This packet is then parsed and the result is
+returned.</p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap.ex#L64" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap.ex#L84" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -199,11 +281,20 @@
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>read_packets(<a href="http://elixir-lang.org/docs/stable/elixir/String.html#t:t/0">String.t</a>, <a href="ExPcap.GlobalHeader.html#t:t/0">ExPcap.GlobalHeader.t</a>, list) :: [<a href="ExPcap.Packet.html#t:t/0">ExPcap.Packet.t</a>]</li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>Reads all the packets from a file, parses them and returns a list of the
+parsed packets.</p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap.ex#L88" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap.ex#L116" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -216,11 +307,19 @@
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>read_pcap(<a href="http://elixir-lang.org/docs/stable/elixir/String.html#t:t/0">String.t</a>) :: <a href="ExPcap.html#t:t/0">ExPcap.t</a></li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>Reads a pcap file and returns the parsed results.</p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap.ex#L99" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap.ex#L131" class="view_source">Source</a>
   
 </section>
 
