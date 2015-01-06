@@ -30,6 +30,8 @@ defmodule ExPcap.Mixfile do
   #
   # Type `mix help deps` for more examples and options
   defp deps do
-    [{:timex, "~> 0.13.2"}]
+    [{:timex, "~> 0.13.2"},
+     {:earmark, ">= 0.0.0"},
+     {:ex_doc, github: "elixir-lang/ex_doc" }]
   end
 end
