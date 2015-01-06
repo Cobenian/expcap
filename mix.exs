@@ -7,6 +7,7 @@ defmodule ExPcap.Mixfile do
      elixir: "~> 1.0",
      name: "expcap",
      source_url: "https://github.com/cobenian/expcap",
+     description: description,
      package: package,
      deps: deps,
      escript: escript]
@@ -36,6 +37,22 @@ defmodule ExPcap.Mixfile do
     [{:timex, "~> 0.13.2"},
      {:earmark, "~> 0.1", only: :dev},
      {:ex_doc, "~> 0.6", only: :dev }]
+  end
+
+  defp description do
+    """
+    A PCAP library written in Elixir. This does not wrap a C or Erlang PCAP library,
+    rather it attempts to be an idiomatic Elixir library.
+
+    This library parses pcap files, however it does not yet support most protocols
+    that can be contained within a pcap file. The only supported protocols at the
+    moment are:
+
+    * Ethernet
+    * IPv4
+    * UDP
+    * DNS    
+    """
   end
 
   defp package do
