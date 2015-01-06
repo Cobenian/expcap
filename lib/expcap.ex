@@ -1,4 +1,14 @@
 defprotocol PayloadType do
+
+  @moduledoc """
+  This protocol indicates a module that is aware of which parser should be used
+  to handle its body.
+  """
+
+  @doc """
+  This function is passed a packet and it returns the parser that should be used
+  to parse its body.
+  """
   @spec payload_parser(any) :: PayloadParser.t
   def payload_parser(this_type)
 
@@ -6,6 +16,16 @@ defprotocol PayloadType do
 end
 
 defprotocol PayloadParser do
+
+  @moduledoc """
+  This protocol indicates a module that is aware of how to convert binary data
+  to a parsed packet.
+  """
+
+  @doc """
+  Parses the body of a packet into a new packet (presumably of another protocol)
+  For example a UDP packet body may contain a DNS packet. 
+  """
   @spec from_data(binary) :: any
   def from_data(data)
 

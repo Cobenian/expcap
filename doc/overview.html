@@ -72,6 +72,11 @@
 <tr>
   <td class="summary_signature"><a href="ExPcap.NetworkTypes.html">ExPcap.NetworkTypes</a></td>
   
+    <td class="summary_synopsis"><p>This module contains information about the types of packets that are contained
+in the PCAP file. For example, if the network type is ‘ethernet’ then each
+packet in the pcap file will be an ethernet packet</p>
+</td>
+  
 </tr>
 <tr>
   <td class="summary_signature"><a href="ExPcap.Packet.html">ExPcap.Packet</a></td>
@@ -145,9 +150,17 @@ packet may contain</p>
           <tr>
   <td class="summary_signature"><a href="PayloadParser.html">PayloadParser</a></td>
   
+    <td class="summary_synopsis"><p>This protocol indicates a module that is aware of how to convert binary data
+to a parsed packet</p>
+</td>
+  
 </tr>
 <tr>
   <td class="summary_signature"><a href="PayloadType.html">PayloadType</a></td>
+  
+    <td class="summary_synopsis"><p>This protocol indicates a module that is aware of which parser should be used
+to handle its body</p>
+</td>
   
 </tr>
 

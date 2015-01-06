@@ -18,6 +18,18 @@ defimpl String.Chars, for: ExPcap.GlobalHeader do
 end
 
 defmodule ExPcap.NetworkTypes do
+
+  @moduledoc """
+  This module contains information about the types of packets that are contained
+  in the PCAP file. For example, if the network type is 'ethernet' then each
+  packet in the pcap file will be an ethernet packet.
+  """
+
+  @doc """
+  Returns the type of packets that this pcap file contains in a human readable
+  format.
+  """
+  @spec network_name(non_neg_integer) :: String.t
   def network_name(network) do
     case network do
       1 -> "1 (Ethernet)"
@@ -27,6 +39,10 @@ defmodule ExPcap.NetworkTypes do
 end
 
 defimpl PayloadType, for: ExPcap.GlobalHeader do
+
+  @doc """
+  """
+  @spec payload_parser(ExPcap.GlobalHeader.t) :: PayloadType.t
   def payload_parser(_data) do
     # todo check 'network' value
     Protocol.Ethernet

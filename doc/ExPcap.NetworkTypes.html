@@ -41,6 +41,13 @@
       </ul>
 
       
+        <section id="moduledoc" class="docstring">
+          <p>This module contains information about the types of packets that are contained
+in the PCAP file. For example, if the network type is ‘ethernet’ then each
+packet in the pcap file will be an ethernet packet.</p>
+
+        </section>
+      
 
       
         <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/global_header.ex#L20" class="view_source">Source</a>
@@ -51,6 +58,10 @@
         <table class="summary">
           <tr>
   <td class="summary_signature"><a href="#network_name/1">network_name(network)</a></td>
+  
+    <td class="summary_synopsis"><p>Returns the type of packets that this pcap file contains in a human readable
+format</p>
+</td>
   
 </tr>
 
@@ -72,11 +83,20 @@
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>network_name(non_neg_integer) :: <a href="http://elixir-lang.org/docs/stable/elixir/String.html#t:t/0">String.t</a></li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>Returns the type of packets that this pcap file contains in a human readable
+format.</p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/global_header.ex#L21" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/global_header.ex#L33" class="view_source">Source</a>
   
 </section>
 

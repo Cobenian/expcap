@@ -45,9 +45,15 @@
       </ul>
 
       
+        <section id="moduledoc" class="docstring">
+          <p>This protocol indicates a module that is aware of how to convert binary data
+to a parsed packet.</p>
+
+        </section>
+      
 
       
-        <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap.ex#L8" class="view_source">Source</a>
+        <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap.ex#L18" class="view_source">Source</a>
       
 
       
@@ -55,6 +61,10 @@
         <table class="summary">
           <tr>
   <td class="summary_signature"><a href="#from_data/1">from_data(data)</a></td>
+  
+    <td class="summary_synopsis"><p>Parses the body of a packet into a new packet (presumably of another protocol)
+For example a UDP packet body may contain a DNS packet</p>
+</td>
   
 </tr>
 
@@ -95,10 +105,12 @@
     </ul>
   
   <section class="docstring">
-    
+    <p>Parses the body of a packet into a new packet (presumably of another protocol)
+For example a UDP packet body may contain a DNS packet. </p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap.ex#L10" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap.ex#L30" class="view_source">Source</a>
   
 </section>
 
