@@ -14,6 +14,12 @@ defmodule ExPcap.MagicNumber do
             nanos:          false,
             magic:          0x00000000
 
+  @type t :: %ExPcap.MagicNumber{
+    reverse_bytes: boolean,
+    nanos: boolean,
+    magic: non_neg_integer
+  }
+
   @bytes_in_magic 4
 
   def bytes_in_magic() do

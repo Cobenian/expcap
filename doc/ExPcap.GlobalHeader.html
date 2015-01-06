@@ -33,6 +33,8 @@
           <li><a href="#summary">Summary</a></li>
         
         
+          <li><a href="#types_details">Types</a></li>
+        
         
           <li><a href="#functions_details">Functions</a></li>
         
@@ -41,9 +43,14 @@
       </ul>
 
       
+        <section id="moduledoc" class="docstring">
+          <p>This module represents the global header of a pcap file.</p>
+
+        </section>
+      
 
       
-        <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/global_header.ex#L30" class="view_source">Source</a>
+        <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/global_header.ex#L36" class="view_source">Source</a>
       
 
       
@@ -64,11 +71,26 @@
 <tr>
   <td class="summary_signature"><a href="#reverse_bytes?/1">reverse_bytes?(global_header)</a></td>
   
+    <td class="summary_synopsis"><p>Returns true if the global header indicates that the bytes need to be
+reversed</p>
+</td>
+  
 </tr>
 
         </table>
       
 
+      
+        <section id="types_details" class="details_list">
+          <h2>Types <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a></h2>
+          <div class="type_detail">
+  <p class="typespec" id="t:t/0">
+    <a href="#t:t/0">t</a> :: %ExPcap.GlobalHeader{magic_number: non_neg_integer, version_major: non_neg_integer, version_minor: non_neg_integer, thiszone: integer, sigfigs: non_neg_integer, snaplen: non_neg_integer, network: non_neg_integer}
+  </p>
+  
+</div>
+
+        </section>
       
 
       
@@ -88,7 +110,7 @@
     
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/global_header.ex#L84" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/global_header.ex#L109" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -105,7 +127,7 @@
     
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/global_header.ex#L46" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/global_header.ex#L71" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -122,7 +144,7 @@
     
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/global_header.ex#L60" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/global_header.ex#L85" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -135,11 +157,20 @@
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>reverse_bytes?(<a href="ExPcap.GlobalHeader.html#t:t/0">ExPcap.GlobalHeader.t</a>) :: boolean</li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>Returns true if the global header indicates that the bytes need to be
+reversed.</p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/global_header.ex#L42" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/global_header.ex#L67" class="view_source">Source</a>
   
 </section>
 

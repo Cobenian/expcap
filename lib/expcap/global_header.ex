@@ -1,4 +1,9 @@
 defimpl String.Chars, for: ExPcap.GlobalHeader do
+
+  @doc """
+  How to print a global header in a human readable manner.
+  """
+  @spec to_string(ExPcap.GlobalHeader.t) :: String.t
   def to_string(item) do
     """
     #{item.magic_number}
@@ -9,6 +14,7 @@ defimpl String.Chars, for: ExPcap.GlobalHeader do
     network:              #{ExPcap.NetworkTypes.network_name(item.network)}
     """
   end
+
 end
 
 defmodule ExPcap.NetworkTypes do
@@ -29,6 +35,10 @@ end
 
 defmodule ExPcap.GlobalHeader do
 
+  @moduledoc """
+  This module represents the global header of a pcap file.
+  """
+
   defstruct magic_number:   0,
             version_major:  0,
             version_minor:  0,
@@ -37,8 +47,30 @@ defmodule ExPcap.GlobalHeader do
             snaplen:        0,
             network:        0   # determines the payload type (http://www.tcpdump.org/linktypes.html)
 
+  @type t :: %ExPcap.GlobalHeader{
+    magic_number: ExPcap.MagicNumber.t,
+    version_major: non_neg_integer,
+    version_minor: non_neg_integer,
+    thiszone: integer,
+    sigfigs: non_neg_integer,
+    snaplen: non_neg_integer,
+    network: non_neg_integer
+  }
+
   @bytes_in_header 24 - ExPcap.MagicNumber.bytes_in_magic
 
+  @doc """
+  Returns true if the global header indicates that the bytes need to be
+  reversed.
+
+  ## Examples
+
+      iex> ExPcap.GlobalHeader.reverse_bytes?( %ExPcap.GlobalHeader{magic_number: %ExPcap.MagicNumber{reverse_bytes: false}})
+      false
+      iex> ExPcap.GlobalHeader.reverse_bytes?( %ExPcap.GlobalHeader{magic_number: %ExPcap.MagicNumber{reverse_bytes: true}})
+      true
+  """
+  @spec reverse_bytes?(ExPcap.GlobalHeader.t) :: boolean
   def reverse_bytes?(global_header) do
     global_header.magic_number.reverse_bytes
   end
