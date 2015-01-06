@@ -1,6 +1,10 @@
 ExPcap
 ======
 
+[![hex.pm Custom](https://img.shields.io/badge/expcap-awesome-brightgreen.svg)](https://hex.pm/packages/expcap)
+[![hex.pm Version](https://img.shields.io/hexpm/v/expcap.svg)](https://hex.pm/packages/expcap)
+[![hex.pm License](https://img.shields.io/hexpm/l/plug.svg)](https://hex.pm/packages/expcap)
+
 A PCAP library written in Elixir. This does not wrap a C or Erlang PCAP library,
 rather it attempts to be an idiomatic Elixir library.
 
