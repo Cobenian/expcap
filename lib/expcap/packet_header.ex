@@ -16,6 +16,13 @@ defmodule ExPcap.PacketHeader do
             incl_len: 0,
             orig_len: 0
 
+  @type t :: %ExPcap.PacketHeader{
+    ts_sec: non_neg_integer,
+    ts_usec: non_neg_integer,
+    incl_len: non_neg_integer,
+    orig_len: non_neg_integer,
+  }
+
   @bytes_in_header 16
 
   def read_forward(data) do

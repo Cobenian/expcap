@@ -1,12 +1,19 @@
 defprotocol PayloadType do
+  @spec payload_parser(any) :: PayloadParser.t
   def payload_parser(this_type)
+
+  @type t :: any
 end
 
 defprotocol PayloadParser do
+  @spec from_data(binary) :: any
   def from_data(data)
+
+  @type t :: any
 end
 
 defimpl String.Chars, for: ExPcap do
+  @spec to_string(ExPcap.t) :: String.t
   def to_string(item) do
     """
     PCAP
@@ -27,8 +34,17 @@ end
 
 defmodule ExPcap do
 
+  @moduledoc """
+  This module represents a pcap file that has been parsed.
+  """
+
   defstruct global_header: %ExPcap.GlobalHeader{},
             packets: [] # %ExPcap.Packet{}
+
+  @type t :: %ExPcap{
+    global_header: ExPcap.GlobalHeader.t,
+    packets: [ExPcap.Packet.t]
+  }
 
   def parse_packet(packet_data, global_header) do
     parser = PayloadType.payload_parser(global_header)

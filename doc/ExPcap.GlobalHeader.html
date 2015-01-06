@@ -85,7 +85,7 @@ reversed</p>
           <h2>Types <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a></h2>
           <div class="type_detail">
   <p class="typespec" id="t:t/0">
-    <a href="#t:t/0">t</a> :: %ExPcap.GlobalHeader{magic_number: non_neg_integer, version_major: non_neg_integer, version_minor: non_neg_integer, thiszone: integer, sigfigs: non_neg_integer, snaplen: non_neg_integer, network: non_neg_integer}
+    <a href="#t:t/0">t</a> :: %ExPcap.GlobalHeader{magic_number: <a href="ExPcap.MagicNumber.html#t:t/0">ExPcap.MagicNumber.t</a>, version_major: non_neg_integer, version_minor: non_neg_integer, thiszone: integer, sigfigs: non_neg_integer, snaplen: non_neg_integer, network: non_neg_integer}
   </p>
   
 </div>
@@ -110,7 +110,7 @@ reversed</p>
     
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/global_header.ex#L109" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/global_header.ex#L116" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -127,7 +127,7 @@ reversed</p>
     
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/global_header.ex#L71" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/global_header.ex#L78" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -144,7 +144,7 @@ reversed</p>
     
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/global_header.ex#L85" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/global_header.ex#L92" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -167,10 +167,15 @@ reversed</p>
   <section class="docstring">
     <p>Returns true if the global header indicates that the bytes need to be
 reversed.</p>
+<h2>Examples</h2>
+<pre><code>iex&gt; ExPcap.GlobalHeader.reverse_bytes?( %ExPcap.GlobalHeader{magic_number: %ExPcap.MagicNumber{reverse_bytes: false}})
+false
+iex&gt; ExPcap.GlobalHeader.reverse_bytes?( %ExPcap.GlobalHeader{magic_number: %ExPcap.MagicNumber{reverse_bytes: true}})
+true</code></pre>
 
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/global_header.ex#L67" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/global_header.ex#L74" class="view_source">Source</a>
   
 </section>
 

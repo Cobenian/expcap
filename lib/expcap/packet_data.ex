@@ -12,6 +12,11 @@ defmodule ExPcap.PacketData do
   defstruct data_len:   0,
             data:       <<>>
 
+  @type t :: %ExPcap.PacketData{
+    data_len: non_neg_integer,
+    data: binary
+  }
+
   def read_reversed(data, packet_header) do
     %ExPcap.PacketData{
       data_len: packet_header.incl_len,
@@ -22,7 +27,7 @@ defmodule ExPcap.PacketData do
   def read_forward(data, packet_header) do
     %ExPcap.PacketData{
       data_len: packet_header.incl_len,
-      data:     data 
+      data:     data
     }
   end
 

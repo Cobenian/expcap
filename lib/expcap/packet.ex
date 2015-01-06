@@ -19,4 +19,10 @@ defmodule ExPcap.Packet do
             raw_packet_data:    %ExPcap.PacketData{},
             parsed_packet_data: Packet
 
+  @type t :: %ExPcap.Packet{
+    packet_header: ExPcap.PacketHeader.t,
+    raw_packet_data: ExPcap.PacketData.t,
+    parsed_packet_data: Packet
+  }
+
 end
