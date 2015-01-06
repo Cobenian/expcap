@@ -126,6 +126,8 @@ Here is an example:
 
 * Implement the PayloadType protocol
 
+Example:
+
     defimpl PayloadType, for: Protocol.Udp do
       @doc """
       Returns the parser that will parse the body of the UDP packet
@@ -138,6 +140,8 @@ Here is an example:
 
 * Implement the PayloadParser protocol
 
+Example:
+
     defimpl PayloadParser, for: Protocol.Udp do
       @doc """
       Returns the parsed body of the UDP packet
@@ -149,6 +153,8 @@ Here is an example:
     end
 
 * Add support for parsing your header (optional if you do not have a header)
+
+Example:
 
     @doc """
     Parses the header of a UDP packet
@@ -172,6 +178,8 @@ Here is an example:
 
 * Add support for parsing your protocol
 
+Example:
+
     @doc """
     Returns a parsed UDP packet
     """
@@ -185,6 +193,8 @@ Here is an example:
     end
 
 * Add support for printing your header to string (optional if you do not have a header)
+
+Example:
 
     defimpl String.Chars, for: Protocol.Udp.Header do
       @doc """
@@ -202,6 +212,8 @@ Here is an example:
     end
 
 * Add support for printing your protocol to string
+
+Example:
 
     defimpl String.Chars, for: Protocol.Udp do
       @doc """
