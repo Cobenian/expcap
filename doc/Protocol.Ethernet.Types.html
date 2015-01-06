@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Protocol.Ipv4</title>
+    <title>Protocol.Ethernet.Types</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
     <link rel="stylesheet" href="css/elixir.css" type="text/css" media="screen" charset="utf-8" />
@@ -22,9 +22,9 @@
     </script>
 
     <section id="content">
-      <div class="breadcrumbs">expcap v0.0.1 &rarr; <a href="overview.html">Overview</a> &rarr; Protocol &rarr; <a href="Protocol.Ipv4.html">Ipv4</a></div>
+      <div class="breadcrumbs">expcap v0.0.1 &rarr; <a href="overview.html">Overview</a> &rarr; Protocol &rarr; <a href="Protocol.Ethernet.html">Ethernet</a> &rarr; <a href="Protocol.Ethernet.Types.html">Types</a></div>
       <h1>
-        Protocol.Ipv4
+        Protocol.Ethernet.Types
         
       </h1>
 
@@ -41,20 +41,25 @@
       </ul>
 
       
+        <section id="moduledoc" class="docstring">
+          <p>This module contains functions related to the payload types that this ethernet
+packet may contain.</p>
+
+        </section>
+      
 
       
-        <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/ipv4.ex#L67" class="view_source">Source</a>
+        <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/ethernet.ex#L37" class="view_source">Source</a>
       
 
       
         <h2 id="summary">Summary<span class="detail_header_links"><a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a></span></h2>
         <table class="summary">
           <tr>
-  <td class="summary_signature"><a href="#from_data/1">from_data(data)</a></td>
+  <td class="summary_signature"><a href="#ethernet_type_name/1">ethernet_type_name(eth_type)</a></td>
   
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#header/1">header(data)</a></td>
+    <td class="summary_synopsis"><p>Prints the appropriate human readable ethernet type for the wire format</p>
+</td>
   
 </tr>
 
@@ -67,37 +72,28 @@
         <section id="functions_details" class="details_list">
           <h2>Functions</h2>
           <section class="detail">
-  <div class="detail_header" id="from_data/1">
-    <span class="signature"><strong>from_data(data)</strong></span>
+  <div class="detail_header" id="ethernet_type_name/1">
+    <span class="signature"><strong>ethernet_type_name(eth_type)</strong></span>
     <div class="detail_header_links">
       <span class="detail_type">(function)</span>
-      <a href="#from_data/1" class="detail_link" title="Link to this function">#</a>
+      <a href="#ethernet_type_name/1" class="detail_link" title="Link to this function">#</a>
       <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
     </div>
   </div>
   
-  <section class="docstring">
-    
-  </section>
-  
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/ipv4.ex#L110" class="view_source">Source</a>
-  
-</section>
-<section class="detail">
-  <div class="detail_header" id="header/1">
-    <span class="signature"><strong>header(data)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#header/1" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
-  </div>
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>ethernet_type_name(binary) :: <a href="http://elixir-lang.org/docs/stable/elixir/String.html#t:t/0">String.t</a></li>
+      
+    </ul>
   
   <section class="docstring">
-    
+    <p>Prints the appropriate human readable ethernet type for the wire format.</p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/ipv4.ex#L72" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/ethernet.ex#L48" class="view_source">Source</a>
   
 </section>
 

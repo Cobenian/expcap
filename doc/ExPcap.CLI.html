@@ -42,10 +42,15 @@
 
       
         <section id="moduledoc" class="docstring">
-          
+          <p>Prints the contents of a PCAP file to stdout.</p>
+<p>The file may be specified with the —file or -f flag.</p>
+<p>If no flags are passed (or —help or -h) then the help is printed.</p>
+
         </section>
       
 
+      
+        <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/cli.ex#L1" class="view_source">Source</a>
       
 
       
@@ -54,17 +59,32 @@
           <tr>
   <td class="summary_signature"><a href="#main/1">main(argv)</a></td>
   
+    <td class="summary_synopsis"><p>The entry point, a.k.a. the main function</p>
+</td>
+  
 </tr>
 <tr>
   <td class="summary_signature"><a href="#parse_args/1">parse_args(argv)</a></td>
+  
+    <td class="summary_synopsis"><p>Parses the arguments which may be either:
+—help, -h                :help
+—file, -f <name>         [file: name]</p>
+</td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="#process/1">process(arg1)</a></td>
   
+    <td class="summary_synopsis"><p>Prints the contents of the PCAP file in a somewhat human readable form</p>
+</td>
+  
 </tr>
 <tr>
   <td class="summary_signature"><a href="#run/1">run(argv)</a></td>
+  
+    <td class="summary_synopsis"><p>Parses the arguments and then either prints the contents of the PCAP file or
+prints the help message</p>
+</td>
   
 </tr>
 
@@ -86,9 +106,19 @@
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>main(list) :: nil</li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>The entry point, a.k.a. the main function.</p>
+
   </section>
+  
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/cli.ex#L14" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -101,9 +131,21 @@
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>parse_args(list) :: atom | [atom(<a href="http://elixir-lang.org/docs/stable/elixir/String.html#t:t/0">String.t</a>)]</li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>Parses the arguments which may be either:
+—help, -h                :help
+—file, -f <name>         [file: name]</p>
+
   </section>
+  
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/cli.ex#L33" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -116,9 +158,21 @@
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>process([:file | <a href="http://elixir-lang.org/docs/stable/elixir/String.html#t:t/0">String.t</a>]) :: <a href="http://elixir-lang.org/docs/stable/elixir/String.html#t:t/0">String.t</a></li>
+      
+        <li>process(:help) :: <a href="http://elixir-lang.org/docs/stable/elixir/String.html#t:t/0">String.t</a></li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>Prints the contents of the PCAP file in a somewhat human readable form.</p>
+
   </section>
+  
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/cli.ex#L49" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -131,9 +185,20 @@
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>run(list) :: nil</li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>Parses the arguments and then either prints the contents of the PCAP file or
+prints the help message.</p>
+
   </section>
+  
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/cli.ex#L23" class="view_source">Source</a>
   
 </section>
 

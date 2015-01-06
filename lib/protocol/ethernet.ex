@@ -34,14 +34,24 @@ defimpl PayloadParser, for: Protocol.Ethernet do
   end
 end
 
-defmodule Ethernet.Types do
-    def ethernet_type_name(eth_type) do
-      case eth_type do
-        <<08, 00>> -> "IPv4"
-        <<134, 221>> -> "IPv6"
-        _ -> "unknown"
-      end
+defmodule Protocol.Ethernet.Types do
+
+  @moduledoc """
+  This module contains functions related to the payload types that this ethernet
+  packet may contain.
+  """
+
+  @doc """
+  Prints the appropriate human readable ethernet type for the wire format.
+  """
+  @spec ethernet_type_name(binary) :: String.t
+  def ethernet_type_name(eth_type) do
+    case eth_type do
+      <<08, 00>> -> "IPv4"
+      <<134, 221>> -> "IPv6"
+      _ -> "unknown"
     end
+  end
 end
 
 defmodule Protocol.Ethernet.Header do

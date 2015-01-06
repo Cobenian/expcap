@@ -48,6 +48,8 @@
       
 
       
+        <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/binaries.ex#L1" class="view_source">Source</a>
+      
 
       
         <h2 id="summary">Summary<span class="detail_header_links"><a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a></span></h2>
@@ -174,10 +176,12 @@ reversed until the degenerate case is reached</p>
   <section class="docstring">
     <p>Reverses the bytes in the binary.</p>
 <h2>Examples</h2>
-<pre><code>iex&gt; reverse_binary(&lt;&lt;1, 2, 3, 4&gt;&gt;)
+<pre><code>iex&gt; ExPcap.Binaries.reverse_binary(&lt;&lt;1, 2, 3, 4&gt;&gt;)
 &lt;&lt;4, 3, 2, 1&gt;&gt;</code></pre>
 
   </section>
+  
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/binaries.ex#L126" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -205,12 +209,14 @@ binary.</p>
 <p>This will recur until it reaches the degenerate case and returns the
 accumulator.</p>
 <h2>Examples</h2>
-<pre><code>iex&gt; reverse_binary(&lt;&lt;3, 4&gt;&gt;, &lt;&lt;2, 1&gt;&gt;)
-&lt;&lt;3, 2, 1&gt;&gt;
-and then
+<pre><code>iex&gt; ExPcap.Binaries.reverse_binary(&lt;&lt;3, 4&gt;&gt;, &lt;&lt;2, 1&gt;&gt;)
+#&lt;&lt;3, 2, 1&gt;&gt;
+#and then
 &lt;&lt;4, 3, 2, 1&gt;&gt;</code></pre>
 
   </section>
+  
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/binaries.ex#L92" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -235,10 +241,12 @@ and then
 <p>Ideally, this would be replaced by a standard elixir function, but I have not
 been able to find such a function in the standard library.</p>
 <h2>Examples</h2>
-<pre><code>iex&gt; to_binary([1, 2, 3, 4])
+<pre><code>iex&gt; ExPcap.Binaries.to_binary([1, 2, 3, 4])
 &lt;&lt;1, 2, 3, 4&gt;&gt;</code></pre>
 
   </section>
+  
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/binaries.ex#L22" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -265,12 +273,14 @@ been able to find such a function in the standard library.</p>
 <p>This will recur until it reaches the degenerate case and returns the
 accumulator (binary).</p>
 <h2>Examples</h2>
-<pre><code>iex&gt; to_binary([3, 4], &lt;&lt;1, 2&gt;&gt;)
-&lt;&lt;1, 2, 3&gt;&gt;
-and then
+<pre><code>iex&gt; ExPcap.Binaries.to_binary([3, 4], &lt;&lt;1, 2&gt;&gt;)
+#&lt;&lt;1, 2, 3&gt;&gt;
+#and then
 &lt;&lt;1, 2, 3, 4&gt;&gt;</code></pre>
 
   </section>
+  
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/binaries.ex#L27" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -297,10 +307,12 @@ hex value.</p>
 <p>Note that the return type could be cleaned up here to only include 0-9 and a-f
 but no need to do that right now.</p>
 <h2>Examples</h2>
-<pre><code>iex&gt; to_hex(&lt;&lt;255, 0&gt;&gt;)
-0xff00</code></pre>
+<pre><code>iex&gt; ExPcap.Binaries.to_hex(&lt;&lt;255, 0&gt;&gt;)
+&quot;0xFF00&quot;</code></pre>
 
   </section>
+  
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/binaries.ex#L237" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -323,10 +335,12 @@ but no need to do that right now.</p>
   <section class="docstring">
     <p>Converts the first 32 bits of the binary to a signed integer.</p>
 <h2>Examples</h2>
-<pre><code>iex&gt; to_int32(&lt;&lt;255, 255, 255, 255, 255&gt;&gt;)
-2147483647</code></pre>
+<pre><code>iex&gt; ExPcap.Binaries.to_int32(&lt;&lt;255, 255, 255, 255&gt;&gt;)
+-1</code></pre>
 
   </section>
+  
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/binaries.ex#L185" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -349,10 +363,12 @@ but no need to do that right now.</p>
   <section class="docstring">
     <p>Converts a binary to a list of bytes.</p>
 <h2>Examples</h2>
-<pre><code>iex&gt; to_list(&lt;&lt;1, 2, 3, 4&gt;&gt;)
+<pre><code>iex&gt; ExPcap.Binaries.to_list(&lt;&lt;1, 2, 3, 4&gt;&gt;)
 [1, 2, 3, 4]</code></pre>
 
   </section>
+  
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/binaries.ex#L60" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -380,14 +396,16 @@ reversed until the degenerate case is reached.</p>
 <p>This will recur until it reaches the degenerate case and returns the
 accumulator (list).</p>
 <h2>Examples</h2>
-<pre><code>iex&gt; to_list(&lt;&lt;3, 4&gt;&gt;, [2, 1])
-[3, 2, 1]
-and then
-[4, 3, 2, 1]
-and then
+<pre><code>iex&gt; ExPcap.Binaries.to_list(&lt;&lt;3, 4&gt;&gt;, [2, 1])
+#[3, 2, 1]
+#and then
+#[4, 3, 2, 1]
+#and then
 [1, 2, 3, 4]</code></pre>
 
   </section>
+  
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/binaries.ex#L65" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -410,10 +428,13 @@ and then
   <section class="docstring">
     <p>Converts a binary to a ‘raw’ representation of the bytes.</p>
 <h2>Examples</h2>
-<pre><code>iex&gt; to_raw(&lt;&lt;1, 2, 3, 4&gt;&gt;)
-&lt;&lt;1, 2, 3, 4&gt;&gt;</code></pre>
+<pre><code>iex&gt; ExPcap.Binaries.to_raw(&lt;&lt;1, 2, 3, 4&gt;&gt;)
+#&lt;&lt;1, 2, 3, 4&gt;&gt;
+&quot;... redacted ...&quot;</code></pre>
 
   </section>
+  
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/binaries.ex#L216" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -438,10 +459,12 @@ and then
 <p>The typical display of a binary truncates the bytes, the intent here was to
 show the entire contents of the binary.</p>
 <h2>Examples</h2>
-<pre><code>iex&gt; to_string(&lt;&lt;1, 2, 3, 4&gt;&gt;)
-&lt;&lt;1, 2, 3, 4&gt;&gt;</code></pre>
+<pre><code>iex&gt; ExPcap.Binaries.to_string(&lt;&lt;1, 2, 3, 4&gt;&gt;)
+&quot;&lt;&lt;1, 2, 3, 4&gt;&gt;&quot;</code></pre>
 
   </section>
+  
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/binaries.ex#L202" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -464,10 +487,12 @@ show the entire contents of the binary.</p>
   <section class="docstring">
     <p>Converts the first 16 bits of the binary to an unsigned integer.</p>
 <h2>Examples</h2>
-<pre><code>iex&gt; to_uint16(&lt;&lt;255, 255, 255&gt;&gt;)
+<pre><code>iex&gt; ExPcap.Binaries.to_uint16(&lt;&lt;255, 255&gt;&gt;)
 65535</code></pre>
 
   </section>
+  
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/binaries.ex#L155" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -490,10 +515,12 @@ show the entire contents of the binary.</p>
   <section class="docstring">
     <p>Converts the first 32 bits of the binary to an unsigned integer.</p>
 <h2>Examples</h2>
-<pre><code>iex&gt; to_uint32(&lt;&lt;255, 255, 255, 255, 255&gt;&gt;)
+<pre><code>iex&gt; ExPcap.Binaries.to_uint32(&lt;&lt;255, 255, 255, 255&gt;&gt;)
 4294967295</code></pre>
 
   </section>
+  
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/binaries.ex#L170" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -516,10 +543,12 @@ show the entire contents of the binary.</p>
   <section class="docstring">
     <p>Converts the first 4 bits of the binary to an unsigned integer.</p>
 <h2>Examples</h2>
-<pre><code>iex&gt; to_uint4(&lt;&lt;255, 255&gt;&gt;)
+<pre><code>iex&gt; ExPcap.Binaries.to_uint4(&lt;&lt;0xf :: size(4)&gt;&gt;)
 15</code></pre>
 
   </section>
+  
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/binaries.ex#L140" class="view_source">Source</a>
   
 </section>
 

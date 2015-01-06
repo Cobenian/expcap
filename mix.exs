@@ -5,6 +5,8 @@ defmodule ExPcap.Mixfile do
     [app: :expcap,
      version: "0.0.1",
      elixir: "~> 1.0",
+     name: "expcap",
+     source_url: "https://github.com/cobenian/expcap",
      deps: deps,
      escript: escript]
   end
@@ -31,7 +33,7 @@ defmodule ExPcap.Mixfile do
   # Type `mix help deps` for more examples and options
   defp deps do
     [{:timex, "~> 0.13.2"},
-     {:earmark, ">= 0.0.0"},
-     {:ex_doc, github: "elixir-lang/ex_doc" }]
+     {:earmark, "~> 0.1", only: :dev},
+     {:ex_doc, "~> 0.6", only: :dev }]
   end
 end
