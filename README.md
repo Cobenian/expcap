@@ -65,13 +65,26 @@ would add the following line:
 
     <<17>> -> Protocol.Udp
 
-Giving the new IPv4 PayloadType implementation:
+Note that each protocol is different in this regard. For example, in IPv4 the
+header contains a 'protocol' field that indicates the content type of the body.
+The new IPv4 PayloadType implementation would look like:
 
     defimpl PayloadType, for: Protocol.Ipv4 do
       @doc """
       Returns the parser that will parse the body of this IPv4 packet.
       """
       @spec payload_parser(binary) :: PayloadParser.t
+      def payload_parser(data) do
+        case data.header.protocol do
+          <<06>> -> Protocol.Tcp
+          <<17>> -> Protocol.Udp
+        end
+      end
+    end
+
+Bare Bones:
+
+    defimpl PayloadType, for: Protocol.Ipv4 do
       def payload_parser(data) do
         case data.header.protocol do
           <<06>> -> Protocol.Tcp
@@ -101,6 +114,13 @@ want to include a "parsed data" element as well.  Here is an example:
       }
     end
 
+Bare Bones:
+
+    defmodule Protocol.Udp do
+      defstruct header: %Protocol.Udp.Header{},
+                data: <<>>
+    end
+
 * Create a struct for your protocol's header (optional)
 
 This is not strictly required, but is generally a good practice.
@@ -124,6 +144,15 @@ Here is an example:
       }
     end
 
+Bare Bones:
+
+    defmodule Protocol.Udp.Header do
+      defstruct srcport:     <<>>,
+                destport:    <<>>,
+                length:      <<>>,
+                checksum:    <<>>
+    end
+
 * Implement the PayloadType protocol
 
 Example:
@@ -138,6 +167,14 @@ Example:
       end
     end
 
+Bare Bones:
+
+    defimpl PayloadType, for: Protocol.Udp do
+      def payload_parser(_data) do
+        Protocol.Dns
+      end
+    end
+
 * Implement the PayloadParser protocol
 
 Example:
@@ -147,6 +184,14 @@ Example:
       Returns the parsed body of the UDP packet
       """
       @spec from_data(binary) :: any
+      def from_data(data) do
+        Protocol.Udp.from_data data
+      end
+    end
+
+Bare Bones:
+
+    defimpl PayloadParser, for: Protocol.Udp do
       def from_data(data) do
         Protocol.Udp.from_data data
       end
@@ -176,6 +221,25 @@ Example:
       }
     end
 
+Bare Bones:
+
+    def header(data) do
+      <<
+        srcport       :: unsigned-integer-size(16),
+        destport      :: unsigned-integer-size(16),
+        length        :: bytes-size(2),
+        checksum      :: bytes-size(2),
+        _payload       :: binary
+      >> = data
+      %Protocol.Udp.Header{
+        srcport: srcport,
+        destport: destport,
+        length: length,
+        checksum: checksum
+      }
+    end
+
+
 * Add support for parsing your protocol
 
 Example:
@@ -184,6 +248,16 @@ Example:
     Returns a parsed UDP packet
     """
     @spec from_data(binary) :: Protocol.Udp.t
+    def from_data(data) do
+      << _header :: bytes-size(@bytes_in_header), payload :: binary >> = data
+      %Protocol.Udp{
+        header: header(data),
+        data: payload
+      }
+    end
+
+Bare Bones:
+
     def from_data(data) do
       << _header :: bytes-size(@bytes_in_header), payload :: binary >> = data
       %Protocol.Udp{
@@ -211,6 +285,19 @@ Example:
       end
     end
 
+Bare Bones:
+
+    defimpl String.Chars, for: Protocol.Udp.Header do
+      def to_string(udp) do
+        String.strip("""
+        srcport:          #{udp.srcport}
+        srcport:          #{udp.destport}
+        length:           #{ExPcap.Binaries.to_uint16(udp.length)}
+        checksum:         #{ExPcap.Binaries.to_hex(udp.checksum)}
+        """)
+      end
+    end
+
 * Add support for printing your protocol to string
 
 Example:
@@ -220,6 +307,19 @@ Example:
       Prints a UDP packet to a human readable string
       """
       @spec to_string(Protocol.Udp.t) :: String.t
+      def to_string(udp) do
+        String.strip("""
+        Udp:
+        #{udp.header}
+        Length:           #{byte_size(udp.data)}
+        Raw:              #{ExPcap.Binaries.to_raw(udp.data)}
+        """)
+      end
+    end
+
+Bare Bones:
+
+    defimpl String.Chars, for: Protocol.Udp do
       def to_string(udp) do
         String.strip("""
         Udp:
