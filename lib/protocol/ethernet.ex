@@ -1,4 +1,8 @@
 defimpl String.Chars, for: Protocol.Ethernet do
+  @doc """
+  Prints a human readable ethernet packet to a string.
+  """
+  @spec to_string(Protocol.Ethernet.t) :: String.t
   def to_string(eth) do
     String.strip("""
     Ethernet:
@@ -10,6 +14,10 @@ defimpl String.Chars, for: Protocol.Ethernet do
 end
 
 defimpl String.Chars, for: Protocol.Ethernet.Header do
+  @doc """
+  Prints a human readable ethernet header as a string.
+  """
+  @spec to_string(Protocol.Ethernet.Header.t) :: String.t
   def to_string(eth) do
     String.strip("""
         dest mac addr:    #{ExPcap.Binaries.to_string(eth.destmacaddr)}
@@ -20,6 +28,10 @@ defimpl String.Chars, for: Protocol.Ethernet.Header do
 end
 
 defimpl PayloadType, for: Protocol.Ethernet do
+  @doc """
+  Returns the parser that will parse the body of this ethernet packet.
+  """
+  @spec payload_parser(binary) :: PayloadParser.t
   def payload_parser(data) do
     case data.header.ethertype do
       <<08, 00>> -> Protocol.Ipv4
@@ -29,6 +41,10 @@ defimpl PayloadType, for: Protocol.Ethernet do
 end
 
 defimpl PayloadParser, for: Protocol.Ethernet do
+  @doc """
+  Returns the parsed payload of this ethernet packet.
+  """
+  @spec from_data(binary) :: any
   def from_data(data) do
     Protocol.Ethernet.from_data data
   end
@@ -55,18 +71,42 @@ defmodule Protocol.Ethernet.Types do
 end
 
 defmodule Protocol.Ethernet.Header do
+
+  @moduledoc """
+  The header of an ethernet packet.
+  """
+
   defstruct destmacaddr: <<>>,
             srcmacaddr: <<>>,
             ethertype: <<>>
+
+  @type t :: %Protocol.Ethernet.Header{
+    destmacaddr: binary,
+    srcmacaddr: binary,
+    ethertype: binary
+  }
 end
 
 defmodule Protocol.Ethernet do
+
+  @moduledoc """
+  A parsed ethernet packet
+  """
 
   @bytes_in_header 14
 
   defstruct header: %Protocol.Ethernet.Header{},
             data: <<>>
 
+  @type t :: %Protocol.Ethernet{
+    header: Protocol.Ethernet.Header.t,
+    data: binary
+  }
+
+  @doc """
+  Returns a parsed ethernet header from an ethernet packet.
+  """
+  @spec header(binary) :: Protocol.Ethernet.Header.t
   def header(data) do
     <<
       destmacaddr :: bytes-size(6),
@@ -81,6 +121,10 @@ defmodule Protocol.Ethernet do
     }
   end
 
+  @doc """
+  Returns a parsed ethernet packet.
+  """
+  @spec from_data(binary) :: Protocol.Ethernet.t
   def from_data(data) do
     <<_header :: bytes-size(@bytes_in_header), rest :: binary>> = data
     %Protocol.Ethernet{

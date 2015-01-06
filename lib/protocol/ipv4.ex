@@ -1,4 +1,9 @@
 defimpl String.Chars, for: Protocol.Ipv4 do
+
+  @doc """
+  Prints an IPv4 packet in a human readable format.
+  """
+  @spec to_string(Protocol.Ipv4.t) :: String.t
   def to_string(ipv4) do
     String.strip("""
     IPv4:
@@ -10,6 +15,11 @@ defimpl String.Chars, for: Protocol.Ipv4 do
 end
 
 defimpl String.Chars, for: Protocol.Ipv4.Header do
+
+  @doc """
+  Prints an IPv4 header to a human readable format.
+  """
+  @spec to_string(Protocol.Ipv4.Header.t) :: String.t
   def to_string(ipv4) do
     String.strip("""
         version:          #{ExPcap.Binaries.to_uint4(ipv4.version)}
@@ -32,6 +42,10 @@ defimpl String.Chars, for: Protocol.Ipv4.Header do
 end
 
 defimpl PayloadType, for: Protocol.Ipv4 do
+  @doc """
+  Returns the parser that will parse the body of this IPv4 packet.
+  """
+  @spec payload_parser(binary) :: PayloadParser.t
   def payload_parser(data) do
     case data.header.protocol do
       # 06 -> Protocol.Tcp
@@ -41,12 +55,21 @@ defimpl PayloadType, for: Protocol.Ipv4 do
 end
 
 defimpl PayloadParser, for: Protocol.Ipv4 do
+  @doc """
+  Returns the parsed body of the IPv4 packet.
+  """
+  @spec from_data(binary) :: any
   def from_data(data) do
     Protocol.Ipv4.from_data data
   end
 end
 
 defmodule Protocol.Ipv4.Header do
+
+  @moduledoc """
+  A parsed IPv4 header
+  """
+
   defstruct version:      <<>>,
             ihl:          <<>>,
             dscp:         <<>>,
@@ -62,13 +85,44 @@ defmodule Protocol.Ipv4.Header do
             destaddr:     <<>>,
             options:      <<>>,
             padding:      <<>>
+
+  @type t :: %Protocol.Ipv4.Header{
+    version:      bitstring,
+    ihl:          bitstring,
+    dscp:         bitstring,
+    ecn:          bitstring,
+    totallen:     non_neg_integer,
+    id:           binary,
+    flags:        bitstring,
+    fragoffset:   bitstring,
+    ttl:          binary,
+    protocol:     binary,
+    checksum:     binary,
+    srcaddr:      binary,
+    destaddr:     binary,
+    options:      binary,
+    padding:      binary
+  }
 end
 
 defmodule Protocol.Ipv4 do
 
+  @moduledoc """
+  A parsed IPv4 packet.
+  """
+
   defstruct header: %Protocol.Ipv4.Header{},
             data: <<>>
 
+  @type t :: %Protocol.Ipv4{
+    header: Protocol.Ipv4.Header.t,
+    data: binary
+  }
+
+  @doc """
+  Parses an IPv4Header
+  """
+  @spec header(binary) :: Protocol.Ipv4.Header.t
   def header(data) do
     <<
       version     :: bits-size(4),
@@ -107,6 +161,10 @@ defmodule Protocol.Ipv4 do
     }
   end
 
+  @doc """
+  Parses an IPv4 packet and returns it
+  """
+  @spec from_data(binary) :: Protocol.Ipv4.t
   def from_data(data) do
     ipv4_header = header(data)
     # header size can be between 20 and 60 (see ihl value in the header...)

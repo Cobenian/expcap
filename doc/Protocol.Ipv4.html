@@ -33,6 +33,8 @@
           <li><a href="#summary">Summary</a></li>
         
         
+          <li><a href="#types_details">Types</a></li>
+        
         
           <li><a href="#functions_details">Functions</a></li>
         
@@ -41,9 +43,14 @@
       </ul>
 
       
+        <section id="moduledoc" class="docstring">
+          <p>A parsed IPv4 packet.</p>
+
+        </section>
+      
 
       
-        <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/ipv4.ex#L67" class="view_source">Source</a>
+        <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/ipv4.ex#L108" class="view_source">Source</a>
       
 
       
@@ -52,15 +59,32 @@
           <tr>
   <td class="summary_signature"><a href="#from_data/1">from_data(data)</a></td>
   
+    <td class="summary_synopsis"><p>Parses an IPv4 packet and returns it</p>
+</td>
+  
 </tr>
 <tr>
   <td class="summary_signature"><a href="#header/1">header(data)</a></td>
+  
+    <td class="summary_synopsis"><p>Parses an IPv4Header</p>
+</td>
   
 </tr>
 
         </table>
       
 
+      
+        <section id="types_details" class="details_list">
+          <h2>Types <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a></h2>
+          <div class="type_detail">
+  <p class="typespec" id="t:t/0">
+    <a href="#t:t/0">t</a> :: %Protocol.Ipv4{header: <a href="Protocol.Ipv4.Header.html#t:t/0">Protocol.Ipv4.Header.t</a>, data: binary}
+  </p>
+  
+</div>
+
+        </section>
       
 
       
@@ -76,11 +100,19 @@
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>from_data(binary) :: <a href="Protocol.Ipv4.html#t:t/0">Protocol.Ipv4.t</a></li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>Parses an IPv4 packet and returns it</p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/ipv4.ex#L110" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/ipv4.ex#L168" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -93,11 +125,19 @@
     </div>
   </div>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>header(binary) :: <a href="Protocol.Ipv4.Header.html#t:t/0">Protocol.Ipv4.Header.t</a></li>
+      
+    </ul>
+  
   <section class="docstring">
-    
+    <p>Parses an IPv4Header</p>
+
   </section>
   
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/ipv4.ex#L72" class="view_source">Source</a>
+    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/ipv4.ex#L126" class="view_source">Source</a>
   
 </section>
 
