@@ -6,12 +6,12 @@ defimpl String.Chars, for: ExPcap.GlobalHeader do
     this zone:            #{item.thiszone}
     sigfigs:              #{item.sigfigs}
     snaplen:              #{item.snaplen}
-    network:              #{NetworkTypes.network_name(item.network)}
+    network:              #{ExPcap.NetworkTypes.network_name(item.network)}
     """
   end
 end
 
-defmodule NetworkTypes do
+defmodule ExPcap.NetworkTypes do
   def network_name(network) do
     case network do
       1 -> "1 (Ethernet)"

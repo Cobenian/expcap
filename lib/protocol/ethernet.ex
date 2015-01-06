@@ -14,7 +14,7 @@ defimpl String.Chars, for: Protocol.Ethernet.Header do
     String.strip("""
         dest mac addr:    #{ExPcap.Binaries.to_string(eth.destmacaddr)}
         src mac addr:     #{ExPcap.Binaries.to_string(eth.srcmacaddr)}
-        ether type:       #{ExPcap.Binaries.to_hex(eth.ethertype)} (#{Ethernet.Types.ethernet_type_name(eth.ethertype)})
+        ether type:       #{ExPcap.Binaries.to_hex(eth.ethertype)} (#{Protocol.Ethernet.Types.ethernet_type_name(eth.ethertype)})
     """)
   end
 end
