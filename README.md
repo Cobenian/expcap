@@ -13,17 +13,23 @@ moment are:
 * UDP
 * DNS
 
+## Add Dependency
+
+In mix.exs add a dependency:
+
+    {:expcap, "~> 0.1.0"}
+
 ## Documentation
 
 Documentation can be found at http://cobenian.github.io/expcap
 
-## To Build Documentation
+## Documentation
 
 You must have run mix deps.get and mix deps.compile first.
 
     mix docs
 
-## To Build
+## Build
 
 You must have Elixir 1.0.0+ installed along with mix.
 
@@ -32,13 +38,13 @@ You must have Elixir 1.0.0+ installed along with mix.
     mix compile
     mix escript.build
 
-## To Test
+## Test
 
 You must have run mix deps.get and mix deps.compile first.
 
     mix test
 
-## To Run
+## Run via Escript
 
 Once the project has been built, the following escript can be run:
 
@@ -48,6 +54,18 @@ A sample DNS cap file can be found in test/data/dns.cap. This file is provided
 by Wireshark as a sample capture.
 
     ./expcap -f test/data/dns.cap
+
+## Programmatic Use
+
+Here is a sample using mix:
+
+    iex -S mix
+    iex> ExPcap.from_file "test/data/dns.cap"
+
+If you want to print the string in a more user friendly format:
+
+    iex -S mix
+    iex> "test/data/dns.cap" |> ExPcap.from_file |> String.Chars.to_string
 
 ### Windows
 
