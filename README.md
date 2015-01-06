@@ -63,12 +63,15 @@ For example, if we are adding the UDP protocol and it can be encapsulated in
 IPv4 packets, we need to modify the IPv4 PayloadType protocol. In this case we
 would add the following line:
 
+```elixir
     <<17>> -> Protocol.Udp
+```
 
 Note that each protocol is different in this regard. For example, in IPv4 the
 header contains a 'protocol' field that indicates the content type of the body.
 The new IPv4 PayloadType implementation would look like:
 
+```elixir
     defimpl PayloadType, for: Protocol.Ipv4 do
       @doc """
       Returns the parser that will parse the body of this IPv4 packet.
@@ -81,9 +84,11 @@ The new IPv4 PayloadType implementation would look like:
         end
       end
     end
+```
 
 Bare Bones:
 
+```elixir
     defimpl PayloadType, for: Protocol.Ipv4 do
       def payload_parser(data) do
         case data.header.protocol do
@@ -92,12 +97,14 @@ Bare Bones:
         end
       end
     end
+```
 
 * Create a module and struct for your protocol
 
 For many protocols this means having header and data sections only. You may
 want to include a "parsed data" element as well.  Here is an example:
 
+```elixir
     defmodule Protocol.Udp do
       @moduledoc """
       A parsed UDP packet
@@ -114,12 +121,16 @@ want to include a "parsed data" element as well.  Here is an example:
       }
     end
 
+```
+
 Bare Bones:
 
+```elixir
     defmodule Protocol.Udp do
       defstruct header: %Protocol.Udp.Header{},
                 data: <<>>
     end
+```
 
 * Create a struct for your protocol's header (optional)
 
@@ -127,6 +138,7 @@ This is not strictly required, but is generally a good practice.
 
 Here is an example:
 
+```elixir
     defmodule Protocol.Udp.Header do
       @moduledoc """
       A parsed UDP packet header
@@ -143,20 +155,24 @@ Here is an example:
         checksum: binary
       }
     end
+```
 
 Bare Bones:
 
+```elixir
     defmodule Protocol.Udp.Header do
       defstruct srcport:     <<>>,
                 destport:    <<>>,
                 length:      <<>>,
                 checksum:    <<>>
     end
+```
 
 * Implement the PayloadType protocol
 
 Example:
 
+```elixir
     defimpl PayloadType, for: Protocol.Udp do
       @doc """
       Returns the parser that will parse the body of the UDP packet
@@ -166,19 +182,23 @@ Example:
         Protocol.Dns
       end
     end
+```
 
 Bare Bones:
 
+```elixir
     defimpl PayloadType, for: Protocol.Udp do
       def payload_parser(_data) do
         Protocol.Dns
       end
     end
+```
 
 * Implement the PayloadParser protocol
 
 Example:
 
+```elixir
     defimpl PayloadParser, for: Protocol.Udp do
       @doc """
       Returns the parsed body of the UDP packet
@@ -188,19 +208,23 @@ Example:
         Protocol.Udp.from_data data
       end
     end
+```
 
 Bare Bones:
 
+```elixir
     defimpl PayloadParser, for: Protocol.Udp do
       def from_data(data) do
         Protocol.Udp.from_data data
       end
     end
+```
 
 * Add support for parsing your header (optional if you do not have a header)
 
 Example:
 
+```elixir
     @doc """
     Parses the header of a UDP packet
     """
@@ -220,9 +244,11 @@ Example:
         checksum: checksum
       }
     end
+```
 
 Bare Bones:
 
+```elixir
     def header(data) do
       <<
         srcport       :: unsigned-integer-size(16),
@@ -238,12 +264,13 @@ Bare Bones:
         checksum: checksum
       }
     end
-
+```
 
 * Add support for parsing your protocol
 
 Example:
 
+```elixir
     @doc """
     Returns a parsed UDP packet
     """
@@ -255,9 +282,11 @@ Example:
         data: payload
       }
     end
+```
 
 Bare Bones:
 
+```elixir
     def from_data(data) do
       << _header :: bytes-size(@bytes_in_header), payload :: binary >> = data
       %Protocol.Udp{
@@ -265,11 +294,13 @@ Bare Bones:
         data: payload
       }
     end
+```
 
 * Add support for printing your header to string (optional if you do not have a header)
 
 Example:
 
+```elixir
     defimpl String.Chars, for: Protocol.Udp.Header do
       @doc """
       Prints a UDP packet header to a human readable string
@@ -284,9 +315,11 @@ Example:
         """)
       end
     end
+```
 
 Bare Bones:
 
+```elixir
     defimpl String.Chars, for: Protocol.Udp.Header do
       def to_string(udp) do
         String.strip("""
@@ -297,11 +330,13 @@ Bare Bones:
         """)
       end
     end
+```
 
 * Add support for printing your protocol to string
 
 Example:
 
+```elixir
     defimpl String.Chars, for: Protocol.Udp do
       @doc """
       Prints a UDP packet to a human readable string
@@ -316,9 +351,11 @@ Example:
         """)
       end
     end
+```
 
 Bare Bones:
 
+```elixir
     defimpl String.Chars, for: Protocol.Udp do
       def to_string(udp) do
         String.strip("""
@@ -329,6 +366,7 @@ Bare Bones:
         """)
       end
     end
+```
 
 ## Limitations
 
