@@ -4,11 +4,11 @@ defimpl String.Chars, for: Protocol.Dns.Question do
   """
   @spec to_string(binary) :: String.t
   def to_string(dns) do
-    String.strip("""
+    """
       name:               #{dns.name}
       qtype:              #{dns.qtype} #{Protocol.Dns.ResourceRecord.type_name(dns.qtype)}
       qclass:             #{dns.qclass} #{Protocol.Dns.ResourceRecord.class_name(dns.qclass)}
-    """)
+    """ |> String.strip
   end
 end
 
@@ -18,14 +18,14 @@ defimpl String.Chars, for: Protocol.Dns.ResourceRecord do
   """
   @spec to_string(binary) :: String.t
   def to_string(dns) do
-    String.strip("""
+    """
       name:               #{dns.name}
       type:               #{dns.type} #{Protocol.Dns.ResourceRecord.type_name(dns.type)}
       class:              #{dns.class} #{Protocol.Dns.ResourceRecord.class_name(dns.class)}
       ttl:                #{dns.ttl}
       rdlen:              #{dns.rdlen}
       rdata:              #{ExPcap.Binaries.to_string(dns.rdata)} #{Protocol.Dns.ResourceRecord.rdata_string(dns)}
-    """)
+    """ |> String.strip
   end
 end
 
@@ -164,7 +164,7 @@ defmodule Protocol.Dns.ResourceRecord do
       rest          :: binary
     >> = data
     if len == 0 do
-      {Enum.join(Enum.reverse(acc), "."), rest}
+      {acc |> Enum.reverse |> Enum.join("."), rest}
     else
       {bytes, rest} = read_bytes(rest, len)
       read_name(message, rest, [bytes | acc], at_end)

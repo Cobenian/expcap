@@ -5,12 +5,12 @@ defimpl String.Chars, for: Protocol.Ipv4 do
   """
   @spec to_string(Protocol.Ipv4.t) :: String.t
   def to_string(ipv4) do
-    String.strip("""
+    """
     IPv4:
         #{ipv4.header}
         Length:           #{byte_size(ipv4.data)}
         Raw:              #{ExPcap.Binaries.to_raw(ipv4.data)}
-    """)
+    """ |> String.strip
   end
 end
 
@@ -21,7 +21,7 @@ defimpl String.Chars, for: Protocol.Ipv4.Header do
   """
   @spec to_string(Protocol.Ipv4.Header.t) :: String.t
   def to_string(ipv4) do
-    String.strip("""
+    """
         version:          #{ExPcap.Binaries.to_uint4(ipv4.version)}
         ihl:              #{ExPcap.Binaries.to_string(ipv4.ihl)}
         dscp:             #{ExPcap.Binaries.to_string(ipv4.dscp)}
@@ -37,7 +37,7 @@ defimpl String.Chars, for: Protocol.Ipv4.Header do
         destaddr:         #{ExPcap.Binaries.to_string(ipv4.destaddr)}
         options:          #{ExPcap.Binaries.to_string(ipv4.options)}
         padding:          #{ExPcap.Binaries.to_string(ipv4.padding)}
-    """)
+    """ |> String.strip
   end
 end
 
@@ -60,7 +60,7 @@ defimpl PayloadParser, for: Protocol.Ipv4 do
   """
   @spec from_data(binary) :: any
   def from_data(data) do
-    Protocol.Ipv4.from_data data
+    data |> Protocol.Ipv4.from_data
   end
 end
 

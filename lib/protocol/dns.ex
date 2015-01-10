@@ -4,21 +4,21 @@ defimpl String.Chars, for: Protocol.Dns do
   """
   @spec to_string(Protocol.Dns.t) :: String.t
   def to_string(dns) do
-    String.strip("""
+    """
     DNS:
         #{dns.header}
         Length:           #{byte_size(dns.data)}
         Parsed:
           Questions:
-      #{Enum.join(Enum.map(elem(dns.parsed, 0), &String.Chars.to_string/1), "\n  ")}
+      #{dns.parsed |> elem(0) |> Enum.map(&String.Chars.to_string/1) |> Enum.join("\n  ")}
           Answers:
-      #{Enum.join(Enum.map(elem(dns.parsed, 1), &String.Chars.to_string/1), "\n  ")}
+      #{dns.parsed |> elem(1) |> Enum.map(&String.Chars.to_string/1) |> Enum.join("\n  ")}
           Authorities:
-      #{Enum.join(Enum.map(elem(dns.parsed, 2), &String.Chars.to_string/1), "\n  ")}
+      #{dns.parsed |> elem(2) |> Enum.map(&String.Chars.to_string/1) |> Enum.join("\n  ")}
           Additionals:
-      #{Enum.join(Enum.map(elem(dns.parsed, 3), &String.Chars.to_string/1), "\n  ")}
+      #{dns.parsed |> elem(3) |> Enum.map(&String.Chars.to_string/1) |> Enum.join("\n  ")}
         Raw:              #{ExPcap.Binaries.to_raw(dns.data)}
-    """)
+    """ |> String.strip
   end
 end
 
@@ -28,7 +28,7 @@ defimpl String.Chars, for: Protocol.Dns.Header do
   """
   @spec to_string(Protocol.Dns.t) :: String.t
   def to_string(dns) do
-    String.strip("""
+    """
         id:               #{ExPcap.Binaries.to_string(dns.id)} #{ExPcap.Binaries.to_hex(dns.id)}
         qr:               #{ExPcap.Binaries.to_string(dns.qr)} #{Protocol.Dns.Header.qr_name(dns.qr)}
         opcode:           #{ExPcap.Binaries.to_string(dns.opcode)} #{Protocol.Dns.Header.opcode_name(dns.opcode)}
@@ -42,7 +42,7 @@ defimpl String.Chars, for: Protocol.Dns.Header do
         ancnt:            #{ExPcap.Binaries.to_string(dns.ancnt)}
         nscnt:            #{ExPcap.Binaries.to_string(dns.nscnt)}
         arcnt:            #{ExPcap.Binaries.to_string(dns.arcnt)}
-    """)
+    """ |> String.strip
   end
 end
 
@@ -66,7 +66,7 @@ defimpl PayloadParser, for: Protocol.Dns do
   """
   @spec from_data(binary) :: any
   def from_data(data) do
-    Protocol.Dns.from_data data
+    data |> Protocol.Dns.from_data
   end
 end
 

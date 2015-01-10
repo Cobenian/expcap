@@ -4,12 +4,12 @@ defimpl String.Chars, for: Protocol.Udp do
   """
   @spec to_string(Protocol.Udp.t) :: String.t
   def to_string(udp) do
-    String.strip("""
+    """
     Udp:
         #{udp.header}
         Length:           #{byte_size(udp.data)}
         Raw:              #{ExPcap.Binaries.to_raw(udp.data)}
-    """)
+    """ |> String.strip
   end
 end
 
@@ -19,12 +19,12 @@ defimpl String.Chars, for: Protocol.Udp.Header do
   """
   @spec to_string(Protocol.Udp.t) :: String.t
   def to_string(udp) do
-    String.strip("""
+    """
         srcport:          #{udp.srcport}
         srcport:          #{udp.destport}
         length:           #{ExPcap.Binaries.to_uint16(udp.length)}
         checksum:         #{ExPcap.Binaries.to_hex(udp.checksum)}
-    """)
+    """ |> String.strip
   end
 end
 
@@ -44,7 +44,7 @@ defimpl PayloadParser, for: Protocol.Udp do
   """
   @spec from_data(binary) :: any
   def from_data(data) do
-    Protocol.Udp.from_data data
+    data |> Protocol.Udp.from_data
   end
 end
 
