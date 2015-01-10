@@ -24,7 +24,7 @@ defprotocol PayloadParser do
 
   @doc """
   Parses the body of a packet into a new packet (presumably of another protocol)
-  For example a UDP packet body may contain a DNS packet. 
+  For example a UDP packet body may contain a DNS packet.
   """
   @spec from_data(binary) :: any
   def from_data(data)
@@ -46,7 +46,10 @@ defimpl String.Chars, for: ExPcap do
     Packets
     -------
 
-    #{Enum.join(Enum.map(item.packets, &String.Chars.to_string/1), "\n\n")}
+    #{item.packets
+      |> Enum.map(&String.Chars.to_string/1)
+      |> Enum.join("\n\n")
+    }
 
     """
   end
