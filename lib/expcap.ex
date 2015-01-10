@@ -77,8 +77,9 @@ defmodule ExPcap do
   """
   @spec parse_packet(ExPcap.PacketData.t, ExPcap.GlobalHeader.t) :: [ExPcap.Packet.t]
   def parse_packet(packet_data, global_header) do
-    parser = PayloadType.payload_parser(global_header)
-    parse_packet(parser, packet_data, [])
+    global_header
+    |> PayloadType.payload_parser
+    |> parse_packet(packet_data, [])
   end
 
   @doc """
@@ -95,8 +96,8 @@ defmodule ExPcap do
   @spec parse_packet(ExPcap.Parser.t, binary, [ExPcap.Packet.t]) :: [ExPcap.Packet.t]
   def parse_packet(parser, payload, acc) do
     next_payload = payload.data |> parser.from_data
-    next_parser = PayloadType.payload_parser(next_payload)
-    parse_packet(next_parser, next_payload, [next_payload | acc])
+    PayloadType.payload_parser(next_payload)
+    |> parse_packet(next_payload, [next_payload | acc])
   end
 
   @doc """
@@ -105,9 +106,9 @@ defmodule ExPcap do
   """
   @spec read_packet(String.t, ExPcap.GlobalHeader.t, ExPcap.PacketHeader.t) :: ExPcap.Packet.t
   def read_packet(f, global_header, packet_header) do
-    packet_data = ExPcap.PacketData.from_file(f, global_header, packet_header)
+    packet_data = f |> ExPcap.PacketData.from_file(global_header, packet_header)
 
-    payload = parse_packet(packet_data, global_header)
+    payload = packet_data |> parse_packet(global_header)
 
     %ExPcap.Packet{
       packet_header: packet_header,
@@ -168,7 +169,7 @@ defmodule ExPcap do
   @spec from_file(String.t) :: ExPcap.t
   def from_file(filename) do
     File.open!(filename, fn(file) ->
-        read_pcap(file)
+        file |> read_pcap
     end)
   end
 
