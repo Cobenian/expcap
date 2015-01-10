@@ -4,10 +4,10 @@ defimpl String.Chars, for: ExPcap.PacketData do
   """
   @spec to_string(ExPcap.PacketData.t) :: String.t
   def to_string(data) do
-    String.strip("""
+    """
       length:             #{data.data_len}
       raw data:           #{ExPcap.Binaries.to_string(data.data)}
-    """)
+    """ |> String.strip
   end
 end
 

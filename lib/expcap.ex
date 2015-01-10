@@ -153,8 +153,8 @@ defmodule ExPcap do
   """
   @spec read_pcap(String.t) :: ExPcap.t
   def read_pcap(f) do
-    magic_number = ExPcap.MagicNumber.from_file(f)
-    global_header = ExPcap.GlobalHeader.from_file(f, magic_number)
+    magic_number = f |> ExPcap.MagicNumber.from_file
+    global_header = f |> ExPcap.GlobalHeader.from_file(magic_number)
 
     %ExPcap{
       global_header: global_header,

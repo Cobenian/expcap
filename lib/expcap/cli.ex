@@ -12,7 +12,7 @@ defmodule ExPcap.CLI do
   """
   @spec main(list) :: nil
   def main(argv) do
-    run(argv)
+    argv |> run
   end
 
   @doc """
@@ -31,7 +31,7 @@ defmodule ExPcap.CLI do
   """
   @spec parse_args(list) :: atom | [atom String.t]
   def parse_args(argv) do
-    parse = OptionParser.parse(argv,
+    parse = argv |> OptionParser.parse(
       switches: [help: :boolean, file: :string],
       aliases: [h: :help, f: :file]
     )

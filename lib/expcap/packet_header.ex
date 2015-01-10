@@ -4,12 +4,12 @@ defimpl String.Chars, for: ExPcap.PacketHeader do
   """
   @spec to_string(ExPcap.PacketHeader.t) :: String.t
   def to_string(header) do
-    String.strip("""
-      ts sec:             #{header.ts_sec} (#{Timex.DateFormat.format!(Timex.Date.from(header.ts_sec, :secs), "{ISO}")})
+    """
+      ts sec:             #{header.ts_sec} (#{header.ts_sec |> Timex.Date.from(:secs) |> Timex.DateFormat.format!("{ISO}")})
       ts usec:            #{header.ts_usec}
       incl len:           #{header.incl_len}
       orig len:           #{header.orig_len}
-    """)
+    """ |> String.strip
   end
 end
 

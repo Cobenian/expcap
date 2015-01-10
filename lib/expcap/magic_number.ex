@@ -4,11 +4,11 @@ defimpl String.Chars, for: ExPcap.MagicNumber do
   """
   @spec to_string(ExPcap.MagicNumber.t) :: String.t
   def to_string(magic_number) do
-    String.strip("""
-    magic number:         0x#{String.downcase(Integer.to_string(magic_number.magic, 16))}
+    """
+    magic number:         0x#{magic_number.magic |> Integer.to_string(16) |> String.downcase}
       nanoseconds?        #{magic_number.nanos}
       reverse bytes?      #{magic_number.reverse_bytes}
-    """)
+    """ |> String.strip
   end
 end
 
@@ -113,7 +113,7 @@ defmodule ExPcap.MagicNumber do
   """
   @spec from_file(IO.device) :: ExPcap.MagicNumber.t
   def from_file(f) do
-    IO.binread(f, @bytes_in_magic) |> read_magic
+    f |> IO.binread(@bytes_in_magic) |> read_magic
   end
 
 end

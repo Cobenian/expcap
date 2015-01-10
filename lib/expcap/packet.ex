@@ -10,7 +10,9 @@ defimpl String.Chars, for: ExPcap.Packet do
     header:
       #{packet.packet_header}
     parsed:
-      #{Enum.join(Enum.map(packet.parsed_packet_data, &String.Chars.to_string/1), "\n  ")}
+      #{packet.parsed_packet_data
+      |> Enum.map(&String.Chars.to_string/1)
+      |> Enum.join("\n ")}
     raw:
       #{packet.raw_packet_data}
     """)
