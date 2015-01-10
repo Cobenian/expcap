@@ -3,7 +3,7 @@ defmodule ExPcap.Mixfile do
 
   def project do
     [app: :expcap,
-     version: "0.1.0",
+     version: "0.1.1",
      elixir: "~> 1.0",
      name: "expcap",
      source_url: "https://github.com/cobenian/expcap",
