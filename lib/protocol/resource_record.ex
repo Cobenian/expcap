@@ -8,7 +8,7 @@ defimpl String.Chars, for: Protocol.Dns.Question do
       name:               #{dns.name}
       qtype:              #{dns.qtype} #{Protocol.Dns.ResourceRecord.type_name(dns.qtype)}
       qclass:             #{dns.qclass} #{Protocol.Dns.ResourceRecord.class_name(dns.qclass)}
-    """ |> String.strip
+    """ |> String.trim
   end
 end
 
@@ -25,7 +25,7 @@ defimpl String.Chars, for: Protocol.Dns.ResourceRecord do
       ttl:                #{dns.ttl}
       rdlen:              #{dns.rdlen}
       rdata:              #{ExPcap.Binaries.to_string(dns.rdata)} #{Protocol.Dns.ResourceRecord.rdata_string(dns)}
-    """ |> String.strip
+    """ |> String.trim
   end
 end
 

@@ -9,7 +9,7 @@ defimpl String.Chars, for: ExPcap.PacketHeader do
       ts usec:            #{header.ts_usec}
       incl len:           #{header.incl_len}
       orig len:           #{header.orig_len}
-    """ |> String.strip
+    """ |> String.trim
   end
 end
 

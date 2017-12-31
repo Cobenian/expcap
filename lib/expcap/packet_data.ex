@@ -7,7 +7,7 @@ defimpl String.Chars, for: ExPcap.PacketData do
     """
       length:             #{data.data_len}
       raw data:           #{ExPcap.Binaries.to_string(data.data)}
-    """ |> String.strip
+    """ |> String.trim
   end
 end
 

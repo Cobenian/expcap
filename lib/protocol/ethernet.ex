@@ -9,7 +9,7 @@ defimpl String.Chars, for: Protocol.Ethernet do
         #{eth.header}
         Length:           #{byte_size(eth.data)}
         Raw:              #{ExPcap.Binaries.to_raw(eth.data)}
-    """ |> String.strip
+    """ |> String.trim
   end
 end
 
@@ -23,7 +23,7 @@ defimpl String.Chars, for: Protocol.Ethernet.Header do
         dest mac addr:    #{ExPcap.Binaries.to_string(eth.destmacaddr)}
         src mac addr:     #{ExPcap.Binaries.to_string(eth.srcmacaddr)}
         ether type:       #{ExPcap.Binaries.to_hex(eth.ethertype)} (#{Protocol.Ethernet.Types.ethernet_type_name(eth.ethertype)})
-    """ |> String.strip
+    """ |> String.trim
   end
 end
 

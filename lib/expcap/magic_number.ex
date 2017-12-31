@@ -8,7 +8,7 @@ defimpl String.Chars, for: ExPcap.MagicNumber do
     magic number:         0x#{magic_number.magic |> Integer.to_string(16) |> String.downcase}
       nanoseconds?        #{magic_number.nanos}
       reverse bytes?      #{magic_number.reverse_bytes}
-    """ |> String.strip
+    """ |> String.trim
   end
 end
 

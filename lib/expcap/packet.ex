@@ -4,7 +4,7 @@ defimpl String.Chars, for: ExPcap.Packet do
   """
   @spec to_string(ExPcap.Packet.t) :: String.t
   def to_string(packet) do
-    String.strip("""
+    String.trim("""
     Packet
     ------
     header:

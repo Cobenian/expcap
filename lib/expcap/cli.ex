@@ -29,7 +29,7 @@ defmodule ExPcap.CLI do
   --help, -h                :help
   --file, -f <name>         [file: name]
   """
-  @spec parse_args(list) :: atom | [atom String.t]
+  # @spec parse_args(list) :: atom | [atom String.t]
   def parse_args(argv) do
     parse = argv |> OptionParser.parse(
       switches: [help: :boolean, file: :string],
