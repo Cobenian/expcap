@@ -7,11 +7,11 @@ defmodule ExPcap.Mixfile do
      elixir: "~> 1.0",
      name: "expcap",
      source_url: "https://github.com/cobenian/expcap",
-     description: description,
-     package: package,
-     deps: deps,
-     docs: docs,
-     escript: escript]
+     description: description(),
+     package: package(),
+     deps: deps(),
+     docs: docs(),
+     escript: escript()]
   end
 
   def escript do

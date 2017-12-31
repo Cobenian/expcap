@@ -77,7 +77,7 @@ defmodule Protocol.Dns.ResourceRecord do
       1   -> # A
         dns.rdata
         |> ExPcap.Binaries.to_list
-        |> Enum.join "."
+        |> Enum.join(".")
       16  -> # TXT
         dns.rdata
         |> String.codepoints
@@ -88,7 +88,7 @@ defmodule Protocol.Dns.ResourceRecord do
         |> Enum.chunk(2)
         |> Enum.map(&ExPcap.Binaries.to_binary/1)
         |> Enum.map(&Base.encode16/1)
-        |> Enum.join ":"
+        |> Enum.join(":")
       _   ->
         ""
     end
