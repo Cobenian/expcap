@@ -35,8 +35,8 @@ defmodule ExPcap.Mixfile do
   #
   # Type `mix help deps` for more examples and options
   defp deps do
-    [{:timex, "~> 2.1.6"},
-     {:earmark, "~> 0.1", only: :dev},
+    [{:timex, "~> 3.0"},
+     {:earmark, "~> 1.0", only: :dev},
      {:ex_doc, "~> 0.6", only: :dev }]
   end
 
