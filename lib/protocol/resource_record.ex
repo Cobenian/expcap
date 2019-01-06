@@ -85,7 +85,7 @@ defmodule Protocol.Dns.ResourceRecord do
       28  -> # AAAA
         dns.rdata
         |> ExPcap.Binaries.to_list
-        |> Enum.chunk(2)
+        |> Enum.chunk_every(2)
         |> Enum.map(&ExPcap.Binaries.to_binary/1)
         |> Enum.map(&Base.encode16/1)
         |> Enum.join(":")

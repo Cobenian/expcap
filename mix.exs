@@ -4,7 +4,7 @@ defmodule ExPcap.Mixfile do
   def project do
     [app: :expcap,
      version: "0.1.1",
-     elixir: "~> 1.0",
+     elixir: "~> 1.7",
      name: "expcap",
      source_url: "https://github.com/cobenian/expcap",
      description: description(),
@@ -35,9 +35,10 @@ defmodule ExPcap.Mixfile do
   #
   # Type `mix help deps` for more examples and options
   defp deps do
-    [{:timex, "~> 3.0"},
-     {:earmark, "~> 1.0", only: :dev},
-     {:ex_doc, "~> 0.6", only: :dev }]
+    [
+      {:earmark, "~> 1.0", only: :dev},
+      {:ex_doc, "~> 0.6", only: :dev }
+    ]
   end
 
   defp docs do
