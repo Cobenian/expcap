@@ -10,7 +10,7 @@ defimpl String.Chars, for: Protocol.Ipv4 do
         #{ipv4.header}
         Length:           #{byte_size(ipv4.data)}
         Raw:              #{ExPcap.Binaries.to_raw(ipv4.data)}
-    """ |> String.strip
+    """ |> String.trim
   end
 end
 
@@ -37,7 +37,7 @@ defimpl String.Chars, for: Protocol.Ipv4.Header do
         destaddr:         #{ExPcap.Binaries.to_string(ipv4.destaddr)}
         options:          #{ExPcap.Binaries.to_string(ipv4.options)}
         padding:          #{ExPcap.Binaries.to_string(ipv4.padding)}
-    """ |> String.strip
+    """ |> String.trim
   end
 end
 

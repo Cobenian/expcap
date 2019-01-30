@@ -200,7 +200,9 @@ defmodule ExPcap.Binaries do
   """
   @spec to_string(binary) :: String.t
   def to_string(b) do
-    Inspect.Algebra.to_doc(b, %Inspect.Opts{width: 80})
+    Inspect.Algebra.to_doc(b, %Inspect.Opts{})
+    |> Inspect.Algebra.format(80)
+    |> IO.iodata_to_binary()
   end
 
   @doc """

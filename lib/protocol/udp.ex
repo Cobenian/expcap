@@ -9,7 +9,7 @@ defimpl String.Chars, for: Protocol.Udp do
         #{udp.header}
         Length:           #{byte_size(udp.data)}
         Raw:              #{ExPcap.Binaries.to_raw(udp.data)}
-    """ |> String.strip
+    """ |> String.trim
   end
 end
 
@@ -24,7 +24,7 @@ defimpl String.Chars, for: Protocol.Udp.Header do
         srcport:          #{udp.destport}
         length:           #{ExPcap.Binaries.to_uint16(udp.length)}
         checksum:         #{ExPcap.Binaries.to_hex(udp.checksum)}
-    """ |> String.strip
+    """ |> String.trim
   end
 end
 

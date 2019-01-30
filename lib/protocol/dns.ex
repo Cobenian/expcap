@@ -18,7 +18,7 @@ defimpl String.Chars, for: Protocol.Dns do
           Additionals:
       #{dns.parsed |> elem(3) |> Enum.map(&String.Chars.to_string/1) |> Enum.join("\n  ")}
         Raw:              #{ExPcap.Binaries.to_raw(dns.data)}
-    """ |> String.strip
+    """ |> String.trim
   end
 end
 
@@ -42,7 +42,7 @@ defimpl String.Chars, for: Protocol.Dns.Header do
         ancnt:            #{ExPcap.Binaries.to_string(dns.ancnt)}
         nscnt:            #{ExPcap.Binaries.to_string(dns.nscnt)}
         arcnt:            #{ExPcap.Binaries.to_string(dns.arcnt)}
-    """ |> String.strip
+    """ |> String.trim
   end
 end
 

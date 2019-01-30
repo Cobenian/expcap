@@ -8,7 +8,7 @@ defimpl String.Chars, for: Protocol.Dns.Question do
       name:               #{dns.name}
       qtype:              #{dns.qtype} #{Protocol.Dns.ResourceRecord.type_name(dns.qtype)}
       qclass:             #{dns.qclass} #{Protocol.Dns.ResourceRecord.class_name(dns.qclass)}
-    """ |> String.strip
+    """ |> String.trim
   end
 end
 
@@ -25,7 +25,7 @@ defimpl String.Chars, for: Protocol.Dns.ResourceRecord do
       ttl:                #{dns.ttl}
       rdlen:              #{dns.rdlen}
       rdata:              #{ExPcap.Binaries.to_string(dns.rdata)} #{Protocol.Dns.ResourceRecord.rdata_string(dns)}
-    """ |> String.strip
+    """ |> String.trim
   end
 end
 
@@ -77,7 +77,7 @@ defmodule Protocol.Dns.ResourceRecord do
       1   -> # A
         dns.rdata
         |> ExPcap.Binaries.to_list
-        |> Enum.join "."
+        |> Enum.join(".")
       16  -> # TXT
         dns.rdata
         |> String.codepoints
@@ -85,10 +85,10 @@ defmodule Protocol.Dns.ResourceRecord do
       28  -> # AAAA
         dns.rdata
         |> ExPcap.Binaries.to_list
-        |> Enum.chunk(2)
+        |> Enum.chunk_every(2)
         |> Enum.map(&ExPcap.Binaries.to_binary/1)
         |> Enum.map(&Base.encode16/1)
-        |> Enum.join ":"
+        |> Enum.join(":")
       _   ->
         ""
     end

@@ -333,7 +333,7 @@ Example:
       """
       @spec to_string(Protocol.Udp.t) :: String.t
       def to_string(udp) do
-        String.strip("""
+        String.trim("""
         srcport:          #{udp.srcport}
         srcport:          #{udp.destport}
         length:           #{ExPcap.Binaries.to_uint16(udp.length)}
@@ -348,7 +348,7 @@ Bare Bones:
 ```elixir
     defimpl String.Chars, for: Protocol.Udp.Header do
       def to_string(udp) do
-        String.strip("""
+        String.trim("""
         srcport:          #{udp.srcport}
         srcport:          #{udp.destport}
         length:           #{ExPcap.Binaries.to_uint16(udp.length)}
@@ -369,7 +369,7 @@ Example:
       """
       @spec to_string(Protocol.Udp.t) :: String.t
       def to_string(udp) do
-        String.strip("""
+        String.trim("""
         Udp:
         #{udp.header}
         Length:           #{byte_size(udp.data)}
@@ -384,7 +384,7 @@ Bare Bones:
 ```elixir
     defimpl String.Chars, for: Protocol.Udp do
       def to_string(udp) do
-        String.strip("""
+        String.trim("""
         Udp:
         #{udp.header}
         Length:           #{byte_size(udp.data)}
