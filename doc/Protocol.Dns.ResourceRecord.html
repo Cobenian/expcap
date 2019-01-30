@@ -1,604 +1,613 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Protocol.Dns.ResourceRecord</title>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
-    <link rel="stylesheet" href="css/elixir.css" type="text/css" media="screen" charset="utf-8" />
-    <script type="text/javascript" charset="utf-8">
-      relpath = '';
-      if (relpath != '') relpath += '/';
-    </script>
-
-    <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
-    <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
-    <script type="text/javascript" charset="utf-8" src="js/highlight.pack.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.19.3">
+    <title>Protocol.Dns.ResourceRecord — expcap v0.1.1</title>
+    <link rel="stylesheet" href="dist/html-399e30b9b028e3059575.css" />
+      <link rel="canonical" href="https://hexdocs.pm/expcap/Protocol.Dns.ResourceRecord.html" />
+    <script src="dist/sidebar_items-25789c3aff.js"></script>
+    <script async src="dist/html-399e30b9b028e3059575.js"></script>
+    
   </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+    <div class="main">
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Sidebar</span>
+</button>
+<button class="sidebar-button night-mode-toggle">
+  <span class="icon-theme" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Theme</span>
+</button>
+<section class="sidebar">
 
-  <body>
-    <script type="text/javascript" charset="utf-8">
-      if (window.top.frames.main) document.body.className = 'frames';
-    </script>
+  <a href="ExPcap.html" class="sidebar-projectLink">
+    <div class="sidebar-projectDetails">
+      <h1 class="sidebar-projectName">
+expcap      </h1>
+      <h2 class="sidebar-projectVersion">
+        v0.1.1
+      </h2>
+    </div>
+  </a>
 
-    <section id="content">
-      <div class="breadcrumbs">expcap v0.1.1 &rarr; <a href="overview.html">Overview</a> &rarr; Protocol &rarr; <a href="Protocol.Dns.html">Dns</a> &rarr; <a href="Protocol.Dns.ResourceRecord.html">ResourceRecord</a></div>
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <input name="q" type="text" id="search-list" class="search-input" placeholder="Search" aria-label="Search" autocomplete="off" />
+  </form>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
       <h1>
-        Protocol.Dns.ResourceRecord
-        
+        <small class="visible-xs">expcap v0.1.1</small>
+Protocol.Dns.ResourceRecord        
+          <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L49" title="View Source" class="view-source" rel="help">
+            <span class="icon-code" aria-hidden="true"></span>
+            <span class="sr-only">View Source</span>
+          </a>
       </h1>
 
-      <ul class="summary_links">
-        
-          <li><a href="#summary">Summary</a></li>
-        
-        
-          <li><a href="#types_details">Types</a></li>
-        
-        
-          <li><a href="#functions_details">Functions</a></li>
-        
-        
-        
-      </ul>
 
-      
-        <section id="moduledoc" class="docstring">
-          <p>A parsed DNS resource record</p>
-
+        <section id="moduledoc">
+<p>A parsed DNS resource record</p>
         </section>
-      
 
-      
-        <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L49" class="view_source">Source</a>
-      
-
-      
-        <h2 id="summary">Summary<span class="detail_header_links"><a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a></span></h2>
-        <table class="summary">
-          <tr>
-  <td class="summary_signature"><a href="#class_name/1">class_name(class)</a></td>
-  
-    <td class="summary_synopsis"><p>The dclass name of this packet</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#rdata_string/1">rdata_string(dns)</a></td>
-  
-    <td class="summary_synopsis"><p>Prints rdata to a human readable string. Very few rr types are supported</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#read_answer/2">read_answer(message, data)</a></td>
-  
-    <td class="summary_synopsis"><p>Reads an answer from the ‘data’ and returns a tuple of the resource record
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:t/0">t()</a>
+  </div>
+</div>
+  </div>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#class_name/1">class_name(class)</a>
+  </div>
+    <div class="summary-synopsis"><p>The dclass name of this packet</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#rdata_string/1">rdata_string(dns)</a>
+  </div>
+    <div class="summary-synopsis"><p>Prints rdata to a human readable string. Very few rr types are supported</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#read_answer/2">read_answer(message, data)</a>
+  </div>
+    <div class="summary-synopsis"><p>Reads an answer from the &#39;data&#39; and returns a tuple of the resource record
 and remaining bytes</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#read_answers/3">read_answers(answer_count, message, data)</a></td>
-  
-    <td class="summary_synopsis"><p>Returns a list of the answers (resource records) in this section of the DNS
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#read_answers/3">read_answers(answer_count, message, data)</a>
+  </div>
+    <div class="summary-synopsis"><p>Returns a list of the answers (resource records) in this section of the DNS
 packet. The section may be the answer, authoritative or additional sections,
-this code is generic so it doesn’t care which section is being read</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#read_answers/4">read_answers(answer_count, message, data, acc)</a></td>
-  
-    <td class="summary_synopsis"><p>Returns a list of the answers (resource records) in this section of the DNS
+this code is generic so it doesn&#39;t care which section is being read</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#read_answers/4">read_answers(answer_count, message, data, acc)</a>
+  </div>
+    <div class="summary-synopsis"><p>Returns a list of the answers (resource records) in this section of the DNS
 packet. The section may be the answer, authoritative or additional sections,
-this code is generic so it doesn’t care which section is being read</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#read_bytes/2">read_bytes(data, len)</a></td>
-  
-    <td class="summary_synopsis"><p>Reads the ‘len’ number of bytes from the binary and returns a tuple of the
+this code is generic so it doesn&#39;t care which section is being read</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#read_bytes/2">read_bytes(data, len)</a>
+  </div>
+    <div class="summary-synopsis"><p>Reads the &#39;len&#39; number of bytes from the binary and returns a tuple of the
 bytes read the remaining bytes</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#read_dns/3">read_dns(header, message, data)</a></td>
-  
-    <td class="summary_synopsis"><p>Returns the list of questions in the DNS packet and answer,
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#read_dns/3">read_dns(header, message, data)</a>
+  </div>
+    <div class="summary-synopsis"><p>Returns the list of questions in the DNS packet and answer,
 authoritative and additional sections.  Finally, the tuple returned contains
 the remaining bytes if there are any</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#read_label/4">read_label(message, data, acc, at_end)</a></td>
-  
-    <td class="summary_synopsis"><p>Reads a label (such as ‘ns1.google.com’). It technically reads one label at a
-time and recurs until the end of the label is reached</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#read_name/2">read_name(message, data)</a></td>
-  
-    <td class="summary_synopsis"><p>Reads a name from the data and returns a tuple of the name read and the
-reamining bytes that have not been read yet</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#read_name/4">read_name(message, data, acc, at_end)</a></td>
-  
-    <td class="summary_synopsis"><p>Reads a name (label or offset) from the data and returns a tuple with the name
-read and the remaining bytes not yet read</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#read_offset/3">read_offset(message, data, acc)</a></td>
-  
-    <td class="summary_synopsis"><p>Reads the offset position and then returns the label at the offset in the
-entire ‘message’. Returns a tuple of the label read and the remaining bytes
-not yet read</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#read_question/2">read_question(message, data)</a></td>
-  
-    <td class="summary_synopsis"><p>Reads a DNS question from the ‘data’. Returns a tuple of the question and the
-remaining bytes</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#read_questions/3">read_questions(question_count, message, data)</a></td>
-  
-    <td class="summary_synopsis"><p>Returns a tuple with the list of the questions in this DNS packet and a binary
-of the remaining bytes that have not yet been read</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#read_questions/4">read_questions(question_count, message, data, acc)</a></td>
-  
-    <td class="summary_synopsis"><p>Returns a tuple with the list of the questions in this DNS packet and a binary
-of the remaining bytes that have not yet been read</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#type_name/1">type_name(type)</a></td>
-  
-    <td class="summary_synopsis"><p>The rr type</p>
-</td>
-  
-</tr>
-
-        </table>
-      
-
-      
-        <section id="types_details" class="details_list">
-          <h2>Types <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a></h2>
-          <div class="type_detail">
-  <p class="typespec" id="t:t/0">
-    <a href="#t:t/0">t</a> :: %Protocol.Dns.ResourceRecord{name: <a href="http://elixir-lang.org/docs/stable/elixir/String.html#t:t/0">String.t</a>, type: non_neg_integer, class: non_neg_integer, ttl: non_neg_integer, rdlen: non_neg_integer, rdata: binary}
-  </p>
-  
 </div>
-
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#read_label/4">read_label(message, data, acc, at_end)</a>
+  </div>
+    <div class="summary-synopsis"><p>Reads a label (such as &#39;ns1.google.com&#39;). It technically reads one label at a
+time and recurs until the end of the label is reached</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#read_name/2">read_name(message, data)</a>
+  </div>
+    <div class="summary-synopsis"><p>Reads a name from the data and returns a tuple of the name read and the
+reamining bytes that have not been read yet</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#read_name/4">read_name(message, data, acc, at_end)</a>
+  </div>
+    <div class="summary-synopsis"><p>Reads a name (label or offset) from the data and returns a tuple with the name
+read and the remaining bytes not yet read</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#read_offset/3">read_offset(message, data, acc)</a>
+  </div>
+    <div class="summary-synopsis"><p>Reads the offset position and then returns the label at the offset in the
+entire &#39;message&#39;. Returns a tuple of the label read and the remaining bytes
+not yet read</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#read_question/2">read_question(message, data)</a>
+  </div>
+    <div class="summary-synopsis"><p>Reads a DNS question from the &#39;data&#39;. Returns a tuple of the question and the
+remaining bytes</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#read_questions/3">read_questions(question_count, message, data)</a>
+  </div>
+    <div class="summary-synopsis"><p>Returns a tuple with the list of the questions in this DNS packet and a binary
+of the remaining bytes that have not yet been read</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#read_questions/4">read_questions(question_count, message, data, acc)</a>
+  </div>
+    <div class="summary-synopsis"><p>Returns a tuple with the list of the questions in this DNS packet and a binary
+of the remaining bytes that have not yet been read</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#type_name/1">type_name(type)</a>
+  </div>
+    <div class="summary-synopsis"><p>The rr type</p>
+</div>
+</div>
+  </div>
         </section>
-      
 
-      
-        <section id="functions_details" class="details_list">
-          <h2>Functions</h2>
-          <section class="detail">
-  <div class="detail_header" id="class_name/1">
-    <span class="signature"><strong>class_name(class)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#class_name/1" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types          </h1>
+          <div class="types-list">
+<section class="detail" id="t:t/0">
+    <div class="detail-header">
+    <a href="#t:t/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">t()</span>
+      <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L62" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>t() :: %Protocol.Dns.ResourceRecord{
+  class: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+  name: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
+  rdata: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(),
+  rdlen: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+  ttl: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+  type: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()
+}</pre>
+      </div>
   </div>
-  
-    <p>Specs:</p>
-    <ul class="spec">
-      
-        <li>class_name(non_neg_integer) :: :IN | :CH | :""</li>
-      
-    </ul>
-  
   <section class="docstring">
-    <p>The dclass name of this packet</p>
-
   </section>
-  
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L101" class="view_source">Source</a>
-  
 </section>
-<section class="detail">
-  <div class="detail_header" id="rdata_string/1">
-    <span class="signature"><strong>rdata_string(dns)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#rdata_string/1" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
+          </div>
+        </section>
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="class_name/1">
+    <div class="detail-header">
+    <a href="#class_name/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">class_name(class)</span>
+      <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L101" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>class_name(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()) :: :IN | :CH | :""</pre>
+      </div>
   </div>
-  
-    <p>Specs:</p>
-    <ul class="spec">
-      
-        <li>rdata_string(binary) :: <a href="http://elixir-lang.org/docs/stable/elixir/String.html#t:t/0">String.t</a></li>
-      
-    </ul>
-  
   <section class="docstring">
-    <p>Prints rdata to a human readable string. Very few rr types are supported.</p>
-
+<p>The dclass name of this packet</p>
   </section>
-  
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L75" class="view_source">Source</a>
-  
 </section>
-<section class="detail">
-  <div class="detail_header" id="read_answer/2">
-    <span class="signature"><strong>read_answer(message, data)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#read_answer/2" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
+<section class="detail" id="rdata_string/1">
+    <div class="detail-header">
+    <a href="#rdata_string/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">rdata_string(dns)</span>
+      <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L75" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>rdata_string(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+      </div>
   </div>
-  
-    <p>Specs:</p>
-    <ul class="spec">
-      
-        <li>read_answer(binary, binary) :: {<a href="Protocol.Dns.ResourceRecord.html#t:t/0">Protocol.Dns.ResourceRecord.t</a>, binary}</li>
-      
-    </ul>
-  
   <section class="docstring">
-    <p>Reads an answer from the ‘data’ and returns a tuple of the resource record
+<p>Prints rdata to a human readable string. Very few rr types are supported.</p>
+  </section>
+</section>
+<section class="detail" id="read_answer/2">
+    <div class="detail-header">
+    <a href="#read_answer/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">read_answer(message, data)</span>
+      <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L273" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>read_answer(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) :: {<a href="Protocol.Dns.ResourceRecord.html#t:t/0">Protocol.Dns.ResourceRecord.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Reads an answer from the &#39;data&#39; and returns a tuple of the resource record
 and remaining bytes.</p>
-
   </section>
-  
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L273" class="view_source">Source</a>
-  
 </section>
-<section class="detail">
-  <div class="detail_header" id="read_answers/3">
-    <span class="signature"><strong>read_answers(answer_count, message, data)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#read_answers/3" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
+<section class="detail" id="read_answers/3">
+    <div class="detail-header">
+    <a href="#read_answers/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">read_answers(answer_count, message, data)</span>
+      <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L326" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>read_answers(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) ::
+  {[<a href="Protocol.Dns.ResourceRecord.html#t:t/0">Protocol.Dns.ResourceRecord.t</a>()], <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()}</pre>
+      </div>
   </div>
-  
-    <p>Specs:</p>
-    <ul class="spec">
-      
-        <li>read_answers(non_neg_integer, binary, binary) :: {[<a href="Protocol.Dns.ResourceRecord.html#t:t/0">Protocol.Dns.ResourceRecord.t</a>], binary}</li>
-      
-    </ul>
-  
   <section class="docstring">
-    <p>Returns a list of the answers (resource records) in this section of the DNS
+<p>Returns a list of the answers (resource records) in this section of the DNS
 packet. The section may be the answer, authoritative or additional sections,
-this code is generic so it doesn’t care which section is being read.</p>
-
+this code is generic so it doesn&#39;t care which section is being read.</p>
   </section>
-  
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L326" class="view_source">Source</a>
-  
 </section>
-<section class="detail">
-  <div class="detail_header" id="read_answers/4">
-    <span class="signature"><strong>read_answers(answer_count, message, data, acc)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#read_answers/4" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
+<section class="detail" id="read_answers/4">
+    <div class="detail-header">
+    <a href="#read_answers/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">read_answers(answer_count, message, data, acc)</span>
+      <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L314" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>read_answers(0, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>()) ::
+  {[<a href="Protocol.Dns.ResourceRecord.html#t:t/0">Protocol.Dns.ResourceRecord.t</a>()], <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()}</pre>
+          <pre>read_answers(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>()) ::
+  {[<a href="Protocol.Dns.ResourceRecord.html#t:t/0">Protocol.Dns.ResourceRecord.t</a>()], <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()}</pre>
+      </div>
   </div>
-  
-    <p>Specs:</p>
-    <ul class="spec">
-      
-        <li>read_answers(non_neg_integer, binary, binary, list) :: {[<a href="Protocol.Dns.ResourceRecord.html#t:t/0">Protocol.Dns.ResourceRecord.t</a>], binary}</li>
-      
-        <li>read_answers(0, binary, binary, list) :: {[<a href="Protocol.Dns.ResourceRecord.html#t:t/0">Protocol.Dns.ResourceRecord.t</a>], binary}</li>
-      
-    </ul>
-  
   <section class="docstring">
-    <p>Returns a list of the answers (resource records) in this section of the DNS
+<p>Returns a list of the answers (resource records) in this section of the DNS
 packet. The section may be the answer, authoritative or additional sections,
-this code is generic so it doesn’t care which section is being read.</p>
-
+this code is generic so it doesn&#39;t care which section is being read.</p>
   </section>
-  
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L304" class="view_source">Source</a>
-  
 </section>
-<section class="detail">
-  <div class="detail_header" id="read_bytes/2">
-    <span class="signature"><strong>read_bytes(data, len)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#read_bytes/2" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
+<section class="detail" id="read_bytes/2">
+    <div class="detail-header">
+    <a href="#read_bytes/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">read_bytes(data, len)</span>
+      <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L148" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>read_bytes(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()) :: {<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()}</pre>
+      </div>
   </div>
-  
-    <p>Specs:</p>
-    <ul class="spec">
-      
-        <li>read_bytes(binary, non_neg_integer) :: {binary, binary}</li>
-      
-    </ul>
-  
   <section class="docstring">
-    <p>Reads the ‘len’ number of bytes from the binary and returns a tuple of the
+<p>Reads the &#39;len&#39; number of bytes from the binary and returns a tuple of the
 bytes read the remaining bytes.</p>
-
   </section>
-  
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L148" class="view_source">Source</a>
-  
 </section>
-<section class="detail">
-  <div class="detail_header" id="read_dns/3">
-    <span class="signature"><strong>read_dns(header, message, data)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#read_dns/3" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
+<section class="detail" id="read_dns/3">
+    <div class="detail-header">
+    <a href="#read_dns/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">read_dns(header, message, data)</span>
+      <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L342" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>read_dns(<a href="Protocol.Dns.Header.html#t:t/0">Protocol.Dns.Header.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) ::
+  {[<a href="Protocol.Dns.Question.html#t:t/0">Protocol.Dns.Question.t</a>()], [<a href="Protocol.Dns.ResourceRecord.html#t:t/0">Protocol.Dns.ResourceRecord.t</a>()],
+   [<a href="Protocol.Dns.ResourceRecord.html#t:t/0">Protocol.Dns.ResourceRecord.t</a>()], [<a href="Protocol.Dns.ResourceRecord.html#t:t/0">Protocol.Dns.ResourceRecord.t</a>()],
+   <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()}</pre>
+      </div>
   </div>
-  
-    <p>Specs:</p>
-    <ul class="spec">
-      
-        <li>read_dns(<a href="Protocol.Dns.Header.html#t:t/0">Protocol.Dns.Header.t</a>, binary, binary) :: {[<a href="Protocol.Dns.Question.html#t:t/0">Protocol.Dns.Question.t</a>], [<a href="Protocol.Dns.ResourceRecord.html#t:t/0">Protocol.Dns.ResourceRecord.t</a>], [<a href="Protocol.Dns.ResourceRecord.html#t:t/0">Protocol.Dns.ResourceRecord.t</a>], [<a href="Protocol.Dns.ResourceRecord.html#t:t/0">Protocol.Dns.ResourceRecord.t</a>], binary}</li>
-      
-    </ul>
-  
   <section class="docstring">
-    <p>Returns the list of questions in the DNS packet and answer,
+<p>Returns the list of questions in the DNS packet and answer,
 authoritative and additional sections.  Finally, the tuple returned contains
 the remaining bytes if there are any.</p>
-
   </section>
-  
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L342" class="view_source">Source</a>
-  
 </section>
-<section class="detail">
-  <div class="detail_header" id="read_label/4">
-    <span class="signature"><strong>read_label(message, data, acc, at_end)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#read_label/4" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
+<section class="detail" id="read_label/4">
+    <div class="detail-header">
+    <a href="#read_label/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">read_label(message, data, acc, at_end)</span>
+      <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L161" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>read_label(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()) :: {<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()}</pre>
+      </div>
   </div>
-  
-    <p>Specs:</p>
-    <ul class="spec">
-      
-        <li>read_label(binary, binary, list, boolean) :: {<a href="http://elixir-lang.org/docs/stable/elixir/String.html#t:t/0">String.t</a>, binary}</li>
-      
-    </ul>
-  
   <section class="docstring">
-    <p>Reads a label (such as ‘ns1.google.com’). It technically reads one label at a
+<p>Reads a label (such as &#39;ns1.google.com&#39;). It technically reads one label at a
 time and recurs until the end of the label is reached.</p>
-
   </section>
-  
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L161" class="view_source">Source</a>
-  
 </section>
-<section class="detail">
-  <div class="detail_header" id="read_name/2">
-    <span class="signature"><strong>read_name(message, data)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#read_name/2" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
+<section class="detail" id="read_name/2">
+    <div class="detail-header">
+    <a href="#read_name/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">read_name(message, data)</span>
+      <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L215" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>read_name(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) :: {<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()}</pre>
+      </div>
   </div>
-  
-    <p>Specs:</p>
-    <ul class="spec">
-      
-        <li>read_name(binary, binary) :: {<a href="http://elixir-lang.org/docs/stable/elixir/String.html#t:t/0">String.t</a>, binary}</li>
-      
-    </ul>
-  
   <section class="docstring">
-    <p>Reads a name from the data and returns a tuple of the name read and the
+<p>Reads a name from the data and returns a tuple of the name read and the
 reamining bytes that have not been read yet.</p>
-
   </section>
-  
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L215" class="view_source">Source</a>
-  
 </section>
-<section class="detail">
-  <div class="detail_header" id="read_name/4">
-    <span class="signature"><strong>read_name(message, data, acc, at_end)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#read_name/4" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
+<section class="detail" id="read_name/4">
+    <div class="detail-header">
+    <a href="#read_name/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">read_name(message, data, acc, at_end)</span>
+      <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L198" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>read_name(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()) :: {<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()}</pre>
+      </div>
   </div>
-  
-    <p>Specs:</p>
-    <ul class="spec">
-      
-        <li>read_name(binary, binary, list, boolean) :: {<a href="http://elixir-lang.org/docs/stable/elixir/String.html#t:t/0">String.t</a>, binary}</li>
-      
-    </ul>
-  
   <section class="docstring">
-    <p>Reads a name (label or offset) from the data and returns a tuple with the name
+<p>Reads a name (label or offset) from the data and returns a tuple with the name
 read and the remaining bytes not yet read.</p>
-
   </section>
-  
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L198" class="view_source">Source</a>
-  
 </section>
-<section class="detail">
-  <div class="detail_header" id="read_offset/3">
-    <span class="signature"><strong>read_offset(message, data, acc)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#read_offset/3" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
+<section class="detail" id="read_offset/3">
+    <div class="detail-header">
+    <a href="#read_offset/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">read_offset(message, data, acc)</span>
+      <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L180" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>read_offset(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>()) :: {<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()}</pre>
+      </div>
   </div>
-  
-    <p>Specs:</p>
-    <ul class="spec">
-      
-        <li>read_offset(binary, binary, list) :: {<a href="http://elixir-lang.org/docs/stable/elixir/String.html#t:t/0">String.t</a>, binary}</li>
-      
-    </ul>
-  
   <section class="docstring">
-    <p>Reads the offset position and then returns the label at the offset in the
-entire ‘message’. Returns a tuple of the label read and the remaining bytes
+<p>Reads the offset position and then returns the label at the offset in the
+entire &#39;message&#39;. Returns a tuple of the label read and the remaining bytes
 not yet read.</p>
-
   </section>
-  
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L180" class="view_source">Source</a>
-  
 </section>
-<section class="detail">
-  <div class="detail_header" id="read_question/2">
-    <span class="signature"><strong>read_question(message, data)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#read_question/2" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
+<section class="detail" id="read_question/2">
+    <div class="detail-header">
+    <a href="#read_question/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">read_question(message, data)</span>
+      <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L224" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>read_question(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) :: {<a href="Protocol.Dns.Question.html#t:t/0">Protocol.Dns.Question.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()}</pre>
+      </div>
   </div>
-  
-    <p>Specs:</p>
-    <ul class="spec">
-      
-        <li>read_question(binary, binary) :: {<a href="Protocol.Dns.Question.html#t:t/0">Protocol.Dns.Question.t</a>, binary}</li>
-      
-    </ul>
-  
   <section class="docstring">
-    <p>Reads a DNS question from the ‘data’. Returns a tuple of the question and the
+<p>Reads a DNS question from the &#39;data&#39;. Returns a tuple of the question and the
 remaining bytes.</p>
-
   </section>
-  
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L224" class="view_source">Source</a>
-  
 </section>
-<section class="detail">
-  <div class="detail_header" id="read_questions/3">
-    <span class="signature"><strong>read_questions(question_count, message, data)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#read_questions/3" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
+<section class="detail" id="read_questions/3">
+    <div class="detail-header">
+    <a href="#read_questions/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">read_questions(question_count, message, data)</span>
+      <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L264" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>read_questions(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) ::
+  {[<a href="Protocol.Dns.Question.html#t:t/0">Protocol.Dns.Question.t</a>()], <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()}</pre>
+      </div>
   </div>
-  
-    <p>Specs:</p>
-    <ul class="spec">
-      
-        <li>read_questions(non_neg_integer, binary, binary) :: {[<a href="Protocol.Dns.Question.html#t:t/0">Protocol.Dns.Question.t</a>], binary}</li>
-      
-    </ul>
-  
   <section class="docstring">
-    <p>Returns a tuple with the list of the questions in this DNS packet and a binary
+<p>Returns a tuple with the list of the questions in this DNS packet and a binary
 of the remaining bytes that have not yet been read.</p>
-
   </section>
-  
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L264" class="view_source">Source</a>
-  
 </section>
-<section class="detail">
-  <div class="detail_header" id="read_questions/4">
-    <span class="signature"><strong>read_questions(question_count, message, data, acc)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#read_questions/4" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
+<section class="detail" id="read_questions/4">
+    <div class="detail-header">
+    <a href="#read_questions/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">read_questions(question_count, message, data, acc)</span>
+      <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L253" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>read_questions(0, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>()) ::
+  {[<a href="Protocol.Dns.Question.html#t:t/0">Protocol.Dns.Question.t</a>()], <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()}</pre>
+          <pre>read_questions(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>()) ::
+  {[<a href="Protocol.Dns.Question.html#t:t/0">Protocol.Dns.Question.t</a>()], <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()}</pre>
+      </div>
   </div>
-  
-    <p>Specs:</p>
-    <ul class="spec">
-      
-        <li>read_questions(non_neg_integer, binary, binary, list) :: {[<a href="Protocol.Dns.Question.html#t:t/0">Protocol.Dns.Question.t</a>], binary}</li>
-      
-        <li>read_questions(0, binary, binary, list) :: {[<a href="Protocol.Dns.Question.html#t:t/0">Protocol.Dns.Question.t</a>], binary}</li>
-      
-    </ul>
-  
   <section class="docstring">
-    <p>Returns a tuple with the list of the questions in this DNS packet and a binary
+<p>Returns a tuple with the list of the questions in this DNS packet and a binary
 of the remaining bytes that have not yet been read.</p>
-
   </section>
-  
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L244" class="view_source">Source</a>
-  
 </section>
-<section class="detail">
-  <div class="detail_header" id="type_name/1">
-    <span class="signature"><strong>type_name(type)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#type_name/1" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
+<section class="detail" id="type_name/1">
+    <div class="detail-header">
+    <a href="#type_name/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">type_name(type)</span>
+      <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L113" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>type_name(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()) :: :atom</pre>
+      </div>
   </div>
-  
-    <p>Specs:</p>
-    <ul class="spec">
-      
-        <li>type_name(non_neg_integer) :: :atom</li>
-      
-    </ul>
-  
   <section class="docstring">
-    <p>The rr type</p>
-
+<p>The rr type</p>
   </section>
-  
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/resource_record.ex#L113" class="view_source">Source</a>
-  
 </section>
-
+          </div>
         </section>
-      
-
-      
-
-      
-    </section>
+          <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.19.3),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            </span>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  
   </body>
 </html>
+

@@ -1,184 +1,244 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>ExPcap.PacketHeader</title>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
-    <link rel="stylesheet" href="css/elixir.css" type="text/css" media="screen" charset="utf-8" />
-    <script type="text/javascript" charset="utf-8">
-      relpath = '';
-      if (relpath != '') relpath += '/';
-    </script>
-
-    <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
-    <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
-    <script type="text/javascript" charset="utf-8" src="js/highlight.pack.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.19.3">
+    <title>ExPcap.PacketHeader — expcap v0.1.1</title>
+    <link rel="stylesheet" href="dist/html-399e30b9b028e3059575.css" />
+      <link rel="canonical" href="https://hexdocs.pm/expcap/ExPcap.PacketHeader.html" />
+    <script src="dist/sidebar_items-25789c3aff.js"></script>
+    <script async src="dist/html-399e30b9b028e3059575.js"></script>
+    
   </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+    <div class="main">
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Sidebar</span>
+</button>
+<button class="sidebar-button night-mode-toggle">
+  <span class="icon-theme" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Theme</span>
+</button>
+<section class="sidebar">
 
-  <body>
-    <script type="text/javascript" charset="utf-8">
-      if (window.top.frames.main) document.body.className = 'frames';
-    </script>
+  <a href="ExPcap.html" class="sidebar-projectLink">
+    <div class="sidebar-projectDetails">
+      <h1 class="sidebar-projectName">
+expcap      </h1>
+      <h2 class="sidebar-projectVersion">
+        v0.1.1
+      </h2>
+    </div>
+  </a>
 
-    <section id="content">
-      <div class="breadcrumbs">expcap v0.1.1 &rarr; <a href="overview.html">Overview</a> &rarr; <a href="ExPcap.html">ExPcap</a> &rarr; <a href="ExPcap.PacketHeader.html">PacketHeader</a></div>
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <input name="q" type="text" id="search-list" class="search-input" placeholder="Search" aria-label="Search" autocomplete="off" />
+  </form>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
       <h1>
-        ExPcap.PacketHeader
-        
+        <small class="visible-xs">expcap v0.1.1</small>
+ExPcap.PacketHeader        
+          <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/packet_header.ex#L16" title="View Source" class="view-source" rel="help">
+            <span class="icon-code" aria-hidden="true"></span>
+            <span class="sr-only">View Source</span>
+          </a>
       </h1>
 
-      <ul class="summary_links">
-        
-          <li><a href="#summary">Summary</a></li>
-        
-        
-          <li><a href="#types_details">Types</a></li>
-        
-        
-          <li><a href="#functions_details">Functions</a></li>
-        
-        
-        
-      </ul>
 
-      
-        <section id="moduledoc" class="docstring">
-          <p>This module represents a pcap packet header.</p>
-
+        <section id="moduledoc">
+<p>This module represents a pcap packet header.</p>
         </section>
-      
 
-      
-        <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/packet_header.ex#L16" class="view_source">Source</a>
-      
-
-      
-        <h2 id="summary">Summary<span class="detail_header_links"><a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a></span></h2>
-        <table class="summary">
-          <tr>
-  <td class="summary_signature"><a href="#from_file/2">from_file(f, global_header)</a></td>
-  
-    <td class="summary_synopsis"><p>Reads a pcap packet header from the file</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#read_forward/1">read_forward(data)</a></td>
-  
-    <td class="summary_synopsis"><p>Reads a packet header from the binary passed in</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#read_reversed/1">read_reversed(data)</a></td>
-  
-    <td class="summary_synopsis"><p>Reads a packet header from the binary passed in, in rerverse byte order</p>
-</td>
-  
-</tr>
-
-        </table>
-      
-
-      
-        <section id="types_details" class="details_list">
-          <h2>Types <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a></h2>
-          <div class="type_detail">
-  <p class="typespec" id="t:t/0">
-    <a href="#t:t/0">t</a> :: %ExPcap.PacketHeader{ts_sec: non_neg_integer, ts_usec: non_neg_integer, incl_len: non_neg_integer, orig_len: non_neg_integer}
-  </p>
-  
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:t/0">t()</a>
+  </div>
 </div>
-
+  </div>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#from_file/2">from_file(f, global_header)</a>
+  </div>
+    <div class="summary-synopsis"><p>Reads a pcap packet header from the file</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#read_forward/1">read_forward(data)</a>
+  </div>
+    <div class="summary-synopsis"><p>Reads a packet header from the binary passed in</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#read_reversed/1">read_reversed(data)</a>
+  </div>
+    <div class="summary-synopsis"><p>Reads a packet header from the binary passed in, in rerverse byte order</p>
+</div>
+</div>
+  </div>
         </section>
-      
 
-      
-        <section id="functions_details" class="details_list">
-          <h2>Functions</h2>
-          <section class="detail">
-  <div class="detail_header" id="from_file/2">
-    <span class="signature"><strong>from_file(f, global_header)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#from_file/2" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types          </h1>
+          <div class="types-list">
+<section class="detail" id="t:t/0">
+    <div class="detail-header">
+    <a href="#t:t/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">t()</span>
+      <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/packet_header.ex#L27" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>t() :: %ExPcap.PacketHeader{
+  incl_len: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+  orig_len: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+  ts_sec: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+  ts_usec: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()
+}</pre>
+      </div>
   </div>
-  
-    <p>Specs:</p>
-    <ul class="spec">
-      
-        <li>from_file(<a href="http://elixir-lang.org/docs/stable/elixir/IO.html#t:device/0">IO.device</a>, <a href="ExPcap.GlobalHeader.html#t:t/0">ExPcap.GlobalHeader.t</a>) :: <a href="ExPcap.PacketHeader.html#t:t/0">ExPcap.PacketHeader.t</a></li>
-      
-    </ul>
-  
   <section class="docstring">
-    <p>Reads a pcap packet header from the file.</p>
-
   </section>
-  
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/packet_header.ex#L81" class="view_source">Source</a>
-  
 </section>
-<section class="detail">
-  <div class="detail_header" id="read_forward/1">
-    <span class="signature"><strong>read_forward(data)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#read_forward/1" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
-  </div>
-  
-    <p>Specs:</p>
-    <ul class="spec">
-      
-        <li>read_forward(binary) :: <a href="ExPcap.PacketHeader.html#t:t/0">ExPcap.PacketHeader.t</a></li>
-      
-    </ul>
-  
-  <section class="docstring">
-    <p>Reads a packet header from the binary passed in.</p>
-
-  </section>
-  
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/packet_header.ex#L40" class="view_source">Source</a>
-  
-</section>
-<section class="detail">
-  <div class="detail_header" id="read_reversed/1">
-    <span class="signature"><strong>read_reversed(data)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#read_reversed/1" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
-  </div>
-  
-    <p>Specs:</p>
-    <ul class="spec">
-      
-        <li>read_reversed(binary) :: <a href="ExPcap.PacketHeader.html#t:t/0">ExPcap.PacketHeader.t</a></li>
-      
-    </ul>
-  
-  <section class="docstring">
-    <p>Reads a packet header from the binary passed in, in rerverse byte order.</p>
-
-  </section>
-  
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/packet_header.ex#L59" class="view_source">Source</a>
-  
-</section>
-
+          </div>
         </section>
-      
-
-      
-
-      
-    </section>
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="from_file/2">
+    <div class="detail-header">
+    <a href="#from_file/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">from_file(f, global_header)</span>
+      <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/packet_header.ex#L81" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>from_file(<a href="https://hexdocs.pm/elixir/IO.html#t:device/0">IO.device</a>(), <a href="ExPcap.GlobalHeader.html#t:t/0">ExPcap.GlobalHeader.t</a>()) :: <a href="ExPcap.PacketHeader.html#t:t/0">ExPcap.PacketHeader.t</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Reads a pcap packet header from the file.</p>
+  </section>
+</section>
+<section class="detail" id="read_forward/1">
+    <div class="detail-header">
+    <a href="#read_forward/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">read_forward(data)</span>
+      <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/packet_header.ex#L40" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>read_forward(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) :: <a href="ExPcap.PacketHeader.html#t:t/0">ExPcap.PacketHeader.t</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Reads a packet header from the binary passed in.</p>
+  </section>
+</section>
+<section class="detail" id="read_reversed/1">
+    <div class="detail-header">
+    <a href="#read_reversed/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">read_reversed(data)</span>
+      <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/packet_header.ex#L59" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>read_reversed(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) :: <a href="ExPcap.PacketHeader.html#t:t/0">ExPcap.PacketHeader.t</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Reads a packet header from the binary passed in, in rerverse byte order.</p>
+  </section>
+</section>
+          </div>
+        </section>
+          <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.19.3),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            </span>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  
   </body>
 </html>
+

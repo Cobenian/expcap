@@ -1,563 +1,591 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>ExPcap.Binaries</title>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
-    <link rel="stylesheet" href="css/elixir.css" type="text/css" media="screen" charset="utf-8" />
-    <script type="text/javascript" charset="utf-8">
-      relpath = '';
-      if (relpath != '') relpath += '/';
-    </script>
-
-    <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
-    <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
-    <script type="text/javascript" charset="utf-8" src="js/highlight.pack.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.19.3">
+    <title>ExPcap.Binaries — expcap v0.1.1</title>
+    <link rel="stylesheet" href="dist/html-399e30b9b028e3059575.css" />
+      <link rel="canonical" href="https://hexdocs.pm/expcap/ExPcap.Binaries.html" />
+    <script src="dist/sidebar_items-25789c3aff.js"></script>
+    <script async src="dist/html-399e30b9b028e3059575.js"></script>
+    
   </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+    <div class="main">
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Sidebar</span>
+</button>
+<button class="sidebar-button night-mode-toggle">
+  <span class="icon-theme" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Theme</span>
+</button>
+<section class="sidebar">
 
-  <body>
-    <script type="text/javascript" charset="utf-8">
-      if (window.top.frames.main) document.body.className = 'frames';
-    </script>
+  <a href="ExPcap.html" class="sidebar-projectLink">
+    <div class="sidebar-projectDetails">
+      <h1 class="sidebar-projectName">
+expcap      </h1>
+      <h2 class="sidebar-projectVersion">
+        v0.1.1
+      </h2>
+    </div>
+  </a>
 
-    <section id="content">
-      <div class="breadcrumbs">expcap v0.1.1 &rarr; <a href="overview.html">Overview</a> &rarr; <a href="ExPcap.html">ExPcap</a> &rarr; <a href="ExPcap.Binaries.html">Binaries</a></div>
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <input name="q" type="text" id="search-list" class="search-input" placeholder="Search" aria-label="Search" autocomplete="off" />
+  </form>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
       <h1>
-        ExPcap.Binaries
-        
+        <small class="visible-xs">expcap v0.1.1</small>
+ExPcap.Binaries        
+          <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/binaries.ex#L1" title="View Source" class="view-source" rel="help">
+            <span class="icon-code" aria-hidden="true"></span>
+            <span class="sr-only">View Source</span>
+          </a>
       </h1>
 
-      <ul class="summary_links">
-        
-          <li><a href="#summary">Summary</a></li>
-        
-        
-        
-          <li><a href="#functions_details">Functions</a></li>
-        
-        
-        
-      </ul>
 
-      
-        <section id="moduledoc" class="docstring">
-          <p>This module provides utility functions for dealing with binaries.</p>
-
+        <section id="moduledoc">
+<p>This module provides utility functions for dealing with binaries.</p>
         </section>
-      
 
-      
-        <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/binaries.ex#L1" class="view_source">Source</a>
-      
-
-      
-        <h2 id="summary">Summary<span class="detail_header_links"><a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a></span></h2>
-        <table class="summary">
-          <tr>
-  <td class="summary_signature"><a href="#reverse_binary/1">reverse_binary(b)</a></td>
-  
-    <td class="summary_synopsis"><p>Reverses the bytes in the binary</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#reverse_binary/2">reverse_binary(arg1, acc)</a></td>
-  
-    <td class="summary_synopsis"><p>Reversed the contents of the first binary and prepends them to the second
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#reverse_binary/1">reverse_binary(b)</a>
+  </div>
+    <div class="summary-synopsis"><p>Reverses the bytes in the binary</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#reverse_binary/2">reverse_binary(arg, acc)</a>
+  </div>
+    <div class="summary-synopsis"><p>Reversed the contents of the first binary and prepends them to the second
 binary</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#to_binary/1">to_binary(list)</a></td>
-  
-    <td class="summary_synopsis"><p>Converts a list of bytes to a binary</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#to_binary/2">to_binary(list, acc)</a></td>
-  
-    <td class="summary_synopsis"><p>Moves the contents of the list to the end of the binary</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#to_hex/1">to_hex(b)</a></td>
-  
-    <td class="summary_synopsis"><p>Converts a binary to a hex representation</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#to_int32/1">to_int32(b)</a></td>
-  
-    <td class="summary_synopsis"><p>Converts the first 32 bits of the binary to a signed integer</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#to_list/1">to_list(b)</a></td>
-  
-    <td class="summary_synopsis"><p>Converts a binary to a list of bytes</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#to_list/2">to_list(b, acc)</a></td>
-  
-    <td class="summary_synopsis"><p>Moves the bytes from the binary to the list. The order of the bytes will be
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#to_binary/1">to_binary(list)</a>
+  </div>
+    <div class="summary-synopsis"><p>Converts a list of bytes to a binary</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#to_binary/2">to_binary(list, acc)</a>
+  </div>
+    <div class="summary-synopsis"><p>Moves the contents of the list to the end of the binary</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#to_hex/1">to_hex(b)</a>
+  </div>
+    <div class="summary-synopsis"><p>Converts a binary to a hex representation</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#to_int32/1">to_int32(b)</a>
+  </div>
+    <div class="summary-synopsis"><p>Converts the first 32 bits of the binary to a signed integer</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#to_list/1">to_list(b)</a>
+  </div>
+    <div class="summary-synopsis"><p>Converts a binary to a list of bytes</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#to_list/2">to_list(b, acc)</a>
+  </div>
+    <div class="summary-synopsis"><p>Moves the bytes from the binary to the list. The order of the bytes will be
 reversed until the degenerate case is reached</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#to_raw/1">to_raw(b)</a></td>
-  
-    <td class="summary_synopsis"><p>Converts a binary to a ‘raw’ representation of the bytes</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#to_string/1">to_string(b)</a></td>
-  
-    <td class="summary_synopsis"><p>Converts a binary to a string that shows the bytes in the binary</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#to_uint16/1">to_uint16(b)</a></td>
-  
-    <td class="summary_synopsis"><p>Converts the first 16 bits of the binary to an unsigned integer</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#to_uint32/1">to_uint32(b)</a></td>
-  
-    <td class="summary_synopsis"><p>Converts the first 32 bits of the binary to an unsigned integer</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#to_uint4/1">to_uint4(b)</a></td>
-  
-    <td class="summary_synopsis"><p>Converts the first 4 bits of the binary to an unsigned integer</p>
-</td>
-  
-</tr>
-
-        </table>
-      
-
-      
-
-      
-        <section id="functions_details" class="details_list">
-          <h2>Functions</h2>
-          <section class="detail">
-  <div class="detail_header" id="reverse_binary/1">
-    <span class="signature"><strong>reverse_binary(b)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#reverse_binary/1" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#to_raw/1">to_raw(b)</a>
   </div>
-  
-    <p>Specs:</p>
-    <ul class="spec">
-      
-        <li>reverse_binary(binary) :: binary</li>
-      
-    </ul>
-  
-  <section class="docstring">
-    <p>Reverses the bytes in the binary.</p>
-<h2>Examples</h2>
-<pre><code>iex&gt; ExPcap.Binaries.reverse_binary(&lt;&lt;1, 2, 3, 4&gt;&gt;)
-&lt;&lt;4, 3, 2, 1&gt;&gt;</code></pre>
+    <div class="summary-synopsis"><p>Converts a binary to a &#39;raw&#39; representation of the bytes</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#to_string/1">to_string(b)</a>
+  </div>
+    <div class="summary-synopsis"><p>Converts a binary to a string that shows the bytes in the binary</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#to_uint16/1">to_uint16(b)</a>
+  </div>
+    <div class="summary-synopsis"><p>Converts the first 16 bits of the binary to an unsigned integer</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#to_uint32/1">to_uint32(b)</a>
+  </div>
+    <div class="summary-synopsis"><p>Converts the first 32 bits of the binary to an unsigned integer</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#to_uint4/1">to_uint4(b)</a>
+  </div>
+    <div class="summary-synopsis"><p>Converts the first 4 bits of the binary to an unsigned integer</p>
+</div>
+</div>
+  </div>
+        </section>
 
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="reverse_binary/1">
+    <div class="detail-header">
+    <a href="#reverse_binary/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">reverse_binary(b)</span>
+      <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/binaries.ex#L126" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>reverse_binary(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Reverses the bytes in the binary.</p>
+<h2 id="reverse_binary/1-examples" class="section-heading">
+  <a href="#reverse_binary/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">ExPcap.Binaries</span><span class="o">.</span><span class="n">reverse_binary</span><span class="p" data-group-id="8984605790-1">(</span><span class="p" data-group-id="8984605790-2">&lt;&lt;</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="8984605790-2">&gt;&gt;</span><span class="p" data-group-id="8984605790-1">)</span><span class="w">
+</span><span class="p" data-group-id="8984605790-3">&lt;&lt;</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="8984605790-3">&gt;&gt;</span></code></pre>
   </section>
-  
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/binaries.ex#L126" class="view_source">Source</a>
-  
 </section>
-<section class="detail">
-  <div class="detail_header" id="reverse_binary/2">
-    <span class="signature"><strong>reverse_binary(arg1, acc)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#reverse_binary/2" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
+<section class="detail" id="reverse_binary/2">
+    <div class="detail-header">
+    <a href="#reverse_binary/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">reverse_binary(arg, acc)</span>
+      <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/binaries.ex#L112" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>reverse_binary(<<_::0>>, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()</pre>
+          <pre>reverse_binary(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()</pre>
+      </div>
   </div>
-  
-    <p>Specs:</p>
-    <ul class="spec">
-      
-        <li>reverse_binary(binary, binary) :: binary</li>
-      
-        <li>reverse_binary(<<_ :: 0>>, binary) :: binary</li>
-      
-    </ul>
-  
   <section class="docstring">
-    <p>Reversed the contents of the first binary and prepends them to the second
+<p>Reversed the contents of the first binary and prepends them to the second
 binary.</p>
 <p>This will recur until it reaches the degenerate case and returns the
 accumulator.</p>
-<h2>Examples</h2>
-<pre><code>iex&gt; ExPcap.Binaries.reverse_binary(&lt;&lt;3, 4&gt;&gt;, &lt;&lt;2, 1&gt;&gt;)
-#&lt;&lt;3, 2, 1&gt;&gt;
-#and then
-&lt;&lt;4, 3, 2, 1&gt;&gt;</code></pre>
+<h2 id="reverse_binary/2-examples" class="section-heading">
+  <a href="#reverse_binary/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
 
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">ExPcap.Binaries</span><span class="o">.</span><span class="n">reverse_binary</span><span class="p" data-group-id="5301590000-1">(</span><span class="p" data-group-id="5301590000-2">&lt;&lt;</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="5301590000-2">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5301590000-3">&lt;&lt;</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="5301590000-3">&gt;&gt;</span><span class="p" data-group-id="5301590000-1">)</span><span class="w">
+</span><span class="c1">#&lt;&lt;3, 2, 1&gt;&gt;</span><span class="w">
+</span><span class="c1">#and then</span><span class="w">
+</span><span class="p" data-group-id="5301590000-4">&lt;&lt;</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="5301590000-4">&gt;&gt;</span></code></pre>
   </section>
-  
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/binaries.ex#L92" class="view_source">Source</a>
-  
 </section>
-<section class="detail">
-  <div class="detail_header" id="to_binary/1">
-    <span class="signature"><strong>to_binary(list)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#to_binary/1" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
+<section class="detail" id="to_binary/1">
+    <div class="detail-header">
+    <a href="#to_binary/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">to_binary(list)</span>
+      <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/binaries.ex#L22" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>to_binary(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()</pre>
+      </div>
   </div>
-  
-    <p>Specs:</p>
-    <ul class="spec">
-      
-        <li>to_binary(list) :: binary</li>
-      
-    </ul>
-  
   <section class="docstring">
-    <p>Converts a list of bytes to a binary.</p>
+<p>Converts a list of bytes to a binary.</p>
 <p>Ideally, this would be replaced by a standard elixir function, but I have not
 been able to find such a function in the standard library.</p>
-<h2>Examples</h2>
-<pre><code>iex&gt; ExPcap.Binaries.to_binary([1, 2, 3, 4])
-&lt;&lt;1, 2, 3, 4&gt;&gt;</code></pre>
+<h2 id="to_binary/1-examples" class="section-heading">
+  <a href="#to_binary/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
 
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">ExPcap.Binaries</span><span class="o">.</span><span class="n">to_binary</span><span class="p" data-group-id="9086011547-1">(</span><span class="p" data-group-id="9086011547-2">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="9086011547-2">]</span><span class="p" data-group-id="9086011547-1">)</span><span class="w">
+</span><span class="p" data-group-id="9086011547-3">&lt;&lt;</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="9086011547-3">&gt;&gt;</span></code></pre>
   </section>
-  
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/binaries.ex#L22" class="view_source">Source</a>
-  
 </section>
-<section class="detail">
-  <div class="detail_header" id="to_binary/2">
-    <span class="signature"><strong>to_binary(list, acc)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#to_binary/2" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
+<section class="detail" id="to_binary/2">
+    <div class="detail-header">
+    <a href="#to_binary/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">to_binary(list, acc)</span>
+      <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/binaries.ex#L45" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>to_binary([], <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()</pre>
+          <pre>to_binary(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()</pre>
+      </div>
   </div>
-  
-    <p>Specs:</p>
-    <ul class="spec">
-      
-        <li>to_binary(list, binary) :: binary</li>
-      
-        <li>to_binary([], binary) :: binary</li>
-      
-    </ul>
-  
   <section class="docstring">
-    <p>Moves the contents of the list to the end of the binary.</p>
+<p>Moves the contents of the list to the end of the binary.</p>
 <p>This will recur until it reaches the degenerate case and returns the
 accumulator (binary).</p>
-<h2>Examples</h2>
-<pre><code>iex&gt; ExPcap.Binaries.to_binary([3, 4], &lt;&lt;1, 2&gt;&gt;)
-#&lt;&lt;1, 2, 3&gt;&gt;
-#and then
-&lt;&lt;1, 2, 3, 4&gt;&gt;</code></pre>
+<h2 id="to_binary/2-examples" class="section-heading">
+  <a href="#to_binary/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
 
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">ExPcap.Binaries</span><span class="o">.</span><span class="n">to_binary</span><span class="p" data-group-id="7953287861-1">(</span><span class="p" data-group-id="7953287861-2">[</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="7953287861-2">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7953287861-3">&lt;&lt;</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="7953287861-3">&gt;&gt;</span><span class="p" data-group-id="7953287861-1">)</span><span class="w">
+</span><span class="c1">#&lt;&lt;1, 2, 3&gt;&gt;</span><span class="w">
+</span><span class="c1">#and then</span><span class="w">
+</span><span class="p" data-group-id="7953287861-4">&lt;&lt;</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="7953287861-4">&gt;&gt;</span></code></pre>
   </section>
-  
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/binaries.ex#L27" class="view_source">Source</a>
-  
 </section>
-<section class="detail">
-  <div class="detail_header" id="to_hex/1">
-    <span class="signature"><strong>to_hex(b)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#to_hex/1" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
+<section class="detail" id="to_hex/1">
+    <div class="detail-header">
+    <a href="#to_hex/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">to_hex(b)</span>
+      <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/binaries.ex#L239" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>to_hex(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+      </div>
   </div>
-  
-    <p>Specs:</p>
-    <ul class="spec">
-      
-        <li>to_hex(binary) :: <a href="http://elixir-lang.org/docs/stable/elixir/String.html#t:t/0">String.t</a></li>
-      
-    </ul>
-  
   <section class="docstring">
-    <p>Converts a binary to a hex representation.</p>
-<p>This differs from ‘Base.encode16’ in that it adds the leading 0x prior to the
+<p>Converts a binary to a hex representation.</p>
+<p>This differs from &#39;Base.encode16&#39; in that it adds the leading 0x prior to the
 hex value.</p>
 <p>Note that the return type could be cleaned up here to only include 0-9 and a-f
 but no need to do that right now.</p>
-<h2>Examples</h2>
-<pre><code>iex&gt; ExPcap.Binaries.to_hex(&lt;&lt;255, 0&gt;&gt;)
-&quot;0xFF00&quot;</code></pre>
+<h2 id="to_hex/1-examples" class="section-heading">
+  <a href="#to_hex/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
 
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">ExPcap.Binaries</span><span class="o">.</span><span class="n">to_hex</span><span class="p" data-group-id="6479418173-1">(</span><span class="p" data-group-id="6479418173-2">&lt;&lt;</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p" data-group-id="6479418173-2">&gt;&gt;</span><span class="p" data-group-id="6479418173-1">)</span><span class="w">
+</span><span class="s">&quot;0xFF00&quot;</span></code></pre>
   </section>
-  
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/binaries.ex#L237" class="view_source">Source</a>
-  
 </section>
-<section class="detail">
-  <div class="detail_header" id="to_int32/1">
-    <span class="signature"><strong>to_int32(b)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#to_int32/1" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
+<section class="detail" id="to_int32/1">
+    <div class="detail-header">
+    <a href="#to_int32/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">to_int32(b)</span>
+      <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/binaries.ex#L185" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>to_int32(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()</pre>
+      </div>
   </div>
-  
-    <p>Specs:</p>
-    <ul class="spec">
-      
-        <li>to_int32(binary) :: integer</li>
-      
-    </ul>
-  
   <section class="docstring">
-    <p>Converts the first 32 bits of the binary to a signed integer.</p>
-<h2>Examples</h2>
-<pre><code>iex&gt; ExPcap.Binaries.to_int32(&lt;&lt;255, 255, 255, 255&gt;&gt;)
--1</code></pre>
+<p>Converts the first 32 bits of the binary to a signed integer.</p>
+<h2 id="to_int32/1-examples" class="section-heading">
+  <a href="#to_int32/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
 
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">ExPcap.Binaries</span><span class="o">.</span><span class="n">to_int32</span><span class="p" data-group-id="9899777966-1">(</span><span class="p" data-group-id="9899777966-2">&lt;&lt;</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p" data-group-id="9899777966-2">&gt;&gt;</span><span class="p" data-group-id="9899777966-1">)</span><span class="w">
+</span><span class="o">-</span><span class="mi">1</span></code></pre>
   </section>
-  
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/binaries.ex#L185" class="view_source">Source</a>
-  
 </section>
-<section class="detail">
-  <div class="detail_header" id="to_list/1">
-    <span class="signature"><strong>to_list(b)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#to_list/1" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
+<section class="detail" id="to_list/1">
+    <div class="detail-header">
+    <a href="#to_list/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">to_list(b)</span>
+      <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/binaries.ex#L60" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>to_list(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>()</pre>
+      </div>
   </div>
-  
-    <p>Specs:</p>
-    <ul class="spec">
-      
-        <li>to_list(binary) :: list</li>
-      
-    </ul>
-  
   <section class="docstring">
-    <p>Converts a binary to a list of bytes.</p>
-<h2>Examples</h2>
-<pre><code>iex&gt; ExPcap.Binaries.to_list(&lt;&lt;1, 2, 3, 4&gt;&gt;)
-[1, 2, 3, 4]</code></pre>
+<p>Converts a binary to a list of bytes.</p>
+<h2 id="to_list/1-examples" class="section-heading">
+  <a href="#to_list/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
 
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">ExPcap.Binaries</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="9225464167-1">(</span><span class="p" data-group-id="9225464167-2">&lt;&lt;</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="9225464167-2">&gt;&gt;</span><span class="p" data-group-id="9225464167-1">)</span><span class="w">
+</span><span class="p" data-group-id="9225464167-3">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="9225464167-3">]</span></code></pre>
   </section>
-  
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/binaries.ex#L60" class="view_source">Source</a>
-  
 </section>
-<section class="detail">
-  <div class="detail_header" id="to_list/2">
-    <span class="signature"><strong>to_list(b, acc)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#to_list/2" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
+<section class="detail" id="to_list/2">
+    <div class="detail-header">
+    <a href="#to_list/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">to_list(b, acc)</span>
+      <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/binaries.ex#L86" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>to_list(<<_::0>>, [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()]) :: [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()]</pre>
+          <pre>to_list(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>()</pre>
+      </div>
   </div>
-  
-    <p>Specs:</p>
-    <ul class="spec">
-      
-        <li>to_list(binary, list) :: list</li>
-      
-        <li>to_list(<<_ :: 0>>, [any]) :: [any]</li>
-      
-    </ul>
-  
   <section class="docstring">
-    <p>Moves the bytes from the binary to the list. The order of the bytes will be
+<p>Moves the bytes from the binary to the list. The order of the bytes will be
 reversed until the degenerate case is reached.</p>
 <p>This will recur until it reaches the degenerate case and returns the
 accumulator (list).</p>
-<h2>Examples</h2>
-<pre><code>iex&gt; ExPcap.Binaries.to_list(&lt;&lt;3, 4&gt;&gt;, [2, 1])
-#[3, 2, 1]
-#and then
-#[4, 3, 2, 1]
-#and then
-[1, 2, 3, 4]</code></pre>
+<h2 id="to_list/2-examples" class="section-heading">
+  <a href="#to_list/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
 
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">ExPcap.Binaries</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="9597431654-1">(</span><span class="p" data-group-id="9597431654-2">&lt;&lt;</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="9597431654-2">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9597431654-3">[</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="9597431654-3">]</span><span class="p" data-group-id="9597431654-1">)</span><span class="w">
+</span><span class="c1">#[3, 2, 1]</span><span class="w">
+</span><span class="c1">#and then</span><span class="w">
+</span><span class="c1">#[4, 3, 2, 1]</span><span class="w">
+</span><span class="c1">#and then</span><span class="w">
+</span><span class="p" data-group-id="9597431654-4">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="9597431654-4">]</span></code></pre>
   </section>
-  
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/binaries.ex#L65" class="view_source">Source</a>
-  
 </section>
-<section class="detail">
-  <div class="detail_header" id="to_raw/1">
-    <span class="signature"><strong>to_raw(b)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#to_raw/1" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
+<section class="detail" id="to_raw/1">
+    <div class="detail-header">
+    <a href="#to_raw/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">to_raw(b)</span>
+      <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/binaries.ex#L218" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>to_raw(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+      </div>
   </div>
-  
-    <p>Specs:</p>
-    <ul class="spec">
-      
-        <li>to_raw(binary) :: <a href="http://elixir-lang.org/docs/stable/elixir/String.html#t:t/0">String.t</a></li>
-      
-    </ul>
-  
   <section class="docstring">
-    <p>Converts a binary to a ‘raw’ representation of the bytes.</p>
-<h2>Examples</h2>
-<pre><code>iex&gt; ExPcap.Binaries.to_raw(&lt;&lt;1, 2, 3, 4&gt;&gt;)
-#&lt;&lt;1, 2, 3, 4&gt;&gt;
-&quot;... redacted ...&quot;</code></pre>
+<p>Converts a binary to a &#39;raw&#39; representation of the bytes.</p>
+<h2 id="to_raw/1-examples" class="section-heading">
+  <a href="#to_raw/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
 
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">ExPcap.Binaries</span><span class="o">.</span><span class="n">to_raw</span><span class="p" data-group-id="9213941937-1">(</span><span class="p" data-group-id="9213941937-2">&lt;&lt;</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="9213941937-2">&gt;&gt;</span><span class="p" data-group-id="9213941937-1">)</span><span class="w">
+</span><span class="c1">#&lt;&lt;1, 2, 3, 4&gt;&gt;</span><span class="w">
+</span><span class="s">&quot;... redacted ...&quot;</span></code></pre>
   </section>
-  
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/binaries.ex#L216" class="view_source">Source</a>
-  
 </section>
-<section class="detail">
-  <div class="detail_header" id="to_string/1">
-    <span class="signature"><strong>to_string(b)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#to_string/1" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
+<section class="detail" id="to_string/1">
+    <div class="detail-header">
+    <a href="#to_string/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">to_string(b)</span>
+      <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/binaries.ex#L202" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>to_string(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+      </div>
   </div>
-  
-    <p>Specs:</p>
-    <ul class="spec">
-      
-        <li>to_string(binary) :: <a href="http://elixir-lang.org/docs/stable/elixir/String.html#t:t/0">String.t</a></li>
-      
-    </ul>
-  
   <section class="docstring">
-    <p>Converts a binary to a string that shows the bytes in the binary.</p>
+<p>Converts a binary to a string that shows the bytes in the binary.</p>
 <p>The typical display of a binary truncates the bytes, the intent here was to
 show the entire contents of the binary.</p>
-<h2>Examples</h2>
-<pre><code>iex&gt; ExPcap.Binaries.to_string(&lt;&lt;1, 2, 3, 4&gt;&gt;)
-&quot;&lt;&lt;1, 2, 3, 4&gt;&gt;&quot;</code></pre>
+<h2 id="to_string/1-examples" class="section-heading">
+  <a href="#to_string/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
 
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">ExPcap.Binaries</span><span class="o">.</span><span class="n">to_string</span><span class="p" data-group-id="8348012868-1">(</span><span class="p" data-group-id="8348012868-2">&lt;&lt;</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="8348012868-2">&gt;&gt;</span><span class="p" data-group-id="8348012868-1">)</span><span class="w">
+</span><span class="s">&quot;&lt;&lt;1, 2, 3, 4&gt;&gt;&quot;</span></code></pre>
   </section>
-  
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/binaries.ex#L202" class="view_source">Source</a>
-  
 </section>
-<section class="detail">
-  <div class="detail_header" id="to_uint16/1">
-    <span class="signature"><strong>to_uint16(b)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#to_uint16/1" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
+<section class="detail" id="to_uint16/1">
+    <div class="detail-header">
+    <a href="#to_uint16/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">to_uint16(b)</span>
+      <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/binaries.ex#L155" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>to_uint16(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+      </div>
   </div>
-  
-    <p>Specs:</p>
-    <ul class="spec">
-      
-        <li>to_uint16(binary) :: non_neg_integer</li>
-      
-    </ul>
-  
   <section class="docstring">
-    <p>Converts the first 16 bits of the binary to an unsigned integer.</p>
-<h2>Examples</h2>
-<pre><code>iex&gt; ExPcap.Binaries.to_uint16(&lt;&lt;255, 255&gt;&gt;)
-65535</code></pre>
+<p>Converts the first 16 bits of the binary to an unsigned integer.</p>
+<h2 id="to_uint16/1-examples" class="section-heading">
+  <a href="#to_uint16/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
 
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">ExPcap.Binaries</span><span class="o">.</span><span class="n">to_uint16</span><span class="p" data-group-id="9200795668-1">(</span><span class="p" data-group-id="9200795668-2">&lt;&lt;</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p" data-group-id="9200795668-2">&gt;&gt;</span><span class="p" data-group-id="9200795668-1">)</span><span class="w">
+</span><span class="mi">65535</span></code></pre>
   </section>
-  
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/binaries.ex#L155" class="view_source">Source</a>
-  
 </section>
-<section class="detail">
-  <div class="detail_header" id="to_uint32/1">
-    <span class="signature"><strong>to_uint32(b)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#to_uint32/1" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
+<section class="detail" id="to_uint32/1">
+    <div class="detail-header">
+    <a href="#to_uint32/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">to_uint32(b)</span>
+      <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/binaries.ex#L170" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>to_uint32(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+      </div>
   </div>
-  
-    <p>Specs:</p>
-    <ul class="spec">
-      
-        <li>to_uint32(binary) :: non_neg_integer</li>
-      
-    </ul>
-  
   <section class="docstring">
-    <p>Converts the first 32 bits of the binary to an unsigned integer.</p>
-<h2>Examples</h2>
-<pre><code>iex&gt; ExPcap.Binaries.to_uint32(&lt;&lt;255, 255, 255, 255&gt;&gt;)
-4294967295</code></pre>
+<p>Converts the first 32 bits of the binary to an unsigned integer.</p>
+<h2 id="to_uint32/1-examples" class="section-heading">
+  <a href="#to_uint32/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
 
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">ExPcap.Binaries</span><span class="o">.</span><span class="n">to_uint32</span><span class="p" data-group-id="0230330443-1">(</span><span class="p" data-group-id="0230330443-2">&lt;&lt;</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p" data-group-id="0230330443-2">&gt;&gt;</span><span class="p" data-group-id="0230330443-1">)</span><span class="w">
+</span><span class="mi">4294967295</span></code></pre>
   </section>
-  
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/binaries.ex#L170" class="view_source">Source</a>
-  
 </section>
-<section class="detail">
-  <div class="detail_header" id="to_uint4/1">
-    <span class="signature"><strong>to_uint4(b)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#to_uint4/1" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
+<section class="detail" id="to_uint4/1">
+    <div class="detail-header">
+    <a href="#to_uint4/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">to_uint4(b)</span>
+      <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/binaries.ex#L140" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>to_uint4(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+      </div>
   </div>
-  
-    <p>Specs:</p>
-    <ul class="spec">
-      
-        <li>to_uint4(binary) :: non_neg_integer</li>
-      
-    </ul>
-  
   <section class="docstring">
-    <p>Converts the first 4 bits of the binary to an unsigned integer.</p>
-<h2>Examples</h2>
-<pre><code>iex&gt; ExPcap.Binaries.to_uint4(&lt;&lt;0xf :: size(4)&gt;&gt;)
-15</code></pre>
+<p>Converts the first 4 bits of the binary to an unsigned integer.</p>
+<h2 id="to_uint4/1-examples" class="section-heading">
+  <a href="#to_uint4/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
 
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">ExPcap.Binaries</span><span class="o">.</span><span class="n">to_uint4</span><span class="p" data-group-id="6083767925-1">(</span><span class="p" data-group-id="6083767925-2">&lt;&lt;</span><span class="mh">0xf</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="n">size</span><span class="p" data-group-id="6083767925-3">(</span><span class="mi">4</span><span class="p" data-group-id="6083767925-3">)</span><span class="p" data-group-id="6083767925-2">&gt;&gt;</span><span class="p" data-group-id="6083767925-1">)</span><span class="w">
+</span><span class="mi">15</span></code></pre>
   </section>
-  
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/binaries.ex#L140" class="view_source">Source</a>
-  
 </section>
-
+          </div>
         </section>
-      
-
-      
-
-      
-    </section>
+          <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.19.3),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            </span>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  
   </body>
 </html>
+

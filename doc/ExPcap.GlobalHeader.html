@@ -1,233 +1,295 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>ExPcap.GlobalHeader</title>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
-    <link rel="stylesheet" href="css/elixir.css" type="text/css" media="screen" charset="utf-8" />
-    <script type="text/javascript" charset="utf-8">
-      relpath = '';
-      if (relpath != '') relpath += '/';
-    </script>
-
-    <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
-    <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
-    <script type="text/javascript" charset="utf-8" src="js/highlight.pack.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.19.3">
+    <title>ExPcap.GlobalHeader — expcap v0.1.1</title>
+    <link rel="stylesheet" href="dist/html-399e30b9b028e3059575.css" />
+      <link rel="canonical" href="https://hexdocs.pm/expcap/ExPcap.GlobalHeader.html" />
+    <script src="dist/sidebar_items-25789c3aff.js"></script>
+    <script async src="dist/html-399e30b9b028e3059575.js"></script>
+    
   </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+    <div class="main">
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Sidebar</span>
+</button>
+<button class="sidebar-button night-mode-toggle">
+  <span class="icon-theme" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Theme</span>
+</button>
+<section class="sidebar">
 
-  <body>
-    <script type="text/javascript" charset="utf-8">
-      if (window.top.frames.main) document.body.className = 'frames';
-    </script>
+  <a href="ExPcap.html" class="sidebar-projectLink">
+    <div class="sidebar-projectDetails">
+      <h1 class="sidebar-projectName">
+expcap      </h1>
+      <h2 class="sidebar-projectVersion">
+        v0.1.1
+      </h2>
+    </div>
+  </a>
 
-    <section id="content">
-      <div class="breadcrumbs">expcap v0.1.1 &rarr; <a href="overview.html">Overview</a> &rarr; <a href="ExPcap.html">ExPcap</a> &rarr; <a href="ExPcap.GlobalHeader.html">GlobalHeader</a></div>
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <input name="q" type="text" id="search-list" class="search-input" placeholder="Search" aria-label="Search" autocomplete="off" />
+  </form>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
       <h1>
-        ExPcap.GlobalHeader
-        
+        <small class="visible-xs">expcap v0.1.1</small>
+ExPcap.GlobalHeader        
+          <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/global_header.ex#L52" title="View Source" class="view-source" rel="help">
+            <span class="icon-code" aria-hidden="true"></span>
+            <span class="sr-only">View Source</span>
+          </a>
       </h1>
 
-      <ul class="summary_links">
-        
-          <li><a href="#summary">Summary</a></li>
-        
-        
-          <li><a href="#types_details">Types</a></li>
-        
-        
-          <li><a href="#functions_details">Functions</a></li>
-        
-        
-        
-      </ul>
 
-      
-        <section id="moduledoc" class="docstring">
-          <p>This module represents the global header of a pcap file.</p>
-
+        <section id="moduledoc">
+<p>This module represents the global header of a pcap file.</p>
         </section>
-      
 
-      
-        <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/global_header.ex#L52" class="view_source">Source</a>
-      
-
-      
-        <h2 id="summary">Summary<span class="detail_header_links"><a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a></span></h2>
-        <table class="summary">
-          <tr>
-  <td class="summary_signature"><a href="#from_file/2">from_file(f, magic_number)</a></td>
-  
-    <td class="summary_synopsis"><p>Reads the pcap global header (the bits after the magic number) and returns
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:t/0">t()</a>
+  </div>
+</div>
+  </div>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#from_file/2">from_file(f, magic_number)</a>
+  </div>
+    <div class="summary-synopsis"><p>Reads the pcap global header (the bits after the magic number) and returns
 a struct containing the global header values. The code reads the bytes
 according to the order specified by the magic header</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#read_forward/2">read_forward(data, magic_number)</a></td>
-  
-    <td class="summary_synopsis"><p>Reads a global header from a binary containing a pcap header (after the magic
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#read_forward/2">read_forward(data, magic_number)</a>
+  </div>
+    <div class="summary-synopsis"><p>Reads a global header from a binary containing a pcap header (after the magic
 number)</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#read_reversed/2">read_reversed(data, magic_number)</a></td>
-  
-    <td class="summary_synopsis"><p>Reads a global header from a binary containing a pcap header (after the magic
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#read_reversed/2">read_reversed(data, magic_number)</a>
+  </div>
+    <div class="summary-synopsis"><p>Reads a global header from a binary containing a pcap header (after the magic
 number) but it does so by reading the bytes in reverse order for each value.
 The magic number indicates the byte order for reading</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#reverse_bytes?/1">reverse_bytes?(global_header)</a></td>
-  
-    <td class="summary_synopsis"><p>Returns true if the global header indicates that the bytes need to be
-reversed</p>
-</td>
-  
-</tr>
-
-        </table>
-      
-
-      
-        <section id="types_details" class="details_list">
-          <h2>Types <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a></h2>
-          <div class="type_detail">
-  <p class="typespec" id="t:t/0">
-    <a href="#t:t/0">t</a> :: %ExPcap.GlobalHeader{magic_number: <a href="ExPcap.MagicNumber.html#t:t/0">ExPcap.MagicNumber.t</a>, version_major: non_neg_integer, version_minor: non_neg_integer, thiszone: integer, sigfigs: non_neg_integer, snaplen: non_neg_integer, network: non_neg_integer}
-  </p>
-  
 </div>
-
-        </section>
-      
-
-      
-        <section id="functions_details" class="details_list">
-          <h2>Functions</h2>
-          <section class="detail">
-  <div class="detail_header" id="from_file/2">
-    <span class="signature"><strong>from_file(f, magic_number)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#from_file/2" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#reverse_bytes?/1">reverse_bytes?(global_header)</a>
   </div>
-  
-    <p>Specs:</p>
-    <ul class="spec">
-      
-        <li>from_file(<a href="http://elixir-lang.org/docs/stable/elixir/IO.html#t:device/0">IO.device</a>, <a href="ExPcap.MagicNumber.html#t:t/0">ExPcap.MagicNumber.t</a>) :: <a href="ExPcap.GlobalHeader.html#t:t/0">ExPcap.GlobalHeader.t</a></li>
-      
-    </ul>
-  
+    <div class="summary-synopsis"><p>Returns true if the global header indicates that the bytes need to be
+reversed</p>
+</div>
+</div>
+  </div>
+        </section>
+
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types          </h1>
+          <div class="types-list">
+<section class="detail" id="t:t/0">
+    <div class="detail-header">
+    <a href="#t:t/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">t()</span>
+      <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/global_header.ex#L66" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>t() :: %ExPcap.GlobalHeader{
+  magic_number: <a href="ExPcap.MagicNumber.html#t:t/0">ExPcap.MagicNumber.t</a>(),
+  network: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+  sigfigs: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+  snaplen: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+  thiszone: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(),
+  version_major: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+  version_minor: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()
+}</pre>
+      </div>
+  </div>
   <section class="docstring">
-    <p>Reads the pcap global header (the bits after the magic number) and returns
+  </section>
+</section>
+          </div>
+        </section>
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="from_file/2">
+    <div class="detail-header">
+    <a href="#from_file/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">from_file(f, magic_number)</span>
+      <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/global_header.ex#L149" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>from_file(<a href="https://hexdocs.pm/elixir/IO.html#t:device/0">IO.device</a>(), <a href="ExPcap.MagicNumber.html#t:t/0">ExPcap.MagicNumber.t</a>()) :: <a href="ExPcap.GlobalHeader.html#t:t/0">ExPcap.GlobalHeader.t</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Reads the pcap global header (the bits after the magic number) and returns
 a struct containing the global header values. The code reads the bytes
 according to the order specified by the magic header.</p>
-
   </section>
-  
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/global_header.ex#L149" class="view_source">Source</a>
-  
 </section>
-<section class="detail">
-  <div class="detail_header" id="read_forward/2">
-    <span class="signature"><strong>read_forward(data, magic_number)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#read_forward/2" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
+<section class="detail" id="read_forward/2">
+    <div class="detail-header">
+    <a href="#read_forward/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">read_forward(data, magic_number)</span>
+      <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/global_header.ex#L99" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>read_forward(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="ExPcap.MagicNumber.html#t:t/0">ExPcap.MagicNumber.t</a>()) :: <a href="ExPcap.GlobalHeader.html#t:t/0">ExPcap.GlobalHeader.t</a>()</pre>
+      </div>
   </div>
-  
-    <p>Specs:</p>
-    <ul class="spec">
-      
-        <li>read_forward(binary, <a href="ExPcap.MagicNumber.html#t:t/0">ExPcap.MagicNumber.t</a>) :: <a href="ExPcap.GlobalHeader.html#t:t/0">ExPcap.GlobalHeader.t</a></li>
-      
-    </ul>
-  
   <section class="docstring">
-    <p>Reads a global header from a binary containing a pcap header (after the magic
+<p>Reads a global header from a binary containing a pcap header (after the magic
 number)</p>
-
   </section>
-  
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/global_header.ex#L99" class="view_source">Source</a>
-  
 </section>
-<section class="detail">
-  <div class="detail_header" id="read_reversed/2">
-    <span class="signature"><strong>read_reversed(data, magic_number)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#read_reversed/2" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
+<section class="detail" id="read_reversed/2">
+    <div class="detail-header">
+    <a href="#read_reversed/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">read_reversed(data, magic_number)</span>
+      <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/global_header.ex#L119" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>read_reversed(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="ExPcap.MagicNumber.html#t:t/0">ExPcap.MagicNumber.t</a>()) :: <a href="ExPcap.GlobalHeader.html#t:t/0">ExPcap.GlobalHeader.t</a>()</pre>
+      </div>
   </div>
-  
-    <p>Specs:</p>
-    <ul class="spec">
-      
-        <li>read_reversed(binary, <a href="ExPcap.MagicNumber.html#t:t/0">ExPcap.MagicNumber.t</a>) :: <a href="ExPcap.GlobalHeader.html#t:t/0">ExPcap.GlobalHeader.t</a></li>
-      
-    </ul>
-  
   <section class="docstring">
-    <p>Reads a global header from a binary containing a pcap header (after the magic
+<p>Reads a global header from a binary containing a pcap header (after the magic
 number) but it does so by reading the bytes in reverse order for each value.
 The magic number indicates the byte order for reading.</p>
-
   </section>
-  
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/global_header.ex#L119" class="view_source">Source</a>
-  
 </section>
-<section class="detail">
-  <div class="detail_header" id="reverse_bytes?/1">
-    <span class="signature"><strong>reverse_bytes?(global_header)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#reverse_bytes?/1" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+<section class="detail" id="reverse_bytes?/1">
+    <div class="detail-header">
+    <a href="#reverse_bytes?/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">reverse_bytes?(global_header)</span>
+      <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/global_header.ex#L90" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>reverse_bytes?(<a href="ExPcap.GlobalHeader.html#t:t/0">ExPcap.GlobalHeader.t</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Returns true if the global header indicates that the bytes need to be
+reversed.</p>
+<h2 id="reverse_bytes?/1-examples" class="section-heading">
+  <a href="#reverse_bytes?/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">ExPcap.GlobalHeader</span><span class="o">.</span><span class="n">reverse_bytes?</span><span class="p" data-group-id="7831736793-1">(</span><span class="w"> </span><span class="p" data-group-id="7831736793-2">%</span><span class="nc" data-group-id="7831736793-2">ExPcap.GlobalHeader</span><span class="p" data-group-id="7831736793-2">{</span><span class="ss">magic_number</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7831736793-3">%</span><span class="nc" data-group-id="7831736793-3">ExPcap.MagicNumber</span><span class="p" data-group-id="7831736793-3">{</span><span class="ss">reverse_bytes</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="p" data-group-id="7831736793-3">}</span><span class="p" data-group-id="7831736793-2">}</span><span class="p" data-group-id="7831736793-1">)</span><span class="w">
+</span><span class="no">false</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">ExPcap.GlobalHeader</span><span class="o">.</span><span class="n">reverse_bytes?</span><span class="p" data-group-id="7831736793-4">(</span><span class="w"> </span><span class="p" data-group-id="7831736793-5">%</span><span class="nc" data-group-id="7831736793-5">ExPcap.GlobalHeader</span><span class="p" data-group-id="7831736793-5">{</span><span class="ss">magic_number</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7831736793-6">%</span><span class="nc" data-group-id="7831736793-6">ExPcap.MagicNumber</span><span class="p" data-group-id="7831736793-6">{</span><span class="ss">reverse_bytes</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="7831736793-6">}</span><span class="p" data-group-id="7831736793-5">}</span><span class="p" data-group-id="7831736793-4">)</span><span class="w">
+</span><span class="no">true</span></code></pre>
+  </section>
+</section>
+          </div>
+        </section>
+          <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.19.3),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            </span>
+        </p>
+      </footer>
     </div>
   </div>
-  
-    <p>Specs:</p>
-    <ul class="spec">
-      
-        <li>reverse_bytes?(<a href="ExPcap.GlobalHeader.html#t:t/0">ExPcap.GlobalHeader.t</a>) :: boolean</li>
-      
-    </ul>
-  
-  <section class="docstring">
-    <p>Returns true if the global header indicates that the bytes need to be
-reversed.</p>
-<h2>Examples</h2>
-<pre><code>iex&gt; ExPcap.GlobalHeader.reverse_bytes?( %ExPcap.GlobalHeader{magic_number: %ExPcap.MagicNumber{reverse_bytes: false}})
-false
-iex&gt; ExPcap.GlobalHeader.reverse_bytes?( %ExPcap.GlobalHeader{magic_number: %ExPcap.MagicNumber{reverse_bytes: true}})
-true</code></pre>
-
-  </section>
-  
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/global_header.ex#L90" class="view_source">Source</a>
-  
 </section>
-
-        </section>
-      
-
-      
-
-      
-    </section>
+</div>
+  
   </body>
 </html>
+

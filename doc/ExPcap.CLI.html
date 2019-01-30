@@ -1,213 +1,232 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>ExPcap.CLI</title>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
-    <link rel="stylesheet" href="css/elixir.css" type="text/css" media="screen" charset="utf-8" />
-    <script type="text/javascript" charset="utf-8">
-      relpath = '';
-      if (relpath != '') relpath += '/';
-    </script>
-
-    <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
-    <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
-    <script type="text/javascript" charset="utf-8" src="js/highlight.pack.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.19.3">
+    <title>ExPcap.CLI — expcap v0.1.1</title>
+    <link rel="stylesheet" href="dist/html-399e30b9b028e3059575.css" />
+      <link rel="canonical" href="https://hexdocs.pm/expcap/ExPcap.CLI.html" />
+    <script src="dist/sidebar_items-25789c3aff.js"></script>
+    <script async src="dist/html-399e30b9b028e3059575.js"></script>
+    
   </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+    <div class="main">
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Sidebar</span>
+</button>
+<button class="sidebar-button night-mode-toggle">
+  <span class="icon-theme" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Theme</span>
+</button>
+<section class="sidebar">
 
-  <body>
-    <script type="text/javascript" charset="utf-8">
-      if (window.top.frames.main) document.body.className = 'frames';
-    </script>
+  <a href="ExPcap.html" class="sidebar-projectLink">
+    <div class="sidebar-projectDetails">
+      <h1 class="sidebar-projectName">
+expcap      </h1>
+      <h2 class="sidebar-projectVersion">
+        v0.1.1
+      </h2>
+    </div>
+  </a>
 
-    <section id="content">
-      <div class="breadcrumbs">expcap v0.1.1 &rarr; <a href="overview.html">Overview</a> &rarr; <a href="ExPcap.html">ExPcap</a> &rarr; <a href="ExPcap.CLI.html">CLI</a></div>
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <input name="q" type="text" id="search-list" class="search-input" placeholder="Search" aria-label="Search" autocomplete="off" />
+  </form>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
       <h1>
-        ExPcap.CLI
-        
+        <small class="visible-xs">expcap v0.1.1</small>
+ExPcap.CLI        
+          <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/cli.ex#L1" title="View Source" class="view-source" rel="help">
+            <span class="icon-code" aria-hidden="true"></span>
+            <span class="sr-only">View Source</span>
+          </a>
       </h1>
 
-      <ul class="summary_links">
-        
-          <li><a href="#summary">Summary</a></li>
-        
-        
-        
-          <li><a href="#functions_details">Functions</a></li>
-        
-        
-        
-      </ul>
 
-      
-        <section id="moduledoc" class="docstring">
-          <p>Prints the contents of a PCAP file to stdout.</p>
-<p>The file may be specified with the —file or -f flag.</p>
-<p>If no flags are passed (or —help or -h) then the help is printed.</p>
-
+        <section id="moduledoc">
+<p>Prints the contents of a PCAP file to stdout.</p>
+<p>The file may be specified with the --file or -f flag.</p>
+<p>If no flags are passed (or --help or -h) then the help is printed.</p>
         </section>
-      
 
-      
-        <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/cli.ex#L1" class="view_source">Source</a>
-      
-
-      
-        <h2 id="summary">Summary<span class="detail_header_links"><a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a></span></h2>
-        <table class="summary">
-          <tr>
-  <td class="summary_signature"><a href="#main/1">main(argv)</a></td>
-  
-    <td class="summary_synopsis"><p>The entry point, a.k.a. the main function</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#parse_args/1">parse_args(argv)</a></td>
-  
-    <td class="summary_synopsis"><p>Parses the arguments which may be either:
-—help, -h                :help
-—file, -f <name>         [file: name]</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#process/1">process(arg1)</a></td>
-  
-    <td class="summary_synopsis"><p>Prints the contents of the PCAP file in a somewhat human readable form</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#run/1">run(argv)</a></td>
-  
-    <td class="summary_synopsis"><p>Parses the arguments and then either prints the contents of the PCAP file or
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#main/1">main(argv)</a>
+  </div>
+    <div class="summary-synopsis"><p>The entry point, a.k.a. the main function</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#parse_args/1">parse_args(argv)</a>
+  </div>
+    <div class="summary-synopsis"><p>Parses the arguments which may be either:
+--help, -h                :help
+--file, -f <name>         [file: name]</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#process/1">process(arg1)</a>
+  </div>
+    <div class="summary-synopsis"><p>Prints the contents of the PCAP file in a somewhat human readable form</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#run/1">run(argv)</a>
+  </div>
+    <div class="summary-synopsis"><p>Parses the arguments and then either prints the contents of the PCAP file or
 prints the help message</p>
-</td>
-  
-</tr>
-
-        </table>
-      
-
-      
-
-      
-        <section id="functions_details" class="details_list">
-          <h2>Functions</h2>
-          <section class="detail">
-  <div class="detail_header" id="main/1">
-    <span class="signature"><strong>main(argv)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#main/1" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
+</div>
+</div>
   </div>
-  
-    <p>Specs:</p>
-    <ul class="spec">
-      
-        <li>main(list) :: nil</li>
-      
-    </ul>
-  
-  <section class="docstring">
-    <p>The entry point, a.k.a. the main function.</p>
-
-  </section>
-  
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/cli.ex#L14" class="view_source">Source</a>
-  
-</section>
-<section class="detail">
-  <div class="detail_header" id="parse_args/1">
-    <span class="signature"><strong>parse_args(argv)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#parse_args/1" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
-  </div>
-  
-    <p>Specs:</p>
-    <ul class="spec">
-      
-        <li>parse_args(list) :: atom | [atom(<a href="http://elixir-lang.org/docs/stable/elixir/String.html#t:t/0">String.t</a>)]</li>
-      
-    </ul>
-  
-  <section class="docstring">
-    <p>Parses the arguments which may be either:
-—help, -h                :help
-—file, -f <name>         [file: name]</p>
-
-  </section>
-  
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/cli.ex#L33" class="view_source">Source</a>
-  
-</section>
-<section class="detail">
-  <div class="detail_header" id="process/1">
-    <span class="signature"><strong>process(arg1)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#process/1" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
-  </div>
-  
-    <p>Specs:</p>
-    <ul class="spec">
-      
-        <li>process([:file | <a href="http://elixir-lang.org/docs/stable/elixir/String.html#t:t/0">String.t</a>]) :: <a href="http://elixir-lang.org/docs/stable/elixir/String.html#t:t/0">String.t</a></li>
-      
-        <li>process(:help) :: <a href="http://elixir-lang.org/docs/stable/elixir/String.html#t:t/0">String.t</a></li>
-      
-    </ul>
-  
-  <section class="docstring">
-    <p>Prints the contents of the PCAP file in a somewhat human readable form.</p>
-
-  </section>
-  
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/cli.ex#L49" class="view_source">Source</a>
-  
-</section>
-<section class="detail">
-  <div class="detail_header" id="run/1">
-    <span class="signature"><strong>run(argv)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#run/1" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
-  </div>
-  
-    <p>Specs:</p>
-    <ul class="spec">
-      
-        <li>run(list) :: nil</li>
-      
-    </ul>
-  
-  <section class="docstring">
-    <p>Parses the arguments and then either prints the contents of the PCAP file or
-prints the help message.</p>
-
-  </section>
-  
-    <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/cli.ex#L23" class="view_source">Source</a>
-  
-</section>
-
         </section>
-      
 
-      
-
-      
-    </section>
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="main/1">
+    <div class="detail-header">
+    <a href="#main/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">main(argv)</span>
+      <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/cli.ex#L14" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>main(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>()) :: nil</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>The entry point, a.k.a. the main function.</p>
+  </section>
+</section>
+<section class="detail" id="parse_args/1">
+    <div class="detail-header">
+    <a href="#parse_args/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">parse_args(argv)</span>
+      <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/cli.ex#L33" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+          </div>
+  <section class="docstring">
+<p>Parses the arguments which may be either:
+--help, -h                :help
+--file, -f <name>         [file: name]</p>
+  </section>
+</section>
+<section class="detail" id="process/1">
+    <div class="detail-header">
+    <a href="#process/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">process(arg1)</span>
+      <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/cli.ex#L60" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>process(:help) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+          <pre>process([:file | <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()]) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Prints the contents of the PCAP file in a somewhat human readable form.</p>
+  </section>
+</section>
+<section class="detail" id="run/1">
+    <div class="detail-header">
+    <a href="#run/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">run(argv)</span>
+      <a href="https://github.com/cobenian/expcap/blob/master/lib/expcap/cli.ex#L23" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>run(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>()) :: nil</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Parses the arguments and then either prints the contents of the PCAP file or
+prints the help message.</p>
+  </section>
+</section>
+          </div>
+        </section>
+          <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.19.3),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            </span>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  
   </body>
 </html>
+

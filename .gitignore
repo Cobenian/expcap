@@ -3,3 +3,4 @@
 erl_crash.dump
 *.ez
 expcap
+.elixir_ls
