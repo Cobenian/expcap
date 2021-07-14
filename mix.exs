@@ -69,9 +69,10 @@ defmodule ExPcap.Mixfile do
     files: ["lib", "mix.exs", "README*"],
     contributors: ["Bryan Weber"],
     licenses: ["Apache 2.0"],
-    links: %{"GitHub" => "https://github.com/cobenian/expcap"
-    # ,
-    # "Docs" => "http://cobenian.github.io/expcap/"}
+    links: %{
+      "GitHub" => "https://github.com/cobenian/expcap",
+      # "Docs" => "http://cobenian.github.io/expcap/"
+      }
     ]
   end
 end
