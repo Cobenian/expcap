@@ -4,48 +4,70 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.19.3">
-    <title>Protocol.Dns.Header — expcap v0.1.1</title>
-    <link rel="stylesheet" href="dist/html-399e30b9b028e3059575.css" />
-      <link rel="canonical" href="https://hexdocs.pm/expcap/Protocol.Dns.Header.html" />
-    <script src="dist/sidebar_items-25789c3aff.js"></script>
-    <script async src="dist/html-399e30b9b028e3059575.js"></script>
-    
+    <meta name="generator" content="ExDoc v0.24.2">
+    <meta name="project" content="expcap v0.1.2">
+
+    <title>Protocol.Dns.Header — expcap v0.1.2</title>
+    <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
+
+    <script src="dist/sidebar_items-b29d4aaa06.js"></script>
+
+      <script src="docs_config.js"></script>
+
+    <script async src="dist/app-f27ff079945e43879c46.js"></script>
+
+
   </head>
   <body data-type="modules">
-    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
-    <div class="main">
+    <script>
+
+      try {
+        if (localStorage.getItem('night-mode') === 'true') {
+          document.body.classList.add('night-mode');
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
 <button class="sidebar-button sidebar-toggle">
-  <span class="icon-menu" aria-hidden="true"></span>
-  <span class="sr-only">Toggle Sidebar</span>
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
 </button>
-<button class="sidebar-button night-mode-toggle">
-  <span class="icon-theme" aria-hidden="true"></span>
-  <span class="sr-only">Toggle Theme</span>
-</button>
+
 <section class="sidebar">
-
-  <a href="ExPcap.html" class="sidebar-projectLink">
-    <div class="sidebar-projectDetails">
-      <h1 class="sidebar-projectName">
-expcap      </h1>
-      <h2 class="sidebar-projectVersion">
-        v0.1.1
-      </h2>
-    </div>
-  </a>
-
   <form class="sidebar-search" action="search.html">
-    <button type="submit" class="search-button">
-      <span class="icon-search" aria-hidden="true"></span>
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
     </button>
-    <input name="q" type="text" id="search-list" class="search-input" placeholder="Search" aria-label="Search" autocomplete="off" />
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
   </form>
 
-  <ul class="sidebar-listNav">
-    <li><a id="extras-list" href="#full-list">Pages</a></li>
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
 
-      <li><a id="modules-list" href="#full-list">Modules</a></li>
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="ExPcap.html" class="sidebar-projectName">
+expcap
+      </a>
+      <strong class="sidebar-projectVersion">
+        v0.1.2
+      </strong>
+    </div>
+
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list-link" href="#full-list">Modules</a></li>
 
 
   </ul>
@@ -57,20 +79,21 @@ expcap      </h1>
   <div class="content-outer">
     <div id="content" class="content-inner">
 
-
       <h1>
-        <small class="visible-xs">expcap v0.1.1</small>
-Protocol.Dns.Header        
+Protocol.Dns.Header <small class="app-vsn">(expcap v0.1.2)</small>
+
           <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/dns.ex#L73" title="View Source" class="view-source" rel="help">
             <span class="icon-code" aria-hidden="true"></span>
             <span class="sr-only">View Source</span>
           </a>
+
       </h1>
 
 
         <section id="moduledoc">
 <p>A parsed DNS packet header</p>
         </section>
+
 
         <section id="summary" class="details-list">
           <h1 class="section-heading">
@@ -80,6 +103,7 @@ Protocol.Dns.Header
             </a>
             Summary
           </h1>
+
   <div class="summary-types summary">
     <h2>
       <a href="#types">Types</a>
@@ -87,9 +111,13 @@ Protocol.Dns.Header
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#t:t/0">t()</a>
+
   </div>
+
 </div>
+
   </div>
+
   <div class="summary-functions summary">
     <h2>
       <a href="#functions">Functions</a>
@@ -97,63 +125,82 @@ Protocol.Dns.Header
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#aa_name/1">aa_name(aa)</a>
+
   </div>
-    <div class="summary-synopsis"><p>Is this response authoritative?</p>
-</div>
+
+    <div class="summary-synopsis"><p>Is this response authoritative?</p></div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#opcode_name/1">opcode_name(opcode)</a>
+
   </div>
-    <div class="summary-synopsis"><p>What is the op code of this DNS packet?</p>
-</div>
+
+    <div class="summary-synopsis"><p>What is the op code of this DNS packet?</p></div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#qr_name/1">qr_name(qr)</a>
+
   </div>
-    <div class="summary-synopsis"><p>Is this a query or a response?</p>
-</div>
+
+    <div class="summary-synopsis"><p>Is this a query or a response?</p></div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#ra_name/1">ra_name(ra)</a>
+
   </div>
-    <div class="summary-synopsis"><p>Is recursion available?</p>
-</div>
+
+    <div class="summary-synopsis"><p>Is recursion available?</p></div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#rcode_name/1">rcode_name(rcode)</a>
+
   </div>
-    <div class="summary-synopsis"><p>What is the r code of this DNS packet?</p>
-</div>
+
+    <div class="summary-synopsis"><p>What is the r code of this DNS packet?</p></div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#rd_name/1">rd_name(rd)</a>
+
   </div>
-    <div class="summary-synopsis"><p>Is recursion desired?</p>
-</div>
+
+    <div class="summary-synopsis"><p>Is recursion desired?</p></div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#tc_name/1">tc_name(tc)</a>
+
   </div>
-    <div class="summary-synopsis"><p>Is this response truncated?</p>
-</div>
+
+    <div class="summary-synopsis"><p>Is this response truncated?</p></div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#z_name/1">z_name(z)</a>
+
   </div>
+
     <div class="summary-synopsis"><p>The first bit is reserved.
 The second bit indciates if the response was authenticated or not.
-The third bit indciates if the data was authenticated or not</p>
+The third bit indciates if the data was authenticated or not.</p></div>
+
 </div>
-</div>
+
   </div>
+
         </section>
+
 
         <section id="types" class="details-list">
           <h1 class="section-heading">
@@ -161,21 +208,31 @@ The third bit indciates if the data was authenticated or not</p>
               <span class="icon-link" aria-hidden="true"></span>
               <span class="sr-only">Link to this section</span>
             </a>
-Types          </h1>
+Types
+          </h1>
           <div class="types-list">
 <section class="detail" id="t:t/0">
-    <div class="detail-header">
+
+  <div class="detail-header">
     <a href="#t:t/0" class="detail-link" title="Link to this type">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">t()</span>
+    <h1 class="signature">t()</h1>
+
       <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/dns.ex#L93" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
-        
+
+
+  </div>
+
+  <section class="docstring">
+
+      <h2>Specs</h2>
       <div class="specs">
+
           <pre>t() :: %Protocol.Dns.Header{
   aa: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">bitstring</a>(),
   ancnt: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
@@ -191,202 +248,299 @@ Types          </h1>
   tc: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">bitstring</a>(),
   z: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">bitstring</a>()
 }</pre>
+
       </div>
-  </div>
-  <section class="docstring">
+
+
   </section>
 </section>
+
           </div>
         </section>
+
         <section id="functions" class="details-list">
           <h1 class="section-heading">
             <a class="hover-link" href="#functions">
               <span class="icon-link" aria-hidden="true"></span>
               <span class="sr-only">Link to this section</span>
             </a>
-Functions          </h1>
+Functions
+          </h1>
           <div class="functions-list">
 <section class="detail" id="aa_name/1">
-    <div class="detail-header">
+
+  <div class="detail-header">
     <a href="#aa_name/1" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">aa_name(aa)</span>
+    <h1 class="signature">aa_name(aa)</h1>
+
       <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/dns.ex#L124" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
-        
-      <div class="specs">
-          <pre>aa_name(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) :: :NOT_AUTHORITATIVE | :AUTHORITATIVE | :""</pre>
-      </div>
+
+
   </div>
+
   <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>aa_name(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) :: :NOT_AUTHORITATIVE | :AUTHORITATIVE | :&quot;&quot;</pre>
+
+      </div>
+
 <p>Is this response authoritative?</p>
   </section>
 </section>
 <section class="detail" id="opcode_name/1">
-    <div class="detail-header">
+
+  <div class="detail-header">
     <a href="#opcode_name/1" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">opcode_name(opcode)</span>
+    <h1 class="signature">opcode_name(opcode)</h1>
+
       <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/dns.ex#L191" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
-        
-      <div class="specs">
-          <pre>opcode_name(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()) :: :QUERY | :STATUS | :NOTIFY | :UPDATE | :""</pre>
-      </div>
+
+
   </div>
+
   <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>opcode_name(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()) :: :QUERY | :STATUS | :NOTIFY | :UPDATE | :&quot;&quot;</pre>
+
+      </div>
+
 <p>What is the op code of this DNS packet?</p>
   </section>
 </section>
 <section class="detail" id="qr_name/1">
-    <div class="detail-header">
+
+  <div class="detail-header">
     <a href="#qr_name/1" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">qr_name(qr)</span>
+    <h1 class="signature">qr_name(qr)</h1>
+
       <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/dns.ex#L113" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
-        
-      <div class="specs">
-          <pre>qr_name(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) :: :QUERY | :ANSWER</pre>
-      </div>
+
+
   </div>
+
   <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>qr_name(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) :: :QUERY | :ANSWER</pre>
+
+      </div>
+
 <p>Is this a query or a response?</p>
   </section>
 </section>
 <section class="detail" id="ra_name/1">
-    <div class="detail-header">
+
+  <div class="detail-header">
     <a href="#ra_name/1" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">ra_name(ra)</span>
+    <h1 class="signature">ra_name(ra)</h1>
+
       <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/dns.ex#L160" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
-        
-      <div class="specs">
-          <pre>ra_name(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) :: :NO_RECURSION_AVAILABLE | :RECURSION_AVAILABLE | :""</pre>
-      </div>
+
+
   </div>
+
   <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>ra_name(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) :: :NO_RECURSION_AVAILABLE | :RECURSION_AVAILABLE | :&quot;&quot;</pre>
+
+      </div>
+
 <p>Is recursion available?</p>
   </section>
 </section>
 <section class="detail" id="rcode_name/1">
-    <div class="detail-header">
+
+  <div class="detail-header">
     <a href="#rcode_name/1" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">rcode_name(rcode)</span>
+    <h1 class="signature">rcode_name(rcode)</h1>
+
       <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/dns.ex#L205" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
-        
-      <div class="specs">
-          <pre>rcode_name(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()) :: :atom</pre>
-      </div>
+
+
   </div>
+
   <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>rcode_name(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()) :: :atom</pre>
+
+      </div>
+
 <p>What is the r code of this DNS packet?</p>
   </section>
 </section>
 <section class="detail" id="rd_name/1">
-    <div class="detail-header">
+
+  <div class="detail-header">
     <a href="#rd_name/1" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">rd_name(rd)</span>
+    <h1 class="signature">rd_name(rd)</h1>
+
       <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/dns.ex#L148" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
-        
-      <div class="specs">
-          <pre>rd_name(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) :: :NO_RECURSION_DESIRED | :RECURSION_DESIRED | :""</pre>
-      </div>
+
+
   </div>
+
   <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>rd_name(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) :: :NO_RECURSION_DESIRED | :RECURSION_DESIRED | :&quot;&quot;</pre>
+
+      </div>
+
 <p>Is recursion desired?</p>
   </section>
 </section>
 <section class="detail" id="tc_name/1">
-    <div class="detail-header">
+
+  <div class="detail-header">
     <a href="#tc_name/1" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">tc_name(tc)</span>
+    <h1 class="signature">tc_name(tc)</h1>
+
       <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/dns.ex#L136" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
-        
-      <div class="specs">
-          <pre>tc_name(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) :: :NOT_TRUNCATED | :TRUNCATED | :""</pre>
-      </div>
+
+
   </div>
+
   <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>tc_name(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) :: :NOT_TRUNCATED | :TRUNCATED | :&quot;&quot;</pre>
+
+      </div>
+
 <p>Is this response truncated?</p>
   </section>
 </section>
 <section class="detail" id="z_name/1">
-    <div class="detail-header">
+
+  <div class="detail-header">
     <a href="#z_name/1" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">z_name(z)</span>
+    <h1 class="signature">z_name(z)</h1>
+
       <a href="https://github.com/cobenian/expcap/blob/master/lib/protocol/dns.ex#L174" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
-        
-      <div class="specs">
-          <pre>z_name(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) :: :atom</pre>
-      </div>
+
+
   </div>
+
   <section class="docstring">
+
+      <h2>Specs</h2>
+      <div class="specs">
+
+          <pre>z_name(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) :: :atom</pre>
+
+      </div>
+
 <p>The first bit is reserved.
 The second bit indciates if the response was authenticated or not.
 The third bit indciates if the data was authenticated or not.</p>
   </section>
 </section>
+
           </div>
         </section>
-          <footer class="footer">
+
+      <footer class="footer">
         <p>
           <span class="line">
             Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.19.3),
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.24.2) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
           </span>
           <span class="line">
-            designed by
+            Designed by
             <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
-            </span>
+          </span>
+        </p>
+        <p>
+
+            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
+
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
         </p>
       </footer>
     </div>
   </div>
 </section>
 </div>
-  
+
+
   </body>
 </html>
-
