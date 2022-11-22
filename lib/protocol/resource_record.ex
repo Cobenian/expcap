@@ -209,7 +209,7 @@ defmodule Protocol.Dns.ResourceRecord do
 
   @doc """
   Reads a name from the data and returns a tuple of the name read and the
-  reamining bytes that have not been read yet.
+  remaining bytes that have not been read yet.
   """
   @spec read_name(binary, binary) :: {String.t, binary}
   def read_name(message, data) do
@@ -343,9 +343,9 @@ defmodule Protocol.Dns.ResourceRecord do
     {questions, data}     = read_questions(header.qdcnt, message, data)
     {answers, data}       = read_answers(header.ancnt, message, data)
     {authorities, data}   = read_answers(header.nscnt, message, data)
-    {additionals, data}   = read_answers(header.arcnt, message, data)
+    {additional, data}   = read_answers(header.arcnt, message, data)
 
-    {questions, answers, authorities, additionals, data}
+    {questions, answers, authorities, additional, data}
   end
 
 end
