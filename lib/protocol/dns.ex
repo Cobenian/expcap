@@ -15,7 +15,7 @@ defimpl String.Chars, for: Protocol.Dns do
       #{dns.parsed |> elem(1) |> Enum.map(&String.Chars.to_string/1) |> Enum.join("\n  ")}
           Authorities:
       #{dns.parsed |> elem(2) |> Enum.map(&String.Chars.to_string/1) |> Enum.join("\n  ")}
-          Additionals:
+          Additional:
       #{dns.parsed |> elem(3) |> Enum.map(&String.Chars.to_string/1) |> Enum.join("\n  ")}
         Raw:              #{ExPcap.Binaries.to_raw(dns.data)}
     """ |> String.trim
@@ -241,7 +241,7 @@ defmodule Protocol.Dns do
                       [%Protocol.Dns.Question{}],         # questions
                       [%Protocol.Dns.ResourceRecord{}],   # answers
                       [%Protocol.Dns.ResourceRecord{}],   # authorities
-                      [%Protocol.Dns.ResourceRecord{}],   # additionals
+                      [%Protocol.Dns.ResourceRecord{}],   # additional
                       <<>>      # leftover bytes
                     },
             data: <<>>
@@ -252,7 +252,7 @@ defmodule Protocol.Dns do
       [Protocol.Dns.Question.t],         # questions
       [Protocol.Dns.ResourceRecord.t],   # answers
       [Protocol.Dns.ResourceRecord.t],   # authorities
-      [Protocol.Dns.ResourceRecord.t],   # additionals
+      [Protocol.Dns.ResourceRecord.t],   # additional
       binary
       },
     data: binary
